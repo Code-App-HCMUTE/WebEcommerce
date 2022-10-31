@@ -41,10 +41,10 @@ public class LoginController extends HttpServlet {
 //thêm cookie vào response
             response.addCookie(cookie);
 //chuyển sang trang HelloServlet
-            response.sendRedirect("/WedShopee/home");
+            response.sendRedirect("/WebEcommerce/home");
         } else {
 //chuyển sang trang LoginServlet
-            response.sendRedirect("/WedShopee/auth/login");
+            response.sendRedirect("/WebEcommerce/auth/login");
         }
     }
 }

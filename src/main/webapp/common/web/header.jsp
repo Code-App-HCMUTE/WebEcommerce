@@ -30,23 +30,23 @@
             </ul>
         </div>
         <div class="header__top__right__auth">
-            <a href="/WedShopee/auth/login"><i class="fa fa-user"></i> Login</a>
+            <a href="/WebEcommerce/auth/login"><i class="fa fa-user"></i> Login</a>
         </div>
     </div>
     <nav class="humberger__menu__nav mobile-menu">
         <ul>
-            <li class="active"><a href="/WedShopee/home">Home</a></li>
-            <li><a href="/WedShopee/shop/category">Shop</a></li>
+            <li class="active"><a href="/WebEcommerce/home">Home</a></li>
+            <li><a href="/WebEcommerce/shop/category">Shop</a></li>
             <li><a href="#">Pages</a>
                 <ul class="header__menu__dropdown">
-                    <li><a href="/WedShopee/shop/blog/detail">Shop Details</a></li>
-                    <li><a href="/WedShopee/cart">Shoping Cart</a></li>
-                    <li><a href="/WedShopee/checkout">Check Out</a></li>
-                    <li><a href="/WedShopee/shop/blog/detail">Blog Details</a></li>
+                    <li><a href="/WebEcommerce/shop/blog/detail">Shop Details</a></li>
+                    <li><a href="/WebEcommerce/cart">Shoping Cart</a></li>
+                    <li><a href="/WebEcommerce/checkout">Check Out</a></li>
+                    <li><a href="/WebEcommerce/shop/blog/detail">Blog Details</a></li>
                 </ul>
             </li>
-            <li><a href="/WedShopee/shop/blog">Blog</a></li>
-            <li><a href="/WedShopee/contact">Contact</a></li>
+            <li><a href="/WebEcommerce/shop/blog">Blog</a></li>
+            <li><a href="/WebEcommerce/contact">Contact</a></li>
         </ul>
     </nav>
     <div id="mobile-menu-wrap"></div>
@@ -97,7 +97,7 @@
                         </div>
                         <div class="header__top__right__auth">
                             <c:if test="${user != ''}">
-                                <a href="/WedShopee/auth/login"><i class="fa fa-user"></i> ${user}</a>
+                                <a href="/WebEcommerce/auth/login"><i class="fa fa-user"></i> ${user}</a>
                             </c:if>
                             <c:if test="${user == ''}">
                                 <a href="#"><i class="fa fa-pinterest-p"></i></a>
@@ -112,24 +112,24 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="header__logo">
-                    <a href="/WedShopee/home"><img src="${URL}/img/logo.png" alt=""></a>
+                    <a href="/WebEcommerce/home"><img src="${URL}/img/logo.png" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul>
-                        <li class="active"><a href="/WedShopee/home">Home</a></li>
-                        <li><a href="/WedShopee/shop/category">Shop</a></li>
+                        <li class="active"><a href="/WebEcommerce/home">Home</a></li>
+                        <li><a href="/WebEcommerce/shop/category">Shop</a></li>
                         <li><a href="#">Pages</a>
                             <ul class="header__menu__dropdown">
-                                <li><a href="/WedShopee/product/detail">Shop Details</a></li>
-                                <li><a href="/WedShopee/cart">Shoping Cart</a></li>
-                                <li><a href="/WedShopee/checkout">Check Out</a></li>
-                                <li><a href="/WedShopee/shop/blog/detail">Blog Details</a></li>
+                                <li><a href="/WebEcommerce/product/detail">Shop Details</a></li>
+                                <li><a href="/WebEcommerce/cart">Shoping Cart</a></li>
+                                <li><a href="/WebEcommerce/checkout">Check Out</a></li>
+                                <li><a href="/WebEcommerce/shop/blog/detail">Blog Details</a></li>
                             </ul>
                         </li>
-                        <li><a href="/WedShopee/shop/blog">Blog</a></li>
-                        <li><a href="/WedShopee/contact">Contact</a></li>
+                        <li><a href="/WebEcommerce/shop/blog">Blog</a></li>
+                        <li><a href="/WebEcommerce/contact">Contact</a></li>
                     </ul>
                 </nav>
             </div>
