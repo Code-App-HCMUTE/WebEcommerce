@@ -1,7 +1,6 @@
 package WebEcommerce.Model;
 
 import java.util.Date;
-import java.util.List;
 
 public class ProductModel {
     private int id;
@@ -14,9 +13,9 @@ public class ProductModel {
     private int sold;
     private boolean isActive;
     private boolean isSelling;
-    private List<String> listImages;
+	private String listImages;
     private int categoryId;
-    private List<String> styleValueIds;
+    private String styleValueIds;
     private int storeId;
     private int rating;
     private Date createdAt;
@@ -25,7 +24,7 @@ public class ProductModel {
     public ProductModel() {
     }
 
-    public ProductModel(int id, String name, String slug, String description, double price, double promotionalPrice, int quantity, int sold, boolean isActive, boolean isSelling, List<String> listImages, int categoryId, List<String> styleValueIds, int storeId, int rating, Date createdAt, Date updatedAt) {
+    public ProductModel(int id, String name, String slug, String description, double price, double promotionalPrice, int quantity, int sold, boolean isActive, boolean isSelling, String listImages, int categoryId, String styleValueIds, int storeId, int rating, Date createdAt, Date updatedAt) {
         this.id = id;
         this.name = name;
         this.slug = slug;
@@ -124,11 +123,11 @@ public class ProductModel {
         isSelling = IsSelling;
     }
 
-    public List<String> getListImages() {
+    public String getListImages() {
         return listImages;
     }
 
-    public void setListImages(List<String> listImages) {
+    public void setListImages(String listImages) {
         this.listImages = listImages;
     }
 
@@ -140,11 +139,11 @@ public class ProductModel {
         this.categoryId = categoryId;
     }
 
-    public List<String> getStyleValueIds() {
+    public String getStyleValueIds() {
         return styleValueIds;
     }
 
-    public void setStyleValueIds(List<String> styleValueIds) {
+    public void setStyleValueIds(String styleValueIds) {
         this.styleValueIds = styleValueIds;
     }
 

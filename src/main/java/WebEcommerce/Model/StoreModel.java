@@ -1,7 +1,6 @@
 package WebEcommerce.Model;
 
 import java.util.Date;
-import java.util.List;
 
 public class StoreModel {
 
@@ -10,12 +9,12 @@ public class StoreModel {
     private String bio;
     private String slug;
     private int ownerId;
-    private List staffIds;
+    private String staffIds;
     private boolean isActive;
     private boolean isOpen;
     private String avatar;
     private String cover;
-    private List featured_images;
+    private String featured_images;
     private int commissionId;
     private int point;
     private int rating;
@@ -26,7 +25,7 @@ public class StoreModel {
     public StoreModel() {
     }
 
-    public StoreModel(int _id, String name, String bio, String slug, int ownerId, List staffIds, boolean isActive, boolean isOpen, String avatar, String cover, List featured_images, int commissionId, int point, int rating, int e_wallet, Date createdAt, Date updatedAt) {
+    public StoreModel(int _id, String name, String bio, String slug, int ownerId, String staffIds, boolean isActive, boolean isOpen, String avatar, String cover, String featured_images, int commissionId, int point, int rating, int e_wallet, Date createdAt, Date updatedAt) {
         this._id = _id;
         this.name = name;
         this.bio = bio;
@@ -86,11 +85,11 @@ public class StoreModel {
         this.ownerId = ownerId;
     }
 
-    public List getStaffIds() {
+    public String getStaffIds() {
         return staffIds;
     }
 
-    public void setStaffIds(List staffIds) {
+    public void setStaffIds(String staffIds) {
         this.staffIds = staffIds;
     }
 
@@ -126,11 +125,11 @@ public class StoreModel {
         this.cover = cover;
     }
 
-    public List getFeatured_images() {
+    public String getFeatured_images() {
         return featured_images;
     }
 
-    public void setFeatured_images(List featured_images) {
+    public void setFeatured_images(String featured_images) {
         this.featured_images = featured_images;
     }
 

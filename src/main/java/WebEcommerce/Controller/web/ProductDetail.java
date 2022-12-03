@@ -1,7 +1,6 @@
 package WebEcommerce.Controller.web;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -31,9 +30,6 @@ public class ProductDetail extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String id = req.getParameter("id");
-		
-
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/web/shopDetails.jsp");
 		try {
 			dispatcher.forward(req, resp);
