@@ -5,13 +5,13 @@ import java.util.Date;
 public class UserModel {
 
     private int _id;
-    private int fistName;
-    private int lastName;
-    private int slug;
+    private String fistName;
+    private String lastName;
+    private String slug;
     private int id_card;
-    private int email;
-    private int phone;
-    private boolean isEmalActive;
+    private String email;
+    private String phone;
+    private boolean isEmailActive;
     private boolean isPhoneActive;
     private String salt;
     private String hashed_password;
@@ -24,7 +24,7 @@ public class UserModel {
     private Date createdAt;
     private Date updatedAt;
 
-    public UserModel(int _id, int fistName, int lastName, int slug, int id_card, int email, int phone, boolean isEmalActive, boolean isPhoneActive, String salt, String hashed_password, String role, String address, String avatar, String cover, int point, int e_wallet, Date createdAt, Date updatedAt) {
+    public UserModel(int _id, String fistName, String lastName, String slug, int id_card, String email, String phone, boolean isEmailActive, boolean isPhoneActive, String salt, String hashed_password, String role, String address, String avatar, String cover, int point, int e_wallet, Date createdAt, Date updatedAt) {
         this._id = _id;
         this.fistName = fistName;
         this.lastName = lastName;
@@ -32,7 +32,7 @@ public class UserModel {
         this.id_card = id_card;
         this.email = email;
         this.phone = phone;
-        this.isEmalActive = isEmalActive;
+        this.isEmailActive = isEmailActive;
         this.isPhoneActive = isPhoneActive;
         this.salt = salt;
         this.hashed_password = hashed_password;
@@ -57,27 +57,27 @@ public class UserModel {
         this._id = _id;
     }
 
-    public int getFistName() {
+    public String getFistName() {
         return fistName;
     }
 
-    public void setFistName(int fistName) {
+    public void setFistName(String fistName) {
         this.fistName = fistName;
     }
 
-    public int getLastName() {
+    public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(int lastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    public int getSlug() {
+    public String getSlug() {
         return slug;
     }
 
-    public void setSlug(int slug) {
+    public void setSlug(String slug) {
         this.slug = slug;
     }
 
@@ -89,28 +89,28 @@ public class UserModel {
         this.id_card = id_card;
     }
 
-    public int getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(int email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
-    public boolean isEmalActive() {
-        return isEmalActive;
+    public boolean isEmailActive() {
+        return isEmailActive;
     }
 
-    public void setEmalActive(boolean emalActive) {
-        isEmalActive = emalActive;
+    public void setEmailActive(boolean emailActive) {
+        isEmailActive = emailActive;
     }
 
     public boolean isPhoneActive() {
