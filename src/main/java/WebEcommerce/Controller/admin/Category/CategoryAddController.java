@@ -1,24 +1,15 @@
 package WebEcommerce.Controller.admin.Category;
 
-import WebEcommerce.Model.CategoryModel;
-import WebEcommerce.Service.CategoryService;
-import WebEcommerce.Service.Impl.CategoryServiceImpl;
-
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.util.List;
 
-@WebServlet(name = "CategoryController", value = "/admin/category")
-public class CategoryController extends HttpServlet {
-    CategoryService categoryService =  new CategoryServiceImpl();
+@WebServlet(name = "CategoryAddController", value = "/admin/category/add")
+public class CategoryAddController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<CategoryModel> categoryList = categoryService.findAll();
-        System.out.println(categoryList);
-        request.setAttribute("listCategorys", categoryList);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/admin/category/category.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/admin/category/addCategory.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {

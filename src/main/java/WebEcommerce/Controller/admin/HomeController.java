@@ -18,13 +18,13 @@ public class HomeController extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/views/admin/home.jsp");
 
 
-        String name="";
-        //Nhận cookie
-        Cookie[] cookie = request.getCookies();
-        for (Cookie c: cookie) {
-            if(c.getName().equals("email")) {
-                name = c.getValue();}}
-        request.setAttribute("user", name);
+//        String name="";
+//        //Nhận cookie
+//        Cookie[] cookie = request.getCookies();
+//        for (Cookie c: cookie) {
+//            if(c.getName().equals("email")) {
+//                name = c.getValue();}}
+//        request.setAttribute("user", name);
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {
