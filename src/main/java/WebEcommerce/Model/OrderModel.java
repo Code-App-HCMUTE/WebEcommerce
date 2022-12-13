@@ -5,12 +5,12 @@ import java.util.Date;
 public class OrderModel {
     private int _id;
     private int userId;
-    private  int storeId;
+    private int storeId;
     private int deliveryId;
     private int commissionId;
     private String address;
-    private double phone;
-    private  String status;
+    private String phone;
+    private String status;
     private boolean isPaidBefore;
     private double amountFromUser;
     private double amountFromStore;
@@ -22,7 +22,7 @@ public class OrderModel {
     public OrderModel() {
     }
 
-    public OrderModel(int _id, int userId, int storeId, int deliveryId, int commissionId, String address, double phone, String status, boolean isPaidBefore, double amountFromUser, double amountFromStore, double amountToStore, double amountToGD, Date createdAt, Date updatedAt) {
+    public OrderModel(int _id, int userId, int storeId, int deliveryId, int commissionId, String address, String phone, String status, boolean isPaidBefore, double amountFromUser, double amountFromStore, double amountToStore, double amountToGD, Date createdAt, Date updatedAt) {
         this._id = _id;
         this.userId = userId;
         this.storeId = storeId;
@@ -88,11 +88,11 @@ public class OrderModel {
         this.address = address;
     }
 
-    public double getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(double phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -104,12 +104,12 @@ public class OrderModel {
         this.status = status;
     }
 
-    public boolean isPaidBefore() {
+    public boolean getIsPaidBefore() {
         return isPaidBefore;
     }
 
-    public void setPaidBefore(boolean paidBefore) {
-        isPaidBefore = paidBefore;
+    public void setIsPaidBefore(boolean isPaidBefore) {
+        this.isPaidBefore = isPaidBefore;
     }
 
     public double getAmountFromUser() {
