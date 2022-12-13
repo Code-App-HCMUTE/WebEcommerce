@@ -8,11 +8,11 @@ import java.io.IOException;
 @WebServlet(name = "CheckOutController", urlPatterns = {"/checkout"})
 public class CheckOutController extends HttpServlet {
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 5470713967110329358L;
+     *
+     */
+    private static final long serialVersionUID = 5470713967110329358L;
 
-	@Override
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/views/web/checkOut.jsp");
         try {

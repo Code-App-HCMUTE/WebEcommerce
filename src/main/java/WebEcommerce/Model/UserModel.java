@@ -8,7 +8,7 @@ public class UserModel {
     private String fistName;
     private String lastName;
     private String slug;
-    private String id_card;
+    private int id_card;
     private String email;
     private String phone;
     private boolean isEmailActive;
@@ -24,7 +24,7 @@ public class UserModel {
     private Date createdAt;
     private Date updatedAt;
 
-    public UserModel(int _id, String fistName, String lastName, String slug, String id_card, String email, String phone, boolean isEmailActive, boolean isPhoneActive, String salt, String hashed_password, String role, String address, String avatar, String cover, int point, int e_wallet, Date createdAt, Date updatedAt) {
+    public UserModel(int _id, String fistName, String lastName, String slug, int id_card, String email, String phone, boolean isEmailActive, boolean isPhoneActive, String salt, String hashed_password, String role, String address, String avatar, String cover, int point, int e_wallet, Date createdAt, Date updatedAt) {
         this._id = _id;
         this.fistName = fistName;
         this.lastName = lastName;
@@ -81,11 +81,11 @@ public class UserModel {
         this.slug = slug;
     }
 
-    public String getId_card() {
+    public int getId_card() {
         return id_card;
     }
 
-    public void setId_card(String id_card) {
+    public void setId_card(int id_card) {
         this.id_card = id_card;
     }
 
@@ -105,19 +105,19 @@ public class UserModel {
         this.phone = phone;
     }
 
-    public boolean getIsEmailActive() {
+    public boolean isEmailActive() {
         return isEmailActive;
     }
 
-    public void setIsEmailActive(boolean emalActive) {
-        isEmailActive = emalActive;
+    public void setEmailActive(boolean emailActive) {
+        isEmailActive = emailActive;
     }
 
-    public boolean getIsPhoneActive() {
+    public boolean isPhoneActive() {
         return isPhoneActive;
     }
 
-    public void setIsPhoneActive(boolean phoneActive) {
+    public void setPhoneActive(boolean phoneActive) {
         isPhoneActive = phoneActive;
     }
 

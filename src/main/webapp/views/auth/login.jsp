@@ -88,7 +88,7 @@
                         <div class="mb-3 form-password-toggle">
                             <div class="d-flex justify-content-between">
                                 <label class="form-label" for="password">Password</label>
-                                <a href="auth-forgot-password-basic.html">
+                                <a href="/WebEcommerce/auth/forgotPassword">
                                     <small>Forgot Password?</small>
                                 </a>
                             </div>
@@ -111,13 +111,18 @@
                             </div>
                         </div>
                         <div class="mb-3">
+                            <div class="alert alert-danger" role="alert">
+                              ${errMess}
+                            </div>
+                        </div>
+                        <div class="mb-3">
                             <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
                         </div>
                     </form>
 
                     <p class="text-center">
                         <span>New on our platform?</span>
-                        <a href="auth-register-basic.html">
+                        <a href="/WebEcommerce/auth/register">
                             <span>Create an account</span>
                         </a>
                     </p>

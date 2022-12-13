@@ -1,37 +1,51 @@
 package WebEcommerce.Service.Impl;
 
-import WebEcommerce.Dao.Impl.UserDaoimpl;
+import WebEcommerce.Dao.Impl.UserDaoImpl;
 import WebEcommerce.Dao.UserDao;
-import WebEcommerce.Model.StyleModel;
 import WebEcommerce.Model.UserModel;
 import WebEcommerce.Service.UserService;
 
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
-    UserDao user =  new UserDaoimpl();
+    UserDao dao = new UserDaoImpl();
     @Override
-    public List<UserModel> findAll() {
-        return user.findAll();
+    public UserModel login(String email, String password) {
+        return dao.login(email,password);
     }
 
     @Override
-    public UserModel get(int id) {
-        return null;
+    public void Register(UserModel user) {
+        dao.Register(user);
     }
 
     @Override
-    public void edit(UserModel user) {
-
+    public List<UserModel> GetAllUser() {
+        return dao.GetAllUser();
     }
 
     @Override
-    public void insert(UserModel user) {
-
+    public void update(int id,UserModel user) {
+        dao.update(id,user);
     }
 
     @Override
-    public void delete(int id) {
+    public void ResetPassword(int id, String newPass) {
+        dao.ResetPassword(id,newPass);
+    }
 
+    @Override
+    public List<UserModel> Search(String query, int size, int index) {
+        return dao.Search(query,size,index);
+    }
+
+    @Override
+    public int SearchEmailCount(String query) {
+        return dao.SearchEmailCount(query);
+    }
+
+    @Override
+    public int SearchCount(String query) {
+        return dao.SearchCount(query);
     }
 }

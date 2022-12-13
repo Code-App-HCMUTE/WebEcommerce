@@ -18,7 +18,8 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public ProductModel get(int id) {
 		// TODO Auto-generated method stub
-		return null;
+
+		return productDao.get(id);
 	}
 
 	@Override
@@ -36,6 +37,16 @@ public class ProductServiceImpl implements ProductService{
 	public void delete(int id) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<ProductModel> search(String query,int size,int index) {
+		return productDao.search(query,size,index);
+	}
+
+	@Override
+	public int SearchCount(String query) {
+		return productDao.SearchCount(query);
 	}
 
 }

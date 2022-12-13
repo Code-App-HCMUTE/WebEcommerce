@@ -1,19 +1,16 @@
 package WebEcommerce.Dao;
 
-import WebEcommerce.Model.CategoryModel;
-import WebEcommerce.Model.StyleModel;
 import WebEcommerce.Model.UserModel;
 
 import java.util.List;
 
 public interface UserDao {
-    List<UserModel> findAll();
-
-    UserModel get(int id);
-
-    void edit(UserModel user);
-
-    void insert(UserModel user);
-
-    void delete(int id);
+    UserModel login(String email,String password);
+    void Register(UserModel user);
+    List<UserModel> GetAllUser ();
+    void update (int id,UserModel user);
+    List<UserModel> Search (String query,int size,int index);
+    int SearchEmailCount (String query);
+    int SearchCount(String query);
+    void ResetPassword (int id,String newPass);
 }
