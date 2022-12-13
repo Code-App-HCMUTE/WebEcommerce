@@ -16,7 +16,7 @@ public class UserController extends HttpServlet {
     UserService userService = new UserServiceImpl();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<UserModel> styleList = userService.findAll();
+        List<UserModel> styleList = userService.GetAllUser();
         request.setAttribute("listStyles", styleList);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/views/admin/user/user.jsp");
         try {
