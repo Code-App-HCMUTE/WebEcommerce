@@ -81,23 +81,13 @@
 
                         <ul class="menu-sub">
                             <li class="menu-item">
-                                <a href="/vendor/products" class="menu-link">
+                                <a href="/WebEcommerce/vendor/products" class="menu-link">
                                     <div data-i18n="Without menu">Tất Cả Sản Phẩm</div>
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="layouts-without-navbar.html" class="menu-link">
+                                <a href="/WebEcommerce/vendor/AddProduct" class="menu-link">
                                     <div data-i18n="Without navbar">Thêm Sản Phẩm</div>
-                                </a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="layouts-container.html" class="menu-link">
-                                    <div data-i18n="Container">Sản Phẩm Vi Phạm</div>
-                                </a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="layouts-fluid.html" class="menu-link">
-                                    <div data-i18n="Fluid">Cài Đặt Sản Phẩm</div>
                                 </a>
                             </li>
                         </ul>
@@ -105,13 +95,13 @@
                     <!-- Quản Lý Đơn Hàng -->
 
                     <li class="menu-item">
-                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <a href="/WebEcommerce/vendor/orders" class="menu-link menu-toggle">
                             <i class="menu-icon tf-icons bx bx-package"></i>
                             <div data-i18n="Account Settings">Quản Lý Đơn Hàng</div>
                         </a>
                         <ul class="menu-sub">
                             <li class="menu-item">
-                                <a href="pages-account-settings-account.html" class="menu-link">
+                                <a href="/WebEcommerce/vendor/orders" class="menu-link">
                                     <div data-i18n="Account">Tất cả</div>
                                 </a>
                             </li>
@@ -136,7 +126,7 @@
                     </li>
                     <!--Quản lý nhân viên cửa hàng  -->
                     <li class="menu-item">
-                        <a href="javascript:void(0);" class="menu-link">
+                        <a href="/WebEcommerce/vendor/staff" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-female"></i>
                             <div data-i18n="Misc">Quản lý nhân viên</div>
                         </a>
@@ -155,7 +145,7 @@
                         <span class="menu-header-text">của hàng</span>
                     </li>
                     <li class="menu-item">
-                        <a href="javascript:void(0)" class="menu-link">
+                        <a href="/WebEcommerce/vendor/infor" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-store-alt"></i>
                             <div data-i18n="User interface">thông tin shop</div>
                         </a>

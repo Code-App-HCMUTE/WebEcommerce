@@ -11,4 +11,9 @@ public interface ProductDao {
     void edit(ProductModel product);
     void insert(ProductModel product);
     void delete(int id);
+    List<ProductModel> getAllProductIsActive();
+    List<ProductModel> getAllProductUnActive();
+    List<ProductModel> getAllProductNoQuantity();
+    List<ProductModel> getAllProductQuantity();
+    List<ProductModel> searchProduct(String txtSearch);
 }

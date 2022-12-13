@@ -7,8 +7,8 @@ public class ProductModel {
     private String name;
     private String slug;
     private String description;
-    private double price;
-    private double promotionalPrice;
+    private int price;
+    private int promotionalPrice;
     private int quantity;
     private int sold;
     private boolean isActive;
@@ -24,7 +24,7 @@ public class ProductModel {
     public ProductModel() {
     }
 
-    public ProductModel(int id, String name, String slug, String description, double price, double promotionalPrice, int quantity, int sold, boolean isActive, boolean isSelling, String listImages, int categoryId, String styleValueIds, int storeId, int rating, Date createdAt, Date updatedAt) {
+    public ProductModel(int id, String name, String slug, String description, int price, int promotionalPrice, int quantity, int sold, boolean isActive, boolean isSelling, String listImages, int categoryId, String styleValueIds, int storeId, int rating, Date createdAt, Date updatedAt) {
         this.id = id;
         this.name = name;
         this.slug = slug;
@@ -76,19 +76,19 @@ public class ProductModel {
         this.description = description;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
-    public double getPromotionalPrice() {
+    public int getPromotionalPrice() {
         return promotionalPrice;
     }
 
-    public void setPromotionalPrice(double promotionalPrice) {
+    public void setPromotionalPrice(int promotionalPrice) {
         this.promotionalPrice = promotionalPrice;
     }
 

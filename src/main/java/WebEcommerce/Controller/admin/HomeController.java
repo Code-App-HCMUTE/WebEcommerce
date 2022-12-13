@@ -12,7 +12,8 @@ import java.util.List;
 
 @WebServlet(name = "HomeAdmin", urlPatterns = {"/admin/home"})
 public class HomeController extends HttpServlet {
-    ProductDao productDao =  new ProductDaoImpl();
+	private static final long serialVersionUID = 1L;
+	ProductDao productDao =  new ProductDaoImpl();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/views/admin/home.jsp");

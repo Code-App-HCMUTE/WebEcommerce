@@ -5,6 +5,7 @@ import java.util.List;
 import WebEcommerce.Dao.StoreDao;
 import WebEcommerce.Dao.Impl.StoreDaoImpl;
 import WebEcommerce.Model.StoreModel;
+import WebEcommerce.Model.UserModel;
 import WebEcommerce.Service.StoreService;
 
 public class StoreServiceImpl implements StoreService {
@@ -28,8 +29,28 @@ public class StoreServiceImpl implements StoreService {
 
 	@Override
 	public void editStore(StoreModel store) {
+		storeDao.editStore(store);
+	}
+
+	@Override
+	public UserModel getOwnerStore() {
+		return storeDao.getOwnerStore();
+	}
+
+	@Override
+	public int countStaffInStore() {
+		return storeDao.countStaffInStore();
+	}
+
+	@Override
+	public void updateStaffStore(int id) {
+		storeDao.updateStaffStore(id);
+	}
+
+	@Override
+	public UserModel getStaff() {
 		// TODO Auto-generated method stub
-		
+		return storeDao.getStaff();
 	}
 
 }

@@ -4,7 +4,7 @@
 <core:forEach items="${stores}" var="kq">
 	<p>Store: ${kq.name}</p>
 	<p>Bio: ${kq.bio}</p>
-	<core:url value="/image?fname=${kq.avatar}" var="imgUrl"></core:url>
+	<core:url value="/image?fname=store/${kq.avatar}" var="imgUrl"></core:url>
 	<td><img height="150" width="200" src="${imgUrl}" /></td>
 </core:forEach>
 

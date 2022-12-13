@@ -17,13 +17,12 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public ProductModel get(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return productDao.get(id);
 	}
 
 	@Override
 	public void edit(ProductModel product) {
-		// TODO Auto-generated method stub
+		productDao.edit(product);
 		
 	}
 
@@ -34,8 +33,37 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public void delete(int id) {
+		productDao.delete(id);
+	}
+
+	@Override
+	public List<ProductModel> getAllProductIsActive() {
 		// TODO Auto-generated method stub
-		
+		return productDao.getAllProductIsActive();
+	}
+
+	@Override
+	public List<ProductModel> getAllProductUnActive() {
+		// TODO Auto-generated method stub
+		return productDao.getAllProductUnActive();
+	}
+
+	@Override
+	public List<ProductModel> getAllProductNoQuantity() {
+		// TODO Auto-generated method stub
+		return productDao.getAllProductNoQuantity();
+	}
+
+	@Override
+	public List<ProductModel> getAllProductQuantity() {
+		// TODO Auto-generated method stub
+		return productDao.getAllProductQuantity();
+	}
+
+	@Override
+	public List<ProductModel> searchProduct(String txtSearch) {
+		// TODO Auto-generated method stub
+		return productDao.searchProduct(txtSearch);
 	}
 
 }

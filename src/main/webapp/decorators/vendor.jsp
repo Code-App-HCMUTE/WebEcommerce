@@ -49,6 +49,19 @@
 		<!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
 		<!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
 		<script src="${URL}/assets/js/config.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	    <script>
+			function chooseFile(fileinput, id)
+			{
+				if(fileinput.files && fileinput.files[0]){
+					var reader = new FileReader();
+					reader.onload=function (e){
+						$('#'+id).attr('src',e.target.result);
+					}
+					reader.readAsDataURL(fileinput.files[0])
+				}
+			}
+		</script>
 	</head>
 	<body>
 	<div class="layout-wrapper layout-content-navbar">
@@ -98,42 +111,6 @@
 
 	<!-- Place this tag in your head or just before your close body tag. -->
 	<script async defer src="https://buttons.github.io/buttons.js"></script>
-	<script>
-const dt = new DataTransfer(); // Permet de manipuler les fichiers de l'input file
-
-$("#attachment").on('change', function(e){
-	for(var i = 0; i < this.files.length; i++){
-		let fileBloc = $('<span/>', {class: 'file-block'}),
-			 fileName = $('<span/>', {class: 'name', text: this.files.item(i).name});
-		fileBloc.append('<span class="file-delete"><span>+</span></span>')
-			.append(fileName);
-		$("#filesList > #files-names").append(fileBloc);
-	};
-	// Ajout des fichiers dans l'objet DataTransfer
-	for (let file of this.files) {
-		dt.items.add(file);
-	}
-	// Mise à jour des fichiers de l'input file après ajout
-	this.files = dt.files;
-
-	// EventListener pour le bouton de suppression créé
-	$('span.file-delete').click(function(){
-		let name = $(this).next('span.name').text();
-		// Supprimer l'affichage du nom de fichier
-		$(this).parent().remove();
-		for(let i = 0; i < dt.items.length; i++){
-			// Correspondance du fichier et du nom
-			if(name === dt.items[i].getAsFile().name){
-				// Suppression du fichier dans l'objet DataTransfer
-				dt.items.remove(i);
-				continue;
-			}
-		}
-		// Mise à jour des fichiers de l'input file après suppression
-		document.getElementById('attachment').files = dt.files;
-	});
-});
-</script>
 	
 	</body>
 	</html>
