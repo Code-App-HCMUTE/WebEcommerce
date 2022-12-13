@@ -140,7 +140,7 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="pages-account-settings-account.html" class="menu-link">
+                    <a href="user" class="menu-link">
                         <div data-i18n="Account">Manager User</div>
                     </a>
                 </li>
@@ -164,7 +164,7 @@
 
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="product" class="menu-link">
+                    <a href="order" class="menu-link">
                         <div data-i18n="Without menu">order Management</div>
                     </a>
                 </li>
@@ -177,19 +177,19 @@
             </ul>
         </li>
         <li class="menu-item ">
-            <a href="Delivery" class="menu-link">
+            <a href="delivery" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Delivery unit</div>
+                <div data-i18n="Analytics">Delivery </div>
             </a>
         </li>
         <li class="menu-item ">
-            <a href="Commission" class="menu-link">
+            <a href="commission" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Commission</div>
             </a>
         </li>
         <li class="menu-item ">
-            <a href="Transaction" class="menu-link">
+            <a href="transaction" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Transaction</div>
             </a>

@@ -1,26 +1,25 @@
-package WebEcommerce.Controller.admin.Store;
+package WebEcommerce.Controller.admin.delivery;
 
-import WebEcommerce.Model.StoreLevelModel;
-import WebEcommerce.Model.StoreModel;
-import WebEcommerce.Service.Impl.StoreServiceImpl;
-import WebEcommerce.Service.StoreService;
+import WebEcommerce.Model.CategoryModel;
+import WebEcommerce.Model.DeliveryModel;
+import WebEcommerce.Service.DeliveryService;
+import WebEcommerce.Service.Impl.DeliveryServiceImpl;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "StoreController", value = "/admin/store")
-public class StoreController extends HttpServlet {
-    StoreService storeService = new StoreServiceImpl();
-
+@WebServlet(name = "DeliveryController", value = "/admin/delivery")
+public class DeliveryController extends HttpServlet {
+    DeliveryService deliveryService = new DeliveryServiceImpl();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<StoreModel> listStore = storeService.getAllStore();
-        request.setAttribute("listStore", listStore);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/admin/store/store.jsp");
+        List<DeliveryModel> deliverys = deliveryService.findAll();
+            System.out.println(deliverys);
+        request.setAttribute("listDelivery", deliverys);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/admin/delivery/delivery.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {

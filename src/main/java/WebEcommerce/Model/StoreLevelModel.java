@@ -2,34 +2,33 @@ package WebEcommerce.Model;
 
 import java.util.Date;
 
-public class DeliveryModel {
-
+public class StoreLevelModel {
     private int _id;
     private String name;
-    private String description;
-    private double price;
+    private int minPoint;
+    private int discount;
     private boolean isDeleted;
     private Date createdAt;
     private Date updatedAt;
 
-    public DeliveryModel() {
+    public StoreLevelModel() {
     }
 
-    public DeliveryModel(int _id, String name, String description, double price, boolean isDeleted, Date createdAt, Date updatedAt) {
+    public StoreLevelModel(int _id, String name, int minPoint, int discount, boolean isDeleted, Date createdAt, Date updatedAt) {
         this._id = _id;
         this.name = name;
-        this.description = description;
-        this.price = price;
+        this.minPoint = minPoint;
+        this.discount = discount;
         this.isDeleted = isDeleted;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
 
-    public int get_id() {
+    public int getId() {
         return _id;
     }
 
-    public void set_id(int _id) {
+    public void setId(int _id) {
         this._id = _id;
     }
 
@@ -41,20 +40,20 @@ public class DeliveryModel {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public int getMinPoint() {
+        return minPoint;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setMinPoint(int minPoint) {
+        this.minPoint = minPoint;
     }
 
-    public double getPrice() {
-        return price;
+    public int getDiscount() {
+        return discount;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setDiscount(int discount) {
+        this.discount = discount;
     }
 
     public boolean getIsDeleted() {
@@ -81,5 +80,3 @@ public class DeliveryModel {
         this.updatedAt = updatedAt;
     }
 }
-
-
