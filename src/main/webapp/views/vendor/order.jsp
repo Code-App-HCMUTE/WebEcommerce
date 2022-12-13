@@ -54,25 +54,13 @@
 															<td>${kq.address}</td>
 															<td>${kq.phone}</td>
 															<td>${kq.status}</td>
-															<td>${kq.isPaidBefore}</td>
+															<core:if test="${kq.isPaidBefore == false}">
+																<td>Chưa thanh toán</td>
+															</core:if>
+															<core:if test="${kq.isPaidBefore == true}">
+																<td>Đã thanh toán</td>
+															</core:if>
 															<td>${kq.amountFromUser}</td>
-															<td>
-																<div class="dropdown">
-																	<button type="button"
-																		class="btn p-0 dropdown-toggle hide-arrow"
-																		data-bs-toggle="dropdown">
-																		<i class="bx bx-dots-vertical-rounded"></i>
-																	</button>
-																	<div class="dropdown-menu">
-																		<a class="dropdown-item"
-																			href="/WebEcommerce/vendor/product/edit?id=${kq.id}"><i
-																			class="bx bx-edit-alt me-1"></i> Sửa</a> <a
-																			class="dropdown-item"
-																			href="/WebEcommerce/vendor/product/delete?id=${kq.id}"><i
-																			class="bx bx-trash me-1"></i> Xóa</a>
-																	</div>
-																</div>
-															</td>
 														</tr>
 													</core:forEach>
 												</tbody>

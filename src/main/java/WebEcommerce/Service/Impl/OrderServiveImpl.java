@@ -14,5 +14,10 @@ public class OrderServiveImpl implements OrderService{
 		// TODO Auto-generated method stub
 		return orderDao.getAlLOrder();
 	}
+	@Override
+	public List<OrderModel> getAllOrderCancel() {
+		// TODO Auto-generated method stub
+		return orderDao.getAllOrderCancel();
+	}
 
 }

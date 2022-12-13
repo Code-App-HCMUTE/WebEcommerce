@@ -6,4 +6,5 @@ import WebEcommerce.Model.OrderModel;
 
 public interface OrderService {
 	List<OrderModel> getAlLOrder();
+	List<OrderModel> getAllOrderCancel();
 }

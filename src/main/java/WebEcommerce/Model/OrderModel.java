@@ -102,13 +102,13 @@ public class OrderModel {
 	/**
 	 * @return the isPaidBefore
 	 */
-	public boolean isPaidBefore() {
+	public boolean getIsPaidBefore() {
 		return isPaidBefore;
 	}
 	/**
 	 * @param isPaidBefore the isPaidBefore to set
 	 */
-	public void setPaidBefore(boolean isPaidBefore) {
+	public void setIsPaidBefore(boolean isPaidBefore) {
 		this.isPaidBefore = isPaidBefore;
 	}
 	/**

@@ -106,13 +106,8 @@
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="pages-account-settings-notifications.html" class="menu-link">
+                                <a href="/WebEcommerce/vendor/cacelorder" class="menu-link">
                                     <div data-i18n="Notifications">Đơn Huỷ</div>
-                                </a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="pages-account-settings-connections.html" class="menu-link">
-                                    <div data-i18n="Connections">Trả Hàng/Hoàn Tiền</div>
                                 </a>
                             </li>
                         </ul>
