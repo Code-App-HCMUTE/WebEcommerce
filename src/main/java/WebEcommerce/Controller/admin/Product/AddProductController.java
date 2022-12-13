@@ -1,6 +1,9 @@
 package WebEcommerce.Controller.admin.Product;
 
+import WebEcommerce.Model.CategoryModel;
 import WebEcommerce.Model.ProductModel;
+import WebEcommerce.Service.CategoryService;
+import WebEcommerce.Service.Impl.CategoryServiceImpl;
 import WebEcommerce.Service.Impl.ProductServiceImpl;
 import WebEcommerce.Service.ProductService;
 import org.apache.commons.fileupload.FileItem;
@@ -24,10 +27,14 @@ import java.util.List;
 @WebServlet(name = "InsertProductController", value = "/admin/product/add")
 public class AddProductController extends HttpServlet {
     ProductService productService = new ProductServiceImpl();
+    CategoryService categoryService = new CategoryServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/admin/category/addCategory.jsp");
+        List<CategoryModel> categoryList =  categoryService.findAll();
+        request.setAttribute("categorys",categoryList);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/admin/product/addProduct.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {
@@ -55,7 +62,7 @@ public class AddProductController extends HttpServlet {
                     product.setName(item.getString("UTF-8"));
                 } else if (item.getFieldName().equals("description")) {
                     product.setDescription(item.getString("UTF-8"));
-                } else if (item.getFieldName().equals("images")) {
+                } else if (item.getFieldName().equals("image")) {
                     String originalFileName = item.getName();
                     int index = originalFileName.lastIndexOf(".");
                     String ext = originalFileName.substring(index + 1);
@@ -70,12 +77,18 @@ public class AddProductController extends HttpServlet {
                 } else if (item.getFieldName().equals("quantity")) {
                     product.setQuantity(Integer.parseInt(item.getString("UTF-8")));
                 }
+                else if (item.getFieldName().equals("categoryId")) {
+                    product.setCategoryId(Integer.parseInt(item.getString("UTF-8")));
+                }
+                else if (item.getFieldName().equals("isSelling")) {
+                    product.setIsSelling(item.getString("UTF-8").equals("on"));
+                }
                 Date date = java.sql.Date.valueOf(LocalDate.now());
                 product.setCreatedAt(date);
                 product.setUpdatedAt(date);
             }
             productService.insert(product);
-            response.sendRedirect(request.getContextPath() + "/admin/product/add");
+            response.sendRedirect(request.getContextPath() + "/admin/product");
         } catch (FileUploadException e) {
             e.printStackTrace();
         } catch (Exception e) {

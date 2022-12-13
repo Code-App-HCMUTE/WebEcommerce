@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Tu Nguyen
-  Date: 12/12/2022
-  Time: 9:54 AM
+  Date: 12/13/2022
+  Time: 8:01 AM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -14,24 +14,20 @@
     <div class="row">
         <div class="col-12 mb-4 order-0">
             <div class="card mb-4">
-                <h5 class="card-header">Tạo Thể Loại</h5>
+                <h5 class="card-header">Tạo kiểu</h5>
                 <div class="card-body">
                     <form action="add" method="post" enctype="multipart/form-data" role="form">
                         <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Tên Thể Loại</label>
+                            <label for="exampleFormControlInput1" class="form-label">Tên kiểu</label>
                             <input type="text" class="form-control" name="name" id="exampleFormControlInput1"
-                                   placeholder="Tên Thể Loại..."/>
+                                   placeholder="Tên kiểu..."/>
                         </div>
                         <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Hình Ảnh</label>
-                            <input class="form-control" name="image" type="file" id="formFile"/>
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlSelect1" class="form-label">Thể Loại Cha</label>
+                            <label for="exampleFormControlSelect1" class="form-label">Thể kiểu Cha</label>
                             <select class="form-select" id="exampleFormControlSelect1" name="categoryId"
                                     aria-label="Thể Loại">
-                                <option selected value="0">Chọn Thể Loại</option>
-                                <core:forEach items="${categorys}" var="kq">
+                                <option selected value="0">Chọn kiểu</option>
+                                <core:forEach items="${styles}" var="kq">
                                     <option value="${kq.id}">${kq.name}</option>
                                 </core:forEach>
                             </select>
@@ -44,7 +40,7 @@
                                 >Hoạt động</label>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Tạo Thể Loại</button>
+                        <button type="submit" class="btn btn-primary">Tạo kiểu</button>
                     </form>
                 </div>
 

@@ -59,7 +59,7 @@ public class ProductDaoImpl extends DBConnection implements ProductDao {
 	@Override
 	public void insert(ProductModel product) {
 		String sql = "INSERT INTO product (name, slug, description, price, promotionalPrice, quantity, sold, isActive, isSelling,listImages, categoryId, styleValueIds, storeId, rating, createdAt, updatedAt) VALUES "
-				+ "(?,?,?,?,?,?,0,1,1,?,?,?,?,3,?,?)";
+				+ "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -69,12 +69,16 @@ public class ProductDaoImpl extends DBConnection implements ProductDao {
 			ps.setDouble(4, product.getPrice());
 			ps.setDouble(5, product.getPromotionalPrice());
 			ps.setInt(6, product.getQuantity());
-			ps.setString(7, product.getListImages());
-			ps.setInt(8, 1);
-			ps.setString(9, "1");
-			ps.setInt(10, 1);
-			ps.setDate(11, (java.sql.Date) product.getCreatedAt());
-			ps.setDate(12, (java.sql.Date) product.getUpdatedAt());
+			ps.setInt(7,0);
+			ps.setBoolean(8,true);
+			ps.setBoolean(9, product.getIsSelling());
+			ps.setString(10,product.getListImages());
+			ps.setInt(11,product.getCategoryId());
+			ps.setString(12, "1");
+			ps.setInt(13, 1);
+			ps.setInt(14, 3);
+			ps.setDate(15, (java.sql.Date) product.getCreatedAt());
+			ps.setDate(16, (java.sql.Date) product.getUpdatedAt());
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

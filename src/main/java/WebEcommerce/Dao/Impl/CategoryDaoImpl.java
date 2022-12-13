@@ -56,12 +56,13 @@ public class CategoryDaoImpl extends DBConnection implements CategoryDao {
             Connection con  =  super.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1,category.getName());
-            ps.setString(2, category.getSlug());
+            ps.setString(2, category.getName());
             ps.setInt(3,category.getCartId());
-            ps.setString(4, category.getName());
+            ps.setString(4, category.getImage());
             ps.setBoolean(5, category.getIsDeleted());
             ps.setDate(6, (Date) category.getCreatedAt());
             ps.setDate(7, (Date) category.getUpdatedAt());
+            ps.executeUpdate();
         }
         catch (Exception e){
             e.printStackTrace();

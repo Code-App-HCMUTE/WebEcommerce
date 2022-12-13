@@ -1,8 +1,9 @@
-package WebEcommerce.Controller.admin.Category;
+package WebEcommerce.Controller.admin.User;
 
-import WebEcommerce.Model.CategoryModel;
-import WebEcommerce.Service.CategoryService;
-import WebEcommerce.Service.Impl.CategoryServiceImpl;
+import WebEcommerce.Model.StyleModel;
+import WebEcommerce.Model.UserModel;
+import WebEcommerce.Service.Impl.UserServiceImpl;
+import WebEcommerce.Service.UserService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -10,14 +11,14 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "CategoryController", value = "/admin/category")
-public class CategoryController extends HttpServlet {
-    CategoryService categoryService =  new CategoryServiceImpl();
+@WebServlet(name = "UserController", value = "/UserController")
+public class UserController extends HttpServlet {
+    UserService userService = new UserServiceImpl();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<CategoryModel> categoryList = categoryService.findAll();
-        request.setAttribute("listCategorys", categoryList);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/admin/category/category.jsp");
+        List<UserModel> styleList = userService.findAll();
+        request.setAttribute("listStyles", styleList);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/admin/user/user.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {

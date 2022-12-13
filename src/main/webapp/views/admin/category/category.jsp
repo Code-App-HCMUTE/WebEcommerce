@@ -163,10 +163,11 @@
                                                                 class="form-check-input" type="checkbox" value=""
                                                                 id="flexCheckDefault1">
                                                     </th>
-                                                    <th>image</th>
-                                                    <th>Name</th>
-                                                    <th>Slug</th>
-                                                    <th>Status</th>
+                                                    <th>Ảnh</th>
+                                                    <th>Tên</th>
+                                                    <th>Trạng Thái</th>
+                                                    <th>Thể Loại Cha</th>
+
                                                 </tr>
                                                 </thead>
                                                 <tbody class="table-border-bottom-0">
@@ -179,18 +180,14 @@
                                                                     id="flexCheckDefault">
                                                         </td>
                                                         <td>
-                                                                <%--<i class="fab fa-angular fa-lg text-danger me-3"></i>--%>
-                                                            <img src="${URL}/assets/img/avatars/5.png"
+                                                            <core:url value="/image?fname=category/${kq.image}" var="imgUrl"></core:url>
+                                                            <img src="${imgUrl}"
                                                                  class="rounded float-start" height="40" width="40"
                                                                  alt="...">
-                                                            <strong>${kq.image}</strong>
                                                         </td>
                                                         <td>
                                                             <i class="fab fa-angular fa-lg text-danger me-3"></i>
                                                             <strong>${kq.name}</strong>
-                                                        </td>
-                                                        <td>
-                                                                ${kq.slug}
                                                         </td>
                                                         <td>
                                                             <core:if test="${kq.isDeleted}"><span
@@ -198,6 +195,9 @@
                                                             <core:if test="${!kq.isDeleted}"><span
                                                                     class="badge bg-label-warning me-1">Pending</span></core:if>
 
+                                                        </td>
+                                                        <td>
+                                                                ${kq.cartId}
                                                         </td>
                                                         <td>
                                                             <div class="dropdown">

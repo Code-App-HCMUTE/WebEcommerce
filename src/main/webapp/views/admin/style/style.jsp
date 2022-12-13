@@ -1,115 +1,18 @@
 <%--
   Created by IntelliJ IDEA.
   User: Tu Nguyen
-  Date: 11/3/2022
-  Time: 9:06 PM
+  Date: 12/12/2022
+  Time: 10:44 PM
   To change this template use File | Settings | File Templates.
 --%>
+
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
 <core:url value="/templates/admin" var="URL"></core:url>
 
 <div class="container-xxl flex-grow-1 container-p-y">
-    <!-- search product -->
-    <div class="row">
-        <div class="col-12 mb-4 order-0">
-            <div class="card ">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="card-body p-3">
-                            <div class="d-flex flex-column align-items-start ">
-                                <label class="form-label">Nghành Hàng</label>
-                                <div class="input-group">
-                                    <button class="btn btn-outline-secondary dropdown-toggle"
-                                            type="button" data-bs-toggle="dropdown"
-                                            aria-expanded="false">Tên sản phẩm
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                        <li><a class="dropdown-item" href="#">Another action</a>
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">Something else
-                                            here</a>
-                                        </li>
-                                        <li>
-                                            <hr class="dropdown-divider">
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">Separated link</a>
-                                        </li>
-                                    </ul>
-                                    <input type="text" class="form-control"
-                                           aria-label="Text input with dropdown button">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="card-body p-3">
-                            <div class="d-flex flex-column align-items-start ">
-                                <label class="form-label">Nghành
-                                    Hàng</label>
-                                <select class="form-select" id="search-"
-                                        aria-label="Default select example">
-                                    <option selected>chọn</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="card-body p-3">
-                            <div
-                                    class="d-flex flex-column align-items-start justify-content-center ">
-                                <label class="form-label">kho
-                                    hàng</label>
-                                <div class="d-flex align-items-start justify-content-start ">
-                                    <input type="text" class="form-control" placeholder="tối thiểu"
-                                           aria-label="tối thiểu">
-                                    <span class="input-group-sm p-2">-</span>
-                                    <input type="text" class="form-control" placeholder="tối đa"
-                                           aria-label="tối đa">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="card-body p-3">
-                            <div
-                                    class="d-flex flex-column align-items-start justify-content-center ">
-                                <label class="form-label me-2">Doanh Số</label>
-                                <div class="d-flex align-items-start justify-content-start ">
-                                    <input type="text" class="form-control" placeholder="tối thiểu"
-                                           aria-label="tối thiểu">
-                                    <span class="input-group-sm p-2">-</span>
-                                    <input type="text" class="form-control" placeholder="tối đa"
-                                           aria-label="tối đa">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-body">
-                                <button type="button" class="btn btn-primary me-2">Tìm</button>
-                                <button type="button" class="btn btn-outline-secondary">Nhập
-                                    Lại
-                                </button>
-                            </div>
-                        </div>
 
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-    </div>
     <!-- list Product -->
     <div class="row">
         <div class="col-12">
@@ -135,16 +38,7 @@
                                     Đang hoạt động
                                 </button>
                             </li>
-                            <!-- tab out of stock -->
-                            <li class="nav-item">
-                                <button type="button" class="nav-link" role="tab"
-                                        data-bs-toggle="tab"
-                                        data-bs-target="#navs-pills-top-out-of-stock"
-                                        aria-controls="navs-pills-top-out-of-stock"
-                                        aria-selected="false">
-                                    Hết Hàng
-                                </button>
-                            </li>
+
                             <!-- tab pending -->
                             <li class="nav-item">
                                 <button type="button" class="nav-link" role="tab"
@@ -153,16 +47,8 @@
                                         aria-controls="navs-pills-top-out-of-pending"
                                         aria-selected="false">
                                     Chờ duyệt
-                                </button>
-                            </li>
-                            <!-- tab violate -->
-                            <li class="nav-item">
-                                <button type="button" class="nav-link" role="tab"
-                                        data-bs-toggle="tab"
-                                        data-bs-target="#navs-pills-top-out-of-Violate"
-                                        aria-controls="navs-pills-top-out-of-Violate"
-                                        aria-selected="false">
-                                    Vi Phạm
+                                    <span
+                                            class="badge rounded-pill badge-center h-px-20 w-px-20 bg-danger">3</span>
                                 </button>
                             </li>
                             <!-- tab hidden -->
@@ -173,6 +59,8 @@
                                         aria-controls="navs-pills-top-out-of-Hidden"
                                         aria-selected="false">
                                     Đã Ẩn
+                                    <span
+                                            class="badge rounded-pill badge-center h-px-20 w-px-20 bg-danger">3</span>
                                 </button>
                             </li>
                         </ul>
@@ -188,7 +76,7 @@
                                             <div class="row">
                                                 <div
                                                         class="col-6 d-flex flex-column align-items-start justify-content-start">
-                                                    <h5 class="card-title">Sản Phẩm</h5>
+                                                    <h5 class="card-title">Kiểu</h5>
                                                     <div class="progress mb-1"
                                                          style="height: 3px; width: 50%;">
                                                         <div class="progress-bar bg-success"
@@ -196,17 +84,15 @@
                                                              aria-valuenow="25" aria-valuemin="0"
                                                              aria-valuemax="100"></div>
                                                     </div>
-                                                    <p class="text-muted fs-6">Có thể đăng tải tối
-                                                        da 100 sản phẩm</p>
+                                                    <%--                                                    <p class="text-muted fs-6">Có thể đăng tải tối--%>
+                                                    <%--                                                        da 100 sản phẩm</p>--%>
                                                 </div>
                                                 <div
                                                         class="col-6 d-flex align-items-center justify-content-end">
-                                                    <a href="product/add">
+                                                    <a href="style/add">
                                                         <button type="button"
                                                                 class="btn btn-success me-3 d-flex align-items-center text-nowrap">
-                                                            <i
-                                                                    class="bx bx-plus me-1"></i> Thêm sản
-                                                            Phẩm
+                                                            <i class="bx bx-plus me-1"></i> Thêm Kiểu
                                                         </button>
                                                     </a>
                                                     <div class="btn-group btn-group-sm" role="group"
@@ -255,21 +141,13 @@
                                                                 class="form-check-input" type="checkbox" value=""
                                                                 id="flexCheckDefault1">
                                                     </th>
-                                                    <th>Ảnh</th>
-                                                    <th>Tên Sản Phẩm</th>
-                                                    <th>Giá</th>
-                                                    <th>Giá Giảm</th>
-                                                    <th>Số Lượng</th>
-                                                    <th>Số Lượng Bán</th>
-                                                    <th>Cấp Phép</th>
+                                                    <th>Tên</th>
+                                                    <th>Thể Loại Cha</th>
                                                     <th>Trạng Thái</th>
-                                                    <th>Cửa Hàng</th>
-                                                    <th>Chỉnh Sữa</th>
-
                                                 </tr>
                                                 </thead>
                                                 <tbody class="table-border-bottom-0">
-                                                <core:forEach items="${listProducts}" var="kq">
+                                                <core:forEach items="${listStyles}" var="kq">
                                                     <tr>
                                                         <td>
                                                             <label for="flexCheckDefault"></label>
@@ -279,30 +157,19 @@
                                                         </td>
 
                                                         <td>
-                                                        <core:url value="/image?fname=product/${kq.listImages}" var="imgUrl"></core:url>
-                                                            <img src="${imgUrl}"
-                                                                 class="rounded float-start" height="40" width="40"
-                                                                 alt="...">
+                                                            <i class="fab fa-angular fa-lg text-danger me-3"></i>
+                                                            <strong>${kq.name}</strong>
+                                                        </td>
+                                                        <td>
+                                                                ${kq.caId}
+                                                        </td>
+                                                        <td>
+                                                            <core:if test="${kq.isDelete}"><span
+                                                                    class="badge bg-label-primary me-1">Active</span></core:if>
+                                                            <core:if test="${!kq.isDelete}"><span
+                                                                    class="badge bg-label-warning me-1">Pending</span></core:if>
 
                                                         </td>
-                                                        <td><strong>${kq.name}</strong></td>
-                                                        <td>${kq.price}đ</td>
-                                                        <td>${kq.promotionalPrice}đ</td>
-                                                        <td>${kq.quantity}</td>
-                                                        <td>${kq.sold}</td>
-                                                        <td>
-                                                            <core:if test="${kq.isActive}"><span
-                                                                    class="badge bg-label-primary me-1">Active</span></core:if>
-                                                            <core:if test="${!kq.isActive}"><span
-                                                                    class="badge bg-label-danger me-1">Block</span></core:if>
-                                                        </td>
-                                                        <td>
-                                                            <core:if test="${kq.isSelling}"><span
-                                                                    class="badge bg-label-primary me-1">Active</span></core:if>
-                                                            <core:if test="${!kq.isSelling}"><span
-                                                                    class="badge bg-label-danger me-1">Block</span></core:if>
-                                                        </td>
-                                                        <td>${kq.categoryId}</td>
                                                         <td>
                                                             <div class="dropdown">
                                                                 <button type="button"
@@ -325,8 +192,6 @@
                                                         </td>
                                                     </tr>
                                                 </core:forEach>
-
-
                                                 </tbody>
                                             </table>
                                         </div>
@@ -366,57 +231,6 @@
                                     jelly-o tart brownie jelly.
                                 </p>
                             </div>
-                            <!-- pending -->
-                            <div class="tab-pane fade" id="navs-pills-top-out-of-pending"
-                                 role="tabpanel">
-                                <p>
-                                    Oat cake chupa chups dragée donut toffee. Sweet cotton candy
-                                    jelly
-                                    beans macaroon gummies
-                                    cupcake gummi bears cake chocolate.
-                                </p>
-                                <p class="mb-0">
-                                    Cake chocolate bar cotton candy apple pie tootsie roll ice cream
-                                    apple pie brownie cake. Sweet
-                                    roll icing sesame snaps caramels danish toffee. Brownie biscuit
-                                    dessert dessert. Pudding jelly
-                                    jelly-o tart brownie jelly.
-                                </p>
-                            </div>
-                            <!-- violate -->
-                            <div class="tab-pane fade" id="navs-pills-top-out-of-Violate"
-                                 role="tabpanel">
-                                <p>
-                                    Oat cake chupa chups dragée donut toffee. Sweet cotton candy
-                                    jelly
-                                    beans macaroon gummies
-                                    cupcake gummi bears cake chocolate.
-                                </p>
-                                <p class="mb-0">
-                                    Cake chocolate bar cotton candy apple pie tootsie roll ice cream
-                                    apple pie brownie cake. Sweet
-                                    roll icing sesame snaps caramels danish toffee. Brownie biscuit
-                                    dessert dessert. Pudding jelly
-                                    jelly-o tart brownie jelly.
-                                </p>
-                            </div>
-                            <!-- hidden -->
-                            <div class="tab-pane fade" id="navs-pills-top-out-of-Hidden"
-                                 role="tabpanel">
-                                <p>
-                                    Oat cake chupa chups dragée donut toffee. Sweet cotton candy
-                                    jelly
-                                    beans macaroon gummies
-                                    cupcake gummi bears cake chocolate.
-                                </p>
-                                <p class="mb-0">
-                                    Cake chocolate bar cotton candy apple pie tootsie roll ice cream
-                                    apple pie brownie cake. Sweet
-                                    roll icing sesame snaps caramels danish toffee. Brownie biscuit
-                                    dessert dessert. Pudding jelly
-                                    jelly-o tart brownie jelly.
-                                </p>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -424,3 +238,6 @@
         </div>
     </div>
 </div>
+
+
+

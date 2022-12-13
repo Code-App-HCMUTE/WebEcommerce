@@ -24,10 +24,7 @@ public class ProductController extends HttpServlet {
 
         List<ProductModel> productList = productService.findAll();
         request.setAttribute("listProducts", productList);
-
         RequestDispatcher dispatcher = request.getRequestDispatcher("/views/admin/product/Product.jsp");
-
-
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {
