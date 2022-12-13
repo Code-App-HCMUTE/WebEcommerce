@@ -15,12 +15,37 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void Register(String email, String phone, String password, String firstName) {
-        dao.Register(email,phone,password,firstName);
+    public void Register(UserModel user) {
+        dao.Register(user);
     }
 
     @Override
     public List<UserModel> GetAllUser() {
         return dao.GetAllUser();
+    }
+
+    @Override
+    public void update(int id,UserModel user) {
+        dao.update(id,user);
+    }
+
+    @Override
+    public void ResetPassword(int id, String newPass) {
+        dao.ResetPassword(id,newPass);
+    }
+
+    @Override
+    public List<UserModel> Search(String query, int size, int index) {
+        return dao.Search(query,size,index);
+    }
+
+    @Override
+    public int SearchEmailCount(String query) {
+        return dao.SearchEmailCount(query);
+    }
+
+    @Override
+    public int SearchCount(String query) {
+        return dao.SearchCount(query);
     }
 }

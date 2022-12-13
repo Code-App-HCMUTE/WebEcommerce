@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:url value="/templates/customer" var="URL"></c:url>
 <!-- Page Preloder -->
@@ -66,7 +66,7 @@
 <!-- Humberger End -->
 
 <!-- Header Section Begin -->
-<header class="header">
+<div class="container" >
     <div class="header__top">
         <div class="container">
             <div class="row">
@@ -95,14 +95,22 @@
                                 <li><a href="#">English</a></li>
                             </ul>
                         </div>
-                        <div class="header__top__right__auth">
-                            <c:if test="${user != ''}">
-                                <a href="/WebEcommerce/auth/login"><i class="fa fa-user"></i> ${user}</a>
+                        <div class="header__top__right__language">
+                            <c:if test="${user != null}">
+                                <div><i class="fa fa-user"></i> ${user.getFistName()}</div>
+                                <span class="arrow_carrot-down"></span>
+                                <ul>
+                                    <li><a href="/WebEcommerce/UserProfile">Your Profile</a></li>
+                                    <li><form action="/WebEcommerce/home" method="POST">
+                                        <button href="/WebEcommerce/auth/login" style="border:none;">Đăng xuất</button>
+                                    </form></li>
+                                </ul>
                             </c:if>
-                            <c:if test="${user == ''}">
-                                <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                            <c:if test="${user == null}">
+                                <a href="/WebEcommerce/auth/login" style="all:unset"><i class="fa fa-pinterest-p"></i> Đăng nhập</a>
                             </c:if>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -147,5 +155,58 @@
             <i class="fa fa-bars"></i>
         </div>
     </div>
-</header>
+    <section class="hero">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="hero__categories">
+                                <div class="hero__categories__all">
+                                    <i class="fa fa-bars"></i>
+                                    <span>All departments</span>
+                                </div>
+                                <ul style="display:none">
+                                    <li><a href="#">Fresh Meat</a></li>
+                                    <li><a href="#">Vegetables</a></li>
+                                    <li><a href="#">Fruit & Nut Gifts</a></li>
+                                    <li><a href="#">Fresh Berries</a></li>
+                                    <li><a href="#">Ocean Foods</a></li>
+                                    <li><a href="#">Butter & Eggs</a></li>
+                                    <li><a href="#">Fastfood</a></li>
+                                    <li><a href="#">Fresh Onion</a></li>
+                                    <li><a href="#">Papayaya & Crisps</a></li>
+                                    <li><a href="#">Oatmeal</a></li>
+                                    <li><a href="#">Fresh Bananas</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-9"
+                            <div class="hero__search">
+                                <div class="hero__search__form" style="height:50px">
+                                    <form action='/WebEcommerce/search?index=1' method="POST">
+                                                     <select class="form-select" name="search" aria-label="Default select example">
+                                                       <option value="product">Sản Phẩm</option>
+                                                       <option value="store">Cửa Hàng</option>
+                                                       <option value="user">Người dùng</option>
+                                                     </select>
+                                        <input type="text" name="searchValue" placeholder="What do yo u need?">
+                                        <button type="submit" class="site-btn">SEARCH</button>
+                                    </form>
+                                </div>
+                                <div class="hero__search__phone">
+                                    <div class="hero__search__phone__icon">
+                                        <i class="fa fa-phone"></i>
+                                    </div>
+                                    <div class="hero__search__phone__text">
+                                        <h5>+65 11.188.888</h5>
+                                        <span>support 24/7 time</span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+</div>
 <!-- Header Section End -->

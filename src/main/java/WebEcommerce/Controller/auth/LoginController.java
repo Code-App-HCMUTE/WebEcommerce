@@ -40,15 +40,18 @@ public class LoginController extends HttpServlet {
         UserModel data = service.login(user,pass);
         if (data!=null) {
 //khởi tạo cookie
-            Cookie cookie = new Cookie("user", user);
-
-            cookie.setMaxAge(30);
-            cookie.setPath("/");
-            response.addCookie(cookie);
+            HttpSession session = request.getSession();
+            session.setAttribute("user",data);
+//            Cookie cookie = new Cookie("user", user);
+//
+//            cookie.setMaxAge(18000);
+//            cookie.setPath("/");
+//            response.addCookie(cookie);
             response.sendRedirect("/WebEcommerce/home");
         } else {
 //chuyển sang trang LoginServlet
-            response.sendRedirect("/WebEcommerce/auth/login");
+            request.setAttribute("errMess","Sai email hoặc mật khẩu");
+            request.getRequestDispatcher("/views/auth/login.jsp").forward(request,response);
         }
     }
 }

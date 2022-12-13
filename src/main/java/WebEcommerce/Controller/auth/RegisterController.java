@@ -1,5 +1,6 @@
 package WebEcommerce.Controller.auth;
 
+import WebEcommerce.Model.UserModel;
 import WebEcommerce.Service.Impl.UserServiceImpl;
 import WebEcommerce.Service.UserService;
 
@@ -7,6 +8,8 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.Date;
 
 @WebServlet(name = "RegisterController", value = "/auth/register")
 public class RegisterController extends HttpServlet {
@@ -32,31 +35,37 @@ public class RegisterController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try{
-            String firstName = request.getParameter("username");
-            String phone = request.getParameter("phone");
-            String email = request.getParameter("email");
+        try {
+            UserModel user = new UserModel();
+            user.setFistName(request.getParameter("username"));
+            user.setPhone(request.getParameter("phone"));
+            user.setEmail(request.getParameter("email"));
             String pass = request.getParameter("password");
+            user.setHashed_password(pass);
             String rePass = request.getParameter("re-password");
-            System.out.println(firstName);
-            System.out.println(phone);
-            System.out.println(pass);
-            System.out.println(rePass);
+            Date date = java.sql.Date.valueOf(LocalDate.now());
+            user.setCreatedAt(date);
+            user.setUpdatedAt(date);
+            if(service.SearchEmailCount(request.getParameter("email"))==0)
+            {
+                if (pass.equals(rePass)) {
 
-            if(pass.equals(rePass)){
-
-                    service.Register(email,phone,pass,firstName);
+                    service.Register(user);
                     response.sendRedirect("/WebEcommerce/auth/login");
+                } else {
+                    request.setAttribute("errMess", "Mật khẩu không trùng khớp");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/views/auth/register.jsp");
+                }
             }
-            else {
-                response.sendRedirect("/WebEcommerce/auth/register");
+            else{
+                request.setAttribute("errMess", "Email đã tồn tại");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/views/auth/register.jsp");
             }
+
         }
         catch (Exception e) {
-            System.out.println(e);
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
-        }
+    }
 }

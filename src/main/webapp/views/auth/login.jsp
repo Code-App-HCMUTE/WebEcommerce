@@ -88,7 +88,7 @@
                         <div class="mb-3 form-password-toggle">
                             <div class="d-flex justify-content-between">
                                 <label class="form-label" for="password">Password</label>
-                                <a href="auth-forgot-password-basic.html">
+                                <a href="/WebEcommerce/auth/forgotPassword">
                                     <small>Forgot Password?</small>
                                 </a>
                             </div>
@@ -108,6 +108,11 @@
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="remember-me" />
                                 <label class="form-check-label" for="remember-me"> Remember Me </label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="alert alert-danger" role="alert">
+                              ${errMess}
                             </div>
                         </div>
                         <div class="mb-3">
