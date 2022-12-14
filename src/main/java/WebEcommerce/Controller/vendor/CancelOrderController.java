@@ -22,7 +22,7 @@ public class CancelOrderController extends HttpServlet {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<OrderModel> ordersList=orderService.getAlLOrder();
+		List<OrderModel> ordersList=orderService.getAllOrderCancel();
 		request.setAttribute("orders", ordersList);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/vendor/order.jsp");
 		try {

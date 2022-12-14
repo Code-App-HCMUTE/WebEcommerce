@@ -18,8 +18,11 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import WebEcommerce.Model.CategoryModel;
 import WebEcommerce.Model.ProductModel;
+import WebEcommerce.Service.CategoryService;
 import WebEcommerce.Service.ProductService;
+import WebEcommerce.Service.Impl.CategoryServiceImpl;
 import WebEcommerce.Service.Impl.ProductServiceImpl;
 import vn.iotstar.util.Constant;
 
@@ -27,16 +30,20 @@ import vn.iotstar.util.Constant;
 public class EditProductController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ProductService productService = new ProductServiceImpl();
-
+	CategoryService categoryService = new CategoryServiceImpl();
 	public EditProductController() {
 		super();
 	}
-
+	private int id;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int id = Integer.parseInt(request.getParameter("id"));
+		id = Integer.parseInt(request.getParameter("id"));
 		ProductModel product = productService.get(id);
 		request.setAttribute("product", product);
+		List<CategoryModel> categoryList = categoryService.findAll();
+        request.setAttribute("categorys",categoryList );
+        CategoryModel category =  categoryService.get(product.getCategoryId());
+        request.setAttribute("category",category );
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/vendor/edit-product.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -68,7 +75,7 @@ public class EditProductController extends HttpServlet {
 						item.write(file);
 						product.setListImages(fileName);
 					} else {
-						int id = Integer.parseInt(request.getParameter("id"));
+						System.out.println(id);
 						ProductModel oldproduct = productService.get(id);
 						product.setListImages(oldproduct.getListImages());
 					}
@@ -78,11 +85,15 @@ public class EditProductController extends HttpServlet {
 					product.setPromotionalPrice(Integer.parseInt(item.getString("UTF-8")));
 				} else if (item.getFieldName().equals("quantity")) {
 					product.setQuantity(Integer.parseInt(item.getString("UTF-8")));
-				} else if (item.getFieldName().equals("id")) {
-					product.setId(Integer.parseInt(item.getString("UTF-8")));
-				}
+				} else if (item.getFieldName().equals("categoryId")) {
+                    product.setCategoryId(Integer.parseInt(item.getString("UTF-8")));
+                }
+                else if (item.getFieldName().equals("isSelling")) {
+                    product.setIsSelling(item.getString("UTF-8").equals("on"));
+                }
 				Date date = java.sql.Date.valueOf(LocalDate.now());
 				product.setUpdatedAt(date);
+				product.setId(id);
 			}
 			productService.edit(product);
 			response.sendRedirect(request.getContextPath() + "/vendor/products");

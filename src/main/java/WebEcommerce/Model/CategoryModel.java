@@ -1,31 +1,28 @@
 package WebEcommerce.Model;
 
 import java.util.Date;
-import java.util.List;
 
 public class CategoryModel {
     private int id;
     private int cartId;
-    private int productId;
-    private List<String> styleValueIds;
-    private int count;
+    private String name;
+    private String slug;
+    private String image;
+    private boolean isDeleted;
     private Date createdAt;
     private Date updatedAt;
-
-
     public CategoryModel() {
     }
-
-    public CategoryModel(int id, int cartId, int productId, List<String> styleValueIds, int count, Date createdAt, Date updatedAt) {
+    public CategoryModel(int id, int cartId, String name, String slug, String image, boolean isDeleted, Date createdAt, Date updatedAt) {
         this.id = id;
         this.cartId = cartId;
-        this.productId = productId;
-        this.styleValueIds = styleValueIds;
-        this.count = count;
+        this.name = name;
+        this.slug = slug;
+        this.image = image;
+        this.isDeleted = isDeleted;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
-
     public int getId() {
         return id;
     }
@@ -42,28 +39,36 @@ public class CategoryModel {
         this.cartId = cartId;
     }
 
-    public int getProductId() {
-        return productId;
+    public String getName() {
+        return name;
     }
 
-    public void setProductId(int productId) {
-        this.productId = productId;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public List<String> getStyleValueIds() {
-        return styleValueIds;
+    public String getSlug() {
+        return slug;
     }
 
-    public void setStyleValueIds(List<String> styleValueIds) {
-        this.styleValueIds = styleValueIds;
+    public void setSlug(String slug) {
+        this.slug = slug;
     }
 
-    public int getCount() {
-        return count;
+    public String getImage() {
+        return image;
     }
 
-    public void setCount(int count) {
-        this.count = count;
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public boolean getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
 
     public Date getCreatedAt() {

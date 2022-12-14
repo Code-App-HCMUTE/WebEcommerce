@@ -48,10 +48,11 @@ public class OrderDaoImpl extends DBConnection implements OrderDao {
 	@Override
 	public List<OrderModel> getAllOrderCancel() {
 		List<OrderModel> orders = new ArrayList<OrderModel>();
-		String sql = "SELECT * FROM economies.order where economies.order.status = 'cancelled'";
+		String sql = "SELECT * FROM economies.order where economies.order.status = ?";
 		try {
 			Connection conn = super.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, "cancelled");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				OrderModel order = new OrderModel();

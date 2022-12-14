@@ -14,4 +14,5 @@ public interface StoreService {
 	int countStaffInStore();
 	void updateStaffStore(int id);
 	UserModel getStaff();
+	void Ruttien(int sotien);
 }

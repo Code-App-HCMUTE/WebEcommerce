@@ -53,4 +53,9 @@ public class StoreServiceImpl implements StoreService {
 		return storeDao.getStaff();
 	}
 
+	@Override
+	public void Ruttien(int sotien) {
+		storeDao.Ruttien(sotien);
+	}
+
 }

@@ -15,4 +15,6 @@ public interface ProductService {
     List<ProductModel> getAllProductNoQuantity();
     List<ProductModel> getAllProductQuantity();
     List<ProductModel> searchProduct(String txtSearch);
+    List<ProductModel> search(String query,int size,int index);
+    int CountProduct(String txt);
 }

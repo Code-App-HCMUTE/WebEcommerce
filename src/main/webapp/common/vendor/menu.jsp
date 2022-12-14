@@ -130,7 +130,7 @@
                     <li class="menu-header small text-uppercase"><span class="menu-header-text">doanh thu</span></li>
                     <!-- Quản lý ví điện tử -->
                     <li class="menu-item">
-                        <a href="cards-basic.html" class="menu-link">
+                        <a href="/WebEcommerce/vendor/transactions" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-credit-card-alt"></i>
                             <div data-i18n="Basic">Quản lý ví điện tử</div>
                         </a>

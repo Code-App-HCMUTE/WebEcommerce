@@ -84,7 +84,7 @@ public class ProductDaoImpl extends DBConnection implements ProductDao {
 
 	@Override
 	public void edit(ProductModel product) {
-		String sql = "UPDATE product SET name = ?,slug = ?, description = ?, price = ?, promotionalPrice = ?, quantity = ?, listImages = ?, updatedAt = ? WHERE _id = ?";
+		String sql = "UPDATE product SET name = ?,slug = ?, description = ?, price = ?, promotionalPrice = ?, quantity = ?, listImages = ?, isSelling = ?, categoryId = ? , updatedAt = ? WHERE _id = ?";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -95,8 +95,10 @@ public class ProductDaoImpl extends DBConnection implements ProductDao {
 			ps.setInt(5, product.getPromotionalPrice());
 			ps.setInt(6, product.getQuantity());
 			ps.setString(7, product.getListImages());
-			ps.setDate(8, java.sql.Date.valueOf(LocalDate.now()));
-			ps.setInt(9, product.getId());
+			ps.setBoolean(8, product.getIsSelling());
+			ps.setInt(9, product.getCategoryId());
+			ps.setDate(10, java.sql.Date.valueOf(LocalDate.now()));
+			ps.setInt(11, product.getId());
 			ps.executeUpdate();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -118,9 +120,9 @@ public class ProductDaoImpl extends DBConnection implements ProductDao {
 			ps.setInt(5, product.getPromotionalPrice());
 			ps.setInt(6, product.getQuantity());
 			ps.setString(7, product.getListImages());
-			ps.setInt(8, 1);
+			ps.setInt(8, product.getCategoryId());
 			ps.setString(9, "1");
-			ps.setInt(10, 1);
+			ps.setInt(10, 6);
 			ps.setDate(11, (java.sql.Date) product.getCreatedAt());
 			ps.setDate(12, (java.sql.Date) product.getUpdatedAt());
 			ps.executeUpdate();
@@ -316,5 +318,63 @@ public class ProductDaoImpl extends DBConnection implements ProductDao {
             e.printStackTrace();
         }
         return products;
+	}
+
+	@Override
+	public List<ProductModel> search(String query, int size, int index) {
+		String sql = "with x as(select *,row_number() over(order by createdAt desc)as r from product where name like '%"+query+"%')\n" +
+				"select * from x where r between ?*?-? and ?*?";
+		List<ProductModel> products = new ArrayList<ProductModel>();
+		try {
+			Connection conn = super.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1,index);
+			ps.setInt(2,size);
+			ps.setInt(3,size-1);
+			ps.setInt(4,index);
+			ps.setInt(5,size);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				ProductModel product = new ProductModel();
+				product.setId(rs.getInt("_id"));
+				product.setName(rs.getString("name"));
+				product.setSlug(rs.getString("slug"));
+				product.setDescription((rs.getString("description")));
+				product.setPrice(rs.getInt("price"));
+				product.setPromotionalPrice(rs.getInt("promotionalPrice"));
+				product.setQuantity(rs.getInt("quantity"));
+				product.setSold(rs.getInt("sold"));
+				product.setIsActive(rs.getBoolean("IsActive"));
+				product.setIsSelling(rs.getBoolean("IsSelling"));
+				product.setListImages(rs.getString("listImages"));
+				product.setCategoryId(rs.getInt("categoryId"));
+				product.setStyleValueIds(rs.getString("styleValueIds"));
+				product.setStoreId(rs.getInt("storeId"));
+				product.setRating(rs.getInt("rating"));
+				product.setCreatedAt(rs.getDate("createdAt"));
+				product.setUpdatedAt(rs.getDate("updatedAt"));
+				products.add(product);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return products;
+	}
+
+	@Override
+	public int CountProduct(String txt) {
+		String sql = "SELECT count(*) FROM economies.product where economies.product.name like ?";
+		try {
+            Connection conn = super.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, "%"+txt+"%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+            	return rs.getInt(1)/10; 
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		return 0;
 	}
 }

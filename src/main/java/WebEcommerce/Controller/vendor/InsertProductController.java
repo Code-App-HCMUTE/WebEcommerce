@@ -18,21 +18,36 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import WebEcommerce.Model.CategoryModel;
 import WebEcommerce.Model.ProductModel;
+import WebEcommerce.Service.CategoryService;
 import WebEcommerce.Service.ProductService;
+import WebEcommerce.Service.Impl.CategoryServiceImpl;
 import WebEcommerce.Service.Impl.ProductServiceImpl;
 import vn.iotstar.util.Constant;
 
 @WebServlet("/vendor/AddProduct")
 public class InsertProductController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	CategoryService categoryService = new CategoryServiceImpl();
 	ProductService productService=new ProductServiceImpl();
     public InsertProductController() {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/vendor/createProduct.jsp");
-		dispatcher.forward(request, response);
+		List<CategoryModel> categoryList =  categoryService.findAll();
+        request.setAttribute("categorys",categoryList);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/vendor/createProduct.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ProductModel product = new ProductModel();
@@ -67,6 +82,9 @@ public class InsertProductController extends HttpServlet {
 				else if (item.getFieldName().equals("quantity")) {
 					product.setQuantity(Integer.parseInt(item.getString("UTF-8")));
 				}
+				else if (item.getFieldName().equals("categoryId")) {
+                    product.setCategoryId(Integer.parseInt(item.getString("UTF-8")));
+                }
 				Date date = java.sql.Date.valueOf(LocalDate.now());
 				product.setCreatedAt(date);
 				product.setUpdatedAt(date);

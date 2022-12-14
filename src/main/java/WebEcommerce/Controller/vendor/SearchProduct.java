@@ -1,7 +1,6 @@
 package WebEcommerce.Controller.vendor;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import WebEcommerce.Model.ProductModel;
 import WebEcommerce.Service.ProductService;
 import WebEcommerce.Service.Impl.ProductServiceImpl;
 
@@ -25,9 +23,25 @@ public class SearchProduct extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String txt1 = request.getParameter("txt");
-		List<ProductModel> products = productService.searchProduct(txt1);
-		request.setAttribute("products", products);
+		
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String query = request.getParameter("txt");
+        String index = request.getParameter("index");
+        
+        System.out.println(index);
+        if(index==null)
+        {
+        	index="1";
+        }
+        System.out.println(index);
+        request.setAttribute("products", productService.search(query, 10, Integer.parseInt(index)));
+        request.setAttribute("txt",query);
+        int count=productService.CountProduct(query);
+        request.setAttribute("index",index);
+        request.setAttribute("pageCount",count+1);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/vendor/product.jsp");
 		try {
 			dispatcher.forward(request, response);
@@ -38,11 +52,6 @@ public class SearchProduct extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
 	}
 
 }

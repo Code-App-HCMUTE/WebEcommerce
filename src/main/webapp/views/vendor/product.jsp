@@ -80,7 +80,7 @@
 												</div>
 												<div
 													class="col-6 d-flex align-items-center justify-content-end">
-													<form action="searchproduct"
+													<form action="searchproduct?index=1" method="POST"
 														class="form-inline my-2 my-lg-0">
 														<input type="text" name="txt" value=""
 															class="form-control" placeholder="Search...">
@@ -98,32 +98,43 @@
 											<table class="table">
 												<thead>
 													<tr>
-														<th></th>
-														<th scope="col">ID</th>
-														<th scope="col">Tên sản phẩm</th>
-														<th scope="col">Mô tả</th>
-														<th scope="col">Giá gốc</th>
-														<th scope="col">Giá khuyến mãi</th>
-														<th scope="col">Số lượng</th>
-														<th scope="col">Ảnh</th>
+														<th>Ảnh</th>
+														<th>Tên Sản Phẩm</th>
+														<th>Giá</th>
+														<th>Giá Giảm</th>
+														<th>Số Lượng</th>
+														<th>Số Lượng Bán</th>
+														<th>Cấp Phép</th>
+														<th>Trạng Thái</th>
+														<th>Doanh Mục</th>
+														<th>Chỉnh Sữa</th>
+
 													</tr>
 												</thead>
 												<tbody class="table-border-bottom-0">
 													<core:forEach items="${products}" var="kq">
 														<tr>
-															<td><input class="form-check-input" type="checkbox"
-																value="" id="flexCheckDefault"></td>
-															<th scope="row">${kq.id}</th>
-															<td>${kq.name}</td>
-															<td>${kq.description}</td>
-															<td>${kq.price}</td>
-															<td>${kq.promotionalPrice}</td>
-															<td>${kq.quantity}</td>
 															<td><core:url
 																	value="/image?fname=product/${kq.listImages}"
-																	var="imgUrl"></core:url> <img class="img-thumbnail"
-																src="${imgUrl}" height="50px" width="50px"
-																alt="Card image cap"></td>
+																	var="imgUrl"></core:url> <img src="${imgUrl}"
+																class="rounded float-start" height="40" width="40"
+																alt="..."></td>
+															<td><strong>${kq.name}</strong></td>
+															<td>${kq.price}đ</td>
+															<td>${kq.promotionalPrice}đ</td>
+															<td>${kq.quantity}</td>
+															<td>${kq.sold}</td>
+															<td><core:if test="${kq.isActive}">
+																	<span class="badge bg-label-primary me-1">Active</span>
+																</core:if> <core:if test="${!kq.isActive}">
+																	<span class="badge bg-label-danger me-1">Block</span>
+																</core:if></td>
+															<td><core:if test="${kq.isSelling}">
+																	<span class="badge bg-label-primary me-1">Active</span>
+																</core:if> <core:if test="${!kq.isSelling}">
+																	<span class="badge bg-label-danger me-1">Block</span>
+																</core:if></td>
+															<td>${kq.categoryId}</td>
 															<td>
 																<div class="dropdown">
 																	<button type="button"
@@ -134,10 +145,10 @@
 																	<div class="dropdown-menu">
 																		<a class="dropdown-item"
 																			href="/WebEcommerce/vendor/product/edit?id=${kq.id}"><i
-																			class="bx bx-edit-alt me-1"></i> Sửa</a> <a
+																			class="bx bx-edit-alt me-1"></i> Edit</a> <a
 																			class="dropdown-item"
 																			href="/WebEcommerce/vendor/product/delete?id=${kq.id}"><i
-																			class="bx bx-trash me-1"></i> Xóa</a>
+																			class="bx bx-trash me-1"></i> Delete</a>
 																	</div>
 																</div>
 															</td>
@@ -146,43 +157,73 @@
 												</tbody>
 											</table>
 										</div>
+										<div class="row">
+											<div class="col">
+												<div class="demo-inline-spacing">
+													<!-- Basic Pagination -->
+													<nav aria-label="Page navigation">
+														<ul class="pagination">
+															<core:forEach begin="1" end="${pageCount}" var="i">
+																<core:if test="${index == i}">
+																	<li class="page-item active"><a class="page-link"
+																		href="products?index=${i}&txt=${txt}">${i}</a></li>
+																</core:if>
+																<core:if test="${index != i}">
+																	<li class="page-item"><a class="page-link"
+																		href="products?index=${i}&txt=${txt}">${i}</a></li>
+																</core:if>
+															</core:forEach>
+														</ul>
+													</nav>
+												</div>
+											</div>
+										</div>
 									</div>
-									<!--/ Basic Bootstrap Table -->
 								</div>
 							</div>
-							<!-- working -->
 							<div class="tab-pane fade" id="navs-pills-top-working"
 								role="tabpanel">
 								<div class="table-responsive text-nowrap">
 									<table class="table">
 										<thead>
 											<tr>
-												<th></th>
-												<th scope="col">ID</th>
-												<th scope="col">Tên sản phẩm</th>
-												<th scope="col">Mô tả</th>
-												<th scope="col">Giá gốc</th>
-												<th scope="col">Giá khuyến mãi</th>
-												<th scope="col">Số lượng</th>
-												<th scope="col">Ảnh</th>
+												<th>Ảnh</th>
+												<th>Tên Sản Phẩm</th>
+												<th>Giá</th>
+												<th>Giá Giảm</th>
+												<th>Số Lượng</th>
+												<th>Số Lượng Bán</th>
+												<th>Cấp Phép</th>
+												<th>Trạng Thái</th>
+												<th>Doanh Mục</th>
+												<th>Chỉnh Sữa</th>
+
 											</tr>
 										</thead>
 										<tbody class="table-border-bottom-0">
 											<core:forEach items="${productactive}" var="kq">
 												<tr>
-													<td><input class="form-check-input" type="checkbox"
-														value="" id="flexCheckDefault"></td>
-													<th scope="row">${kq.id}</th>
-													<td>${kq.name}</td>
-													<td>${kq.description}</td>
-													<td>${kq.price}</td>
-													<td>${kq.promotionalPrice}</td>
-													<td>${kq.quantity}</td>
 													<td><core:url
 															value="/image?fname=product/${kq.listImages}"
-															var="imgUrl"></core:url> <img class="img-thumbnail"
-														src="${imgUrl}" height="50px" width="50px"
-														alt="Card image cap"></td>
+															var="imgUrl"></core:url> <img src="${imgUrl}"
+														class="rounded float-start" height="40" width="40"
+														alt="..."></td>
+													<td><strong>${kq.name}</strong></td>
+													<td>${kq.price}đ</td>
+													<td>${kq.promotionalPrice}đ</td>
+													<td>${kq.quantity}</td>
+													<td>${kq.sold}</td>
+													<td><core:if test="${kq.isActive}">
+															<span class="badge bg-label-primary me-1">Active</span>
+														</core:if> <core:if test="${!kq.isActive}">
+															<span class="badge bg-label-danger me-1">Block</span>
+														</core:if></td>
+													<td><core:if test="${kq.isSelling}">
+															<span class="badge bg-label-primary me-1">Active</span>
+														</core:if> <core:if test="${!kq.isSelling}">
+															<span class="badge bg-label-danger me-1">Block</span>
+														</core:if></td>
+													<td>${kq.categoryId}</td>
 													<td>
 														<div class="dropdown">
 															<button type="button"
@@ -193,10 +234,10 @@
 															<div class="dropdown-menu">
 																<a class="dropdown-item"
 																	href="/WebEcommerce/vendor/product/edit?id=${kq.id}"><i
-																	class="bx bx-edit-alt me-1"></i> Sửa</a> <a
+																	class="bx bx-edit-alt me-1"></i> Edit</a> <a
 																	class="dropdown-item"
 																	href="/WebEcommerce/vendor/product/delete?id=${kq.id}"><i
-																	class="bx bx-trash me-1"></i> Xóa</a>
+																	class="bx bx-trash me-1"></i> Delete</a>
 															</div>
 														</div>
 													</td>
@@ -206,39 +247,49 @@
 									</table>
 								</div>
 							</div>
-							<!-- stock -->
 							<div class="tab-pane fade" id="navs-pills-top-out-of-stock"
 								role="tabpanel">
 								<div class="table-responsive text-nowrap">
 									<table class="table">
 										<thead>
 											<tr>
-												<th></th>
-												<th scope="col">ID</th>
-												<th scope="col">Tên sản phẩm</th>
-												<th scope="col">Mô tả</th>
-												<th scope="col">Giá gốc</th>
-												<th scope="col">Giá khuyến mãi</th>
-												<th scope="col">Số lượng</th>
-												<th scope="col">Ảnh</th>
+												<th>Ảnh</th>
+												<th>Tên Sản Phẩm</th>
+												<th>Giá</th>
+												<th>Giá Giảm</th>
+												<th>Số Lượng</th>
+												<th>Số Lượng Bán</th>
+												<th>Cấp Phép</th>
+												<th>Trạng Thái</th>
+												<th>Doanh Mục</th>
+												<th>Chỉnh Sữa</th>
+
 											</tr>
 										</thead>
 										<tbody class="table-border-bottom-0">
 											<core:forEach items="${productnoquantity}" var="kq">
 												<tr>
-													<td><input class="form-check-input" type="checkbox"
-														value="" id="flexCheckDefault"></td>
-													<th scope="row">${kq.id}</th>
-													<td>${kq.name}</td>
-													<td>${kq.description}</td>
-													<td>${kq.price}</td>
-													<td>${kq.promotionalPrice}</td>
-													<td>${kq.quantity}</td>
 													<td><core:url
 															value="/image?fname=product/${kq.listImages}"
-															var="imgUrl"></core:url> <img class="img-thumbnail"
-														src="${imgUrl}" height="50px" width="50px"
-														alt="Card image cap"></td>
+															var="imgUrl"></core:url> <img src="${imgUrl}"
+														class="rounded float-start" height="40" width="40"
+														alt="..."></td>
+													<td><strong>${kq.name}</strong></td>
+													<td>${kq.price}đ</td>
+													<td>${kq.promotionalPrice}đ</td>
+													<td>${kq.quantity}</td>
+													<td>${kq.sold}</td>
+													<td><core:if test="${kq.isActive}">
+															<span class="badge bg-label-primary me-1">Active</span>
+														</core:if> <core:if test="${!kq.isActive}">
+															<span class="badge bg-label-danger me-1">Block</span>
+														</core:if></td>
+													<td><core:if test="${kq.isSelling}">
+															<span class="badge bg-label-primary me-1">Active</span>
+														</core:if> <core:if test="${!kq.isSelling}">
+															<span class="badge bg-label-danger me-1">Block</span>
+														</core:if></td>
+													<td>${kq.categoryId}</td>
 													<td>
 														<div class="dropdown">
 															<button type="button"
@@ -249,10 +300,10 @@
 															<div class="dropdown-menu">
 																<a class="dropdown-item"
 																	href="/WebEcommerce/vendor/product/edit?id=${kq.id}"><i
-																	class="bx bx-edit-alt me-1"></i> Sửa</a> <a
+																	class="bx bx-edit-alt me-1"></i> Edit</a> <a
 																	class="dropdown-item"
 																	href="/WebEcommerce/vendor/product/delete?id=${kq.id}"><i
-																	class="bx bx-trash me-1"></i> Xóa</a>
+																	class="bx bx-trash me-1"></i> Delete</a>
 															</div>
 														</div>
 													</td>
@@ -262,39 +313,49 @@
 									</table>
 								</div>
 							</div>
-							<!-- Còn hàng -->
 							<div class="tab-pane fade" id="navs-pills-top-un-out-of-stock"
 								role="tabpanel">
 								<div class="table-responsive text-nowrap">
 									<table class="table">
 										<thead>
 											<tr>
-												<th></th>
-												<th scope="col">ID</th>
-												<th scope="col">Tên sản phẩm</th>
-												<th scope="col">Mô tả</th>
-												<th scope="col">Giá gốc</th>
-												<th scope="col">Giá khuyến mãi</th>
-												<th scope="col">Số lượng</th>
-												<th scope="col">Ảnh</th>
+												<th>Ảnh</th>
+												<th>Tên Sản Phẩm</th>
+												<th>Giá</th>
+												<th>Giá Giảm</th>
+												<th>Số Lượng</th>
+												<th>Số Lượng Bán</th>
+												<th>Cấp Phép</th>
+												<th>Trạng Thái</th>
+												<th>Doanh Mục</th>
+												<th>Chỉnh Sữa</th>
+
 											</tr>
 										</thead>
 										<tbody class="table-border-bottom-0">
 											<core:forEach items="${productquantity}" var="kq">
 												<tr>
-													<td><input class="form-check-input" type="checkbox"
-														value="" id="flexCheckDefault"></td>
-													<th scope="row">${kq.id}</th>
-													<td>${kq.name}</td>
-													<td>${kq.description}</td>
-													<td>${kq.price}</td>
-													<td>${kq.promotionalPrice}</td>
-													<td>${kq.quantity}</td>
 													<td><core:url
 															value="/image?fname=product/${kq.listImages}"
-															var="imgUrl"></core:url> <img class="img-thumbnail"
-														src="${imgUrl}" height="50px" width="50px"
-														alt="Card image cap"></td>
+															var="imgUrl"></core:url> <img src="${imgUrl}"
+														class="rounded float-start" height="40" width="40"
+														alt="..."></td>
+													<td><strong>${kq.name}</strong></td>
+													<td>${kq.price}đ</td>
+													<td>${kq.promotionalPrice}đ</td>
+													<td>${kq.quantity}</td>
+													<td>${kq.sold}</td>
+													<td><core:if test="${kq.isActive}">
+															<span class="badge bg-label-primary me-1">Active</span>
+														</core:if> <core:if test="${!kq.isActive}">
+															<span class="badge bg-label-danger me-1">Block</span>
+														</core:if></td>
+													<td><core:if test="${kq.isSelling}">
+															<span class="badge bg-label-primary me-1">Active</span>
+														</core:if> <core:if test="${!kq.isSelling}">
+															<span class="badge bg-label-danger me-1">Block</span>
+														</core:if></td>
+													<td>${kq.categoryId}</td>
 													<td>
 														<div class="dropdown">
 															<button type="button"
@@ -305,10 +366,10 @@
 															<div class="dropdown-menu">
 																<a class="dropdown-item"
 																	href="/WebEcommerce/vendor/product/edit?id=${kq.id}"><i
-																	class="bx bx-edit-alt me-1"></i> Sửa</a> <a
+																	class="bx bx-edit-alt me-1"></i> Edit</a> <a
 																	class="dropdown-item"
 																	href="/WebEcommerce/vendor/product/delete?id=${kq.id}"><i
-																	class="bx bx-trash me-1"></i> Xóa</a>
+																	class="bx bx-trash me-1"></i> Delete</a>
 															</div>
 														</div>
 													</td>
@@ -318,39 +379,49 @@
 									</table>
 								</div>
 							</div>
-							<!-- hidden -->
 							<div class="tab-pane fade" id="navs-pills-top-out-of-Hidden"
 								role="tabpanel">
 								<div class="table-responsive text-nowrap">
 									<table class="table">
 										<thead>
 											<tr>
-												<th></th>
-												<th scope="col">ID</th>
-												<th scope="col">Tên sản phẩm</th>
-												<th scope="col">Mô tả</th>
-												<th scope="col">Giá gốc</th>
-												<th scope="col">Giá khuyến mãi</th>
-												<th scope="col">Số lượng</th>
-												<th scope="col">Ảnh</th>
+												<th>Ảnh</th>
+												<th>Tên Sản Phẩm</th>
+												<th>Giá</th>
+												<th>Giá Giảm</th>
+												<th>Số Lượng</th>
+												<th>Số Lượng Bán</th>
+												<th>Cấp Phép</th>
+												<th>Trạng Thái</th>
+												<th>Doanh Mục</th>
+												<th>Chỉnh Sữa</th>
+
 											</tr>
 										</thead>
 										<tbody class="table-border-bottom-0">
 											<core:forEach items="${productunactive}" var="kq">
 												<tr>
-													<td><input class="form-check-input" type="checkbox"
-														value="" id="flexCheckDefault"></td>
-													<th scope="row">${kq.id}</th>
-													<td>${kq.name}</td>
-													<td>${kq.description}</td>
-													<td>${kq.price}</td>
-													<td>${kq.promotionalPrice}</td>
-													<td>${kq.quantity}</td>
 													<td><core:url
 															value="/image?fname=product/${kq.listImages}"
-															var="imgUrl"></core:url> <img class="img-thumbnail"
-														src="${imgUrl}" height="50px" width="50px"
-														alt="Card image cap"></td>
+															var="imgUrl"></core:url> <img src="${imgUrl}"
+														class="rounded float-start" height="40" width="40"
+														alt="..."></td>
+													<td><strong>${kq.name}</strong></td>
+													<td>${kq.price}đ</td>
+													<td>${kq.promotionalPrice}đ</td>
+													<td>${kq.quantity}</td>
+													<td>${kq.sold}</td>
+													<td><core:if test="${kq.isActive}">
+															<span class="badge bg-label-primary me-1">Active</span>
+														</core:if> <core:if test="${!kq.isActive}">
+															<span class="badge bg-label-danger me-1">Block</span>
+														</core:if></td>
+													<td><core:if test="${kq.isSelling}">
+															<span class="badge bg-label-primary me-1">Active</span>
+														</core:if> <core:if test="${!kq.isSelling}">
+															<span class="badge bg-label-danger me-1">Block</span>
+														</core:if></td>
+													<td>${kq.categoryId}</td>
 													<td>
 														<div class="dropdown">
 															<button type="button"
@@ -361,10 +432,10 @@
 															<div class="dropdown-menu">
 																<a class="dropdown-item"
 																	href="/WebEcommerce/vendor/product/edit?id=${kq.id}"><i
-																	class="bx bx-edit-alt me-1"></i> Sửa</a> <a
+																	class="bx bx-edit-alt me-1"></i> Edit</a> <a
 																	class="dropdown-item"
 																	href="/WebEcommerce/vendor/product/delete?id=${kq.id}"><i
-																	class="bx bx-trash me-1"></i> Xóa</a>
+																	class="bx bx-trash me-1"></i> Delete</a>
 															</div>
 														</div>
 													</td>

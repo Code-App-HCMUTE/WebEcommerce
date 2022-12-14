@@ -66,4 +66,16 @@ public class ProductServiceImpl implements ProductService{
 		return productDao.searchProduct(txtSearch);
 	}
 
+	@Override
+	public List<ProductModel> search(String query, int size, int index) {
+		// TODO Auto-generated method stub
+		return productDao.search(query, size, index);
+	}
+
+	@Override
+	public int CountProduct(String txt) {
+		// TODO Auto-generated method stub
+		return productDao.CountProduct(txt);
+	}
+
 }

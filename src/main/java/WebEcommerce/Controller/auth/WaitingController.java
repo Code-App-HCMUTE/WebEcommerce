@@ -22,11 +22,21 @@ public class WaitingController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		System.out.println((UserModel)session.getAttribute("account"));
 		if (session != null && session.getAttribute("account") != null) {
 			UserModel u = (UserModel) session.getAttribute("account");
-			request.setAttribute("user", u);
+			System.out.println(u.getRole());
+			if(u.getRole().equals("user"))
+			{
+				response.sendRedirect(request.getContextPath() + "/home");
+			}
+			else if(u.getRole().equals("admin"))
+			{
+				response.sendRedirect(request.getContextPath() + "/admin/home");
+			}
+			/*request.setAttribute("user", u);
 			request.getRequestDispatcher("/common/vendor/header.jsp").forward(request, response);
-			response.sendRedirect(request.getContextPath() + "/vendor/home");
+			response.sendRedirect(request.getContextPath() + "/vendor/home");*/
 		} else {
 			response.sendRedirect(request.getContextPath() + "/auth/login");
 		}

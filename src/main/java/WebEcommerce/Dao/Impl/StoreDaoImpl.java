@@ -202,4 +202,19 @@ public class StoreDaoImpl extends DBConnection implements StoreDao {
 		}
 		return staff;
 	}
+
+	@Override
+	public void Ruttien(int sotien) {
+		String sql = "UPDATE economies.store SET economies.store.e_wallet = economies.store.e_wallet - ?, updatedAt = ?  WHERE economies.store._id=6";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, sotien);
+			ps.setDate(2, java.sql.Date.valueOf(LocalDate.now()));
+			ps.executeUpdate();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
