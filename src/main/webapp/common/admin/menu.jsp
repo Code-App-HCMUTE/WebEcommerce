@@ -74,124 +74,117 @@
         <li class="menu-item active">
             <a href="home" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Dashboard</div>
+                <div data-i18n="Analytics">Trang Chủ</div>
             </a>
         </li>
 
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Product</span>
+            <span class="menu-header-text">Quản Lí Sản Phẩm</span>
         </li>
         <!-- Layouts -->
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
-                <div data-i18n="Layouts">Product</div>
+                <div data-i18n="Layouts">Sản Phẩm</div>
             </a>
 
             <ul class="menu-sub">
                 <li class="menu-item">
                     <a href="product" class="menu-link">
-                        <div data-i18n="Without menu">Product Management</div>
+                        <div data-i18n="Without menu">Quản Lí Sản Phẩm</div>
                     </a>
                 </li>
                 <li class="menu-item">
                     <a href="category" class="menu-link">
-                        <div data-i18n="Without menu">Category</div>
+                        <div data-i18n="Without menu">Quản Lí Thể Loại</div>
                     </a>
                 </li>
                 <li class="menu-item">
                     <a href="style" class="menu-link">
-                        <div data-i18n="Without menu">Style</div>
+                        <div data-i18n="Without menu">Quản Lí Kiểu</div>
                     </a>
                 </li>
-
             </ul>
         </li>
 
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Shop</span>
+            <span class="menu-header-text">Cửa Hàng</span>
         </li>
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                <div data-i18n="Account Settings">Store</div>
+                <div data-i18n="Account Settings">Cửa Hàng</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="pages-account-settings-account.html" class="menu-link">
-                        <div data-i18n="Account">Manager Store</div>
+                    <a href="store" class="menu-link">
+                        <div data-i18n="Account">Quản Lí Cửa Hàng</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="pages-account-settings-account.html" class="menu-link">
-                        <div data-i18n="Account">Store level</div>
+                    <a href="storeLevel" class="menu-link">
+                        <div data-i18n="Account">Cấp Độ Cửa Hàng</div>
                     </a>
                 </li>
 
             </ul>
         </li>
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">User</span>
+            <span class="menu-header-text">Người Dùng</span>
         </li>
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                <div data-i18n="Account Settings">User</div>
+                <div data-i18n="Account Settings">Quản Lí Người Dùng</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
                     <a href="user" class="menu-link">
-                        <div data-i18n="Account">Manager User</div>
+                        <div data-i18n="Account">Quản Lí Người Dùng</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="pages-account-settings-account.html" class="menu-link">
-                        <div data-i18n="Account">User level</div>
+                    <a href="userLevel" class="menu-link">
+                        <div data-i18n="Account">Cấp Độ Người Dùng</div>
                     </a>
                 </li>
 
             </ul>
         </li>
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">order</span>
+            <span class="menu-header-text">Đơn Đặt Hàng</span>
         </li>
         <!-- Layouts -->
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
-                <div data-i18n="Layouts">order</div>
+                <div data-i18n="Layouts">Đơn Đặt Hàng</div>
             </a>
 
             <ul class="menu-sub">
                 <li class="menu-item">
                     <a href="order" class="menu-link">
-                        <div data-i18n="Without menu">order Management</div>
+                        <div data-i18n="Without menu">Quản Lí Đơn Đặt Hàng</div>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a href="product" class="menu-link">
-                        <div data-i18n="Without menu">Category</div>
-                    </a>
-                </li>
-
             </ul>
         </li>
         <li class="menu-item ">
             <a href="delivery" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Delivery </div>
+                <div data-i18n="Analytics">Nhà Vận Chuyển</div>
             </a>
         </li>
         <li class="menu-item ">
             <a href="commission" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Commission</div>
+                <div data-i18n="Analytics">Quản Lí Hoa Hồng</div>
             </a>
         </li>
         <li class="menu-item ">
             <a href="transaction" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Transaction</div>
+                <div data-i18n="Analytics">Quản Lí Giao Dịch</div>
             </a>
         </li>
     </ul>

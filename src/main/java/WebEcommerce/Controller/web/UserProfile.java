@@ -76,7 +76,7 @@ public class UserProfile extends HttpServlet {
 
                 }
                 else if(item.getFieldName().equals("firstName")){
-                    user.setFistName(item.getString("UTF-8"));
+                    user.setFirstName(item.getString("UTF-8"));
                 }else if(item.getFieldName().equals("lastName")){
                     user.setLastName(item.getString("UTF-8"));
                 }else if(item.getFieldName().equals("phone")){

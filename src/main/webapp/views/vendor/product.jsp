@@ -28,8 +28,8 @@
 				<td><core:url value="/image?fname=product/${kq.listImages}"
 						var="imgUrl"></core:url> <img class="card-img-top" width="200px"
 					height="200px" src="${imgUrl}" alt="Card image cap"></td>
-				<td><a href="/WebEcommerce/vendor/edit?id=${kq.id}">Edit</a></td>
-				<td><a href="/WebEcommerce/vendor/delete?id=${kq.id}">Delete</a></td>
+				<td><a href="/WebEcommerce/admin/product/edit?id=${kq.id}">Edit</a></td>
+				<td><a href="/WebEcommerce/admin/product/delete?id=${kq.id}">Delete</a></td>
 			</tr>
 		</core:forEach>
 	</tbody>

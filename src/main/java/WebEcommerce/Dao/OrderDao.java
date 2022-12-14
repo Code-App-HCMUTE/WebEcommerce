@@ -10,9 +10,9 @@ public interface OrderDao {
 
     OrderModel get(int id);
 
-    void edit(OrderModel product);
+    void edit(OrderModel order);
 
-    void insert(OrderModel product);
+    void insert(OrderModel order);
 
     void delete(int id);
 }

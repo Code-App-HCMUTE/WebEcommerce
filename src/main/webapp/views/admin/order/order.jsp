@@ -201,7 +201,7 @@
                         </div>
                         <div
                                 class="col-6 d-flex align-items-center justify-content-end">
-                          <a href="product/add">
+                          <a href="order/add">
                             <button type="button"
                                     class="btn btn-success me-3 d-flex align-items-center text-nowrap">
                               <i
@@ -255,15 +255,18 @@
                                     class="form-check-input" type="checkbox" value=""
                                     id="flexCheckDefault1">
                           </th>
-                          <th>userId</th>
-                          <th>Tên Sản Phẩm</th>
-                          <th>Giá</th>
-                          <th>Giá Giảm</th>
-                          <th>Số Lượng</th>
-                          <th>Số Lượng Bán</th>
-                          <th>Cấp Phép</th>
-                          <th>Trạng Thái</th>
-                          <th>Cửa Hàng</th>
+                          <th>Mã Khách Hàng</th>
+                          <th>Mã Cửa Hàng</th>
+                          <th>Mã Nhà Vận Chuyển</th>
+                          <th>Mã Hoa Hồng</th>
+                          <th>Địa Chỉ</th>
+                          <th>Điện Thoại</th>
+                          <th>Trạng Thái Hàng</th>
+                          <th>Thanh Toán</th>
+                          <th>Tiền Khách Hàng Trả</th>
+                          <th>Tiền Cửa Hàng Trả</th>
+                          <th>Tiền Cửa Hàng Nhận</th>
+                          <th>Tiền Hệ Thống Nhận</th>
                           <th>Chỉnh Sữa</th>
 
                         </tr>
@@ -278,8 +281,8 @@
                                       id="flexCheckDefault">
                             </td>
                             <td><strong>${kq.userId}</strong></td>
-                            <td>${kq.storeId}đ</td>
-                            <td>${kq.deliveryId}đ</td>
+                            <td>${kq.storeId}</td>
+                            <td>${kq.deliveryId}</td>
                             <td>${kq.commissionId}</td>
 
                             <td>${kq.address}</td>
@@ -292,10 +295,10 @@
                               <core:if test="${!kq.isPaidBefore}"><span
                                       class="badge bg-label-danger me-1">Chưa Thanh Toán</span></core:if>
                             </td>
-                            <td>${kq.amountFromUser}</td>
-                            <td>${kq.amountFromStore}</td>
-                            <td>${kq.amountToStore}</td>
-                            <td>${kq.amountToGD}</td>
+                            <td>${kq.amountFromUser}₫</td>
+                            <td>${kq.amountFromStore}₫</td>
+                            <td>${kq.amountToStore}₫</td>
+                            <td>${kq.amountToGD}₫</td>
                             <td>
                               <div class="dropdown">
                                 <button type="button"

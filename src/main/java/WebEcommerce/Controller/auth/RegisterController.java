@@ -37,7 +37,7 @@ public class RegisterController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             UserModel user = new UserModel();
-            user.setFistName(request.getParameter("username"));
+            user.setFirstName(request.getParameter("username"));
             user.setPhone(request.getParameter("phone"));
             user.setEmail(request.getParameter("email"));
             String pass = request.getParameter("password");

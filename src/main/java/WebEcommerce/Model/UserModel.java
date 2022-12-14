@@ -5,7 +5,7 @@ import java.util.Date;
 public class UserModel {
 
     private int _id;
-    private String fistName;
+    private String firstName;
     private String lastName;
     private String slug;
     private int id_card;
@@ -24,9 +24,9 @@ public class UserModel {
     private Date createdAt;
     private Date updatedAt;
 
-    public UserModel(int _id, String fistName, String lastName, String slug, int id_card, String email, String phone, boolean isEmailActive, boolean isPhoneActive, String salt, String hashed_password, String role, String address, String avatar, String cover, int point, int e_wallet, Date createdAt, Date updatedAt) {
+    public UserModel(int _id, String firstName, String lastName, String slug, int id_card, String email, String phone, boolean isEmailActive, boolean isPhoneActive, String salt, String hashed_password, String role, String address, String avatar, String cover, int point, int e_wallet, Date createdAt, Date updatedAt) {
         this._id = _id;
-        this.fistName = fistName;
+        this.firstName = firstName;
         this.lastName = lastName;
         this.slug = slug;
         this.id_card = id_card;
@@ -57,12 +57,12 @@ public class UserModel {
         this._id = _id;
     }
 
-    public String getFistName() {
-        return fistName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFistName(String fistName) {
-        this.fistName = fistName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
@@ -105,15 +105,15 @@ public class UserModel {
         this.phone = phone;
     }
 
-    public boolean isEmailActive() {
+    public boolean getIsEmailActive() {
         return isEmailActive;
     }
 
-    public void setEmailActive(boolean emailActive) {
-        isEmailActive = emailActive;
+    public void setIsEmailActive(boolean isEmailActive) {
+        this.isEmailActive = isEmailActive;
     }
 
-    public boolean isPhoneActive() {
+    public boolean getIsPhoneActive() {
         return isPhoneActive;
     }
 

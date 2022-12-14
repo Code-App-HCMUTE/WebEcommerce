@@ -7,6 +7,7 @@ import WebEcommerce.Model.ProductModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,8 +26,8 @@ public class ProductDaoImpl extends DBConnection implements ProductDao {
 				product.setName(rs.getString("name"));
 				product.setSlug(rs.getString("slug"));
 				product.setDescription((rs.getString("description")));
-				product.setPrice(rs.getDouble("price"));
-				product.setPromotionalPrice(rs.getDouble("promotionalPrice"));
+				product.setPrice(rs.getInt("price"));
+				product.setPromotionalPrice(rs.getInt("promotionalPrice"));
 				product.setQuantity(rs.getInt("quantity"));
 				product.setSold(rs.getInt("sold"));
 				product.setIsActive(rs.getBoolean("IsActive"));
@@ -59,8 +60,8 @@ public class ProductDaoImpl extends DBConnection implements ProductDao {
 				product.setName(rs.getString("name"));
 				product.setSlug(rs.getString("slug"));
 				product.setDescription((rs.getString("description")));
-				product.setPrice(rs.getDouble("price"));
-				product.setPromotionalPrice(rs.getDouble("promotionalPrice"));
+				product.setPrice(rs.getInt("price"));
+				product.setPromotionalPrice(rs.getInt("promotionalPrice"));
 				product.setQuantity(rs.getInt("quantity"));
 				product.setSold(rs.getInt("sold"));
 				product.setIsActive(rs.getBoolean("IsActive"));
@@ -83,7 +84,26 @@ public class ProductDaoImpl extends DBConnection implements ProductDao {
 
 	@Override
 	public void edit(ProductModel product) {
-
+		String sql = "UPDATE product SET name = ?,slug = ?, description = ?, price = ?, promotionalPrice = ?, quantity = ?, listImages = ?,isSelling =?,isActive=?, updatedAt = ? WHERE _id = ?";
+		try {
+			Connection con = super.getConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, product.getName());
+			ps.setString(2, product.getName());
+			ps.setString(3, product.getDescription());
+			ps.setInt(4, product.getPrice());
+			ps.setInt(5, product.getPromotionalPrice());
+			ps.setInt(6, product.getQuantity());
+			ps.setString(7, product.getListImages());
+			ps.setBoolean(8,product.getIsSelling());
+			ps.setBoolean(9,product.getIsActive());
+			ps.setDate(10, java.sql.Date.valueOf(LocalDate.now()));
+			ps.setInt(11, product.getId());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -119,7 +139,6 @@ public class ProductDaoImpl extends DBConnection implements ProductDao {
 	public void delete(int id) {
 
 	}
-
 	@Override
 	public List<ProductModel> search(String query,int size,int index) {
 		String sql = "with x as(select *,row_number() over(order by createdAt desc)as r from product where name like '%"+query+"%')\n" +
@@ -140,8 +159,8 @@ public class ProductDaoImpl extends DBConnection implements ProductDao {
 				product.setName(rs.getString("name"));
 				product.setSlug(rs.getString("slug"));
 				product.setDescription((rs.getString("description")));
-				product.setPrice(rs.getDouble("price"));
-				product.setPromotionalPrice(rs.getDouble("promotionalPrice"));
+				product.setPrice(rs.getInt("price"));
+				product.setPromotionalPrice(rs.getInt("promotionalPrice"));
 				product.setQuantity(rs.getInt("quantity"));
 				product.setSold(rs.getInt("sold"));
 				product.setIsActive(rs.getBoolean("IsActive"));
@@ -175,8 +194,8 @@ public class ProductDaoImpl extends DBConnection implements ProductDao {
 				product.setName(rs.getString("name"));
 				product.setSlug(rs.getString("slug"));
 				product.setDescription((rs.getString("description")));
-				product.setPrice(rs.getDouble("price"));
-				product.setPromotionalPrice(rs.getDouble("promotionalPrice"));
+				product.setPrice(rs.getInt("price"));
+				product.setPromotionalPrice(rs.getInt("promotionalPrice"));
 				product.setQuantity(rs.getInt("quantity"));
 				product.setSold(rs.getInt("sold"));
 				product.setIsActive(rs.getBoolean("IsActive"));

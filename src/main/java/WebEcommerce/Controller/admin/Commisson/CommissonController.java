@@ -1,9 +1,8 @@
-package WebEcommerce.Controller.admin.User;
+package WebEcommerce.Controller.admin.Commisson;
 
-import WebEcommerce.Model.StyleModel;
-import WebEcommerce.Model.UserModel;
-import WebEcommerce.Service.Impl.UserServiceImpl;
-import WebEcommerce.Service.UserService;
+import WebEcommerce.Model.CommissionModel;
+import WebEcommerce.Service.CommissionService;
+import WebEcommerce.Service.Impl.CommissionServiceImpl;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -11,15 +10,14 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "UserController", value = "/admin/user")
-public class UserController extends HttpServlet {
-    UserService userService = new UserServiceImpl();
+@WebServlet(name = "CommissonController", value = "/admin/commission")
+public class CommissonController extends HttpServlet {
+    CommissionService commissionService = new CommissionServiceImpl();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<UserModel> listUser = userService.GetAllUser();
-        System.out.println(listUser);
-        request.setAttribute("listUser", listUser);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/admin/user/user.jsp");
+        List<CommissionModel> commissionList = commissionService.findAll();
+        request.setAttribute("commissionList", commissionList);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/admin/commission/commission.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {

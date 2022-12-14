@@ -27,7 +27,7 @@ public class UserDaoImpl extends DBConnection implements UserDao {
                 user.setAddress(rs.getString("address"));
                 user.setAvatar(rs.getString("avatar"));
                 user.setCover(rs.getString("cover"));
-                user.setFistName(rs.getString("firstName"));
+                user.setFirstName(rs.getString("firstName"));
                 user.setLastName(rs.getString("lastName"));
                 user.setSlug(rs.getString("slug"));
                 user.setId_card(rs.getInt("id_card"));
@@ -37,7 +37,7 @@ public class UserDaoImpl extends DBConnection implements UserDao {
                 user.setRole(rs.getString("role"));
                 user.setEmail(rs.getString("email"));
                 user.setE_wallet(rs.getInt("e_wallet"));
-                user.setEmailActive(rs.getBoolean("isEmalActive"));
+                user.setIsEmailActive(rs.getBoolean("isEmalActive"));
                 user.setPhoneActive(rs.getBoolean("isPhoneActive"));
                 user.setCreatedAt(rs.getDate("createdAt"));
                 user.setUpdatedAt(rs.getDate("updatedAt"));
@@ -59,7 +59,7 @@ public class UserDaoImpl extends DBConnection implements UserDao {
         try {
             Connection con = super.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1,user.getFistName());
+            ps.setString(1,user.getFirstName());
             ps.setString(2,user.getEmail());
             ps.setString(3,user.getHashed_password());
             ps.setString(4,user.getPhone());
@@ -89,7 +89,7 @@ public class UserDaoImpl extends DBConnection implements UserDao {
                 user.setAddress(rs.getString("address"));
                 user.setAvatar(rs.getString("avatar"));
                 user.setCover(rs.getString("cover"));
-                user.setFistName(rs.getString("firstName"));
+                user.setFirstName(rs.getString("firstName"));
                 user.setLastName(rs.getString("lastName"));
                 user.setSlug(rs.getString("slug"));
                 user.setId_card(rs.getInt("id_card"));
@@ -99,7 +99,7 @@ public class UserDaoImpl extends DBConnection implements UserDao {
                 user.setRole(rs.getString("role"));
                 user.setEmail(rs.getString("email"));
                 user.setE_wallet(rs.getInt("e_wallet"));
-                user.setEmailActive(rs.getBoolean("isEmalActive"));
+                user.setIsEmailActive(rs.getBoolean("isEmalActive"));
                 user.setPhoneActive(rs.getBoolean("isPhoneActive"));
                 user.setCreatedAt(rs.getDate("createdAt"));
                 user.setUpdatedAt(rs.getDate("updatedAt"));
@@ -119,7 +119,7 @@ public class UserDaoImpl extends DBConnection implements UserDao {
             Connection con = super.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1,user.getEmail());
-            ps.setString(2,user.getFistName());
+            ps.setString(2,user.getFirstName());
             ps.setString(3,user.getLastName());
             ps.setString(4,user.getPhone());
             ps.setString(5,user.getAddress());
@@ -155,7 +155,7 @@ public class UserDaoImpl extends DBConnection implements UserDao {
                 user.setAddress(rs.getString("address"));
                 user.setAvatar(rs.getString("avatar"));
                 user.setCover(rs.getString("cover"));
-                user.setFistName(rs.getString("firstName"));
+                user.setFirstName(rs.getString("firstName"));
                 user.setLastName(rs.getString("lastName"));
                 user.setSlug(rs.getString("slug"));
                 user.setId_card(rs.getInt("id_card"));
@@ -165,7 +165,7 @@ public class UserDaoImpl extends DBConnection implements UserDao {
                 user.setRole(rs.getString("role"));
                 user.setEmail(rs.getString("email"));
                 user.setE_wallet(rs.getInt("e_wallet"));
-                user.setEmailActive(rs.getBoolean("isEmalActive"));
+                user.setIsEmailActive(rs.getBoolean("isEmalActive"));
                 user.setPhoneActive(rs.getBoolean("isPhoneActive"));
                 user.setCreatedAt(rs.getDate("createdAt"));
                 user.setUpdatedAt(rs.getDate("updatedAt"));
@@ -192,7 +192,7 @@ public class UserDaoImpl extends DBConnection implements UserDao {
                 user.setAddress(rs.getString("address"));
                 user.setAvatar(rs.getString("avatar"));
                 user.setCover(rs.getString("cover"));
-                user.setFistName(rs.getString("firstName"));
+                user.setFirstName(rs.getString("firstName"));
                 user.setLastName(rs.getString("lastName"));
                 user.setSlug(rs.getString("slug"));
                 user.setId_card(rs.getInt("id_card"));
@@ -202,7 +202,7 @@ public class UserDaoImpl extends DBConnection implements UserDao {
                 user.setRole(rs.getString("role"));
                 user.setEmail(rs.getString("email"));
                 user.setE_wallet(rs.getInt("e_wallet"));
-                user.setEmailActive(rs.getBoolean("isEmalActive"));
+                user.setIsEmailActive(rs.getBoolean("isEmalActive"));
                 user.setPhoneActive(rs.getBoolean("isPhoneActive"));
                 user.setCreatedAt(rs.getDate("createdAt"));
                 user.setUpdatedAt(rs.getDate("updatedAt"));
@@ -229,7 +229,7 @@ public class UserDaoImpl extends DBConnection implements UserDao {
                 user.setAddress(rs.getString("address"));
                 user.setAvatar(rs.getString("avatar"));
                 user.setCover(rs.getString("cover"));
-                user.setFistName(rs.getString("firstName"));
+                user.setFirstName(rs.getString("firstName"));
                 user.setLastName(rs.getString("lastName"));
                 user.setSlug(rs.getString("slug"));
                 user.setId_card(rs.getInt("id_card"));
@@ -239,7 +239,7 @@ public class UserDaoImpl extends DBConnection implements UserDao {
                 user.setRole(rs.getString("role"));
                 user.setEmail(rs.getString("email"));
                 user.setE_wallet(rs.getInt("e_wallet"));
-                user.setEmailActive(rs.getBoolean("isEmalActive"));
+                user.setIsEmailActive(rs.getBoolean("isEmalActive"));
                 user.setPhoneActive(rs.getBoolean("isPhoneActive"));
                 user.setCreatedAt(rs.getDate("createdAt"));
                 user.setUpdatedAt(rs.getDate("updatedAt"));

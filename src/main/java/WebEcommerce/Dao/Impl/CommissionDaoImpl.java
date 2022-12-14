@@ -33,8 +33,7 @@ public class CommissionDaoImpl extends DBConnection implements CommissionDao {
                 Commission.setUpdatedAt(rs.getDate("updatedAt"));
                 Commissions.add(Commission);
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return Commissions;
@@ -57,7 +56,7 @@ public class CommissionDaoImpl extends DBConnection implements CommissionDao {
             Connection con = super.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, commission.getName());
-            ps.setFloat(2, commission.getCost());
+            ps.setDouble(2, commission.getCost());
             ps.setString(3, commission.getDescription());
             ps.setBoolean(4, commission.getIsDelete());
             ps.setDate(5, (Date) commission.getCreatedAt());
