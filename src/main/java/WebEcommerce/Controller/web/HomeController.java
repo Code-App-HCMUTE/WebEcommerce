@@ -3,6 +3,10 @@ package WebEcommerce.Controller.web;
 
 import WebEcommerce.Model.ProductModel;
 import WebEcommerce.Model.UserModel;
+import WebEcommerce.Service.CartService;
+import WebEcommerce.Service.CategoryService;
+import WebEcommerce.Service.Impl.CartServiceImpl;
+import WebEcommerce.Service.Impl.CategoryServiceImpl;
 import WebEcommerce.Service.Impl.ProductServiceImpl;
 import WebEcommerce.Service.ProductService;
 
@@ -16,23 +20,16 @@ import javax.servlet.http.*;
 @WebServlet(urlPatterns = {"/home"})
 public class HomeController extends HttpServlet {
     ProductService productService = new ProductServiceImpl();
+    CategoryService categoryService = new CategoryServiceImpl();
     private static final long serialVersionUID = 1L;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-//        Cookie[] cookie = req.getCookies();
-//        for (Cookie c : cookie) {
-//            if (c.getName().equals("user")) {
-//                req.setAttribute("user", c.getValue());
-//                System.out.println(c.getValue());
-//            }
-//        }
-//		for (ProductModel item: productService.findAll()) {
-//			System.out.println(item.getName());
-//		}
-//        HttpSession session = req.getSession();
+        HttpSession session = req.getSession();
+        session.setAttribute("category",categoryService.findAll());
         req.setAttribute("products", productService.search("",8,1));
+
         RequestDispatcher dispatcher = req.getRequestDispatcher("/views/web/home.jsp");
         try {
             dispatcher.forward(req, resp);

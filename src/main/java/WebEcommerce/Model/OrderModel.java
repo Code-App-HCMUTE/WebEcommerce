@@ -1,6 +1,7 @@
 package WebEcommerce.Model;
 
 import java.util.Date;
+import java.util.List;
 
 public class OrderModel {
     private int _id;
@@ -16,6 +17,16 @@ public class OrderModel {
     private double amountFromStore;
     private double amountToStore;
     private double amountToGD;
+    private List<OrderItemModel> orderItems;
+
+    public List<OrderItemModel> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(List<OrderItemModel> orderItems) {
+        this.orderItems = orderItems;
+    }
+
     private Date createdAt;
     private Date updatedAt;
 

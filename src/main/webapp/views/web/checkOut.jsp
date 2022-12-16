@@ -22,7 +22,7 @@
         </div>
         <div class="checkout__form">
             <h4>Billing Details</h4>
-            <form action="#">
+            <form action="/WebEcommerce/checkout" method="POST">
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
                         <div class="row">
@@ -105,12 +105,12 @@
                             <h4>Your Order</h4>
                             <div class="checkout__order__products">Products <span>Total</span></div>
                             <ul>
-                                <li>Vegetable’s Package <span>$75.99</span></li>
-                                <li>Fresh Vegetable <span>$151.99</span></li>
-                                <li>Organic Bananas <span>$53.99</span></li>
+                                <c:forEach var="item" items="${products}">
+                                    <li>${item.getName()}<span>${item.getPrice()}</span></li>
+                                </c:forEach>
                             </ul>
-                            <div class="checkout__order__subtotal">Subtotal <span>$750.99</span></div>
-                            <div class="checkout__order__total">Total <span>$750.99</span></div>
+                            <div class="checkout__order__subtotal">Subtotal <span>${total}</span></div>
+                            <div class="checkout__order__total">Total <span>${total}</span></div>
                             <div class="checkout__input__checkbox">
                                 <label for="acc-or">
                                     Create an account?

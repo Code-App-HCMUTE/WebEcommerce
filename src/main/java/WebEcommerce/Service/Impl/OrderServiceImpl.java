@@ -33,4 +33,14 @@ public class OrderServiceImpl implements OrderService {
     public void delete(int id) {
 
     }
+
+    @Override
+    public List<OrderModel> userOrder(int userId) {
+        return orderDao.userOrder(userId);
+    }
+
+    @Override
+    public int LastInserted() {
+        return orderDao.LastInserted();
+    }
 }

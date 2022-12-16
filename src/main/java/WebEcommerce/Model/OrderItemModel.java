@@ -11,6 +11,15 @@ public class OrderItemModel {
     private int count;
     private Date createdAt;
     private Date updatedAt;
+    private ProductModel product;
+
+    public ProductModel getProduct() {
+        return product;
+    }
+
+    public void setProduct(ProductModel product) {
+        this.product = product;
+    }
 
     public OrderItemModel() {
     }
@@ -25,7 +34,7 @@ public class OrderItemModel {
         this.updatedAt = updatedAt;
     }
 
-    public int getUd() {
+    public int getId() {
         return _id;
     }
 

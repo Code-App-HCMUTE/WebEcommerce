@@ -34,7 +34,8 @@ public class StoreServiceImpl implements StoreService {
 
 	@Override
 	public List<StoreModel> search(String query, int size, int index) {
-		return null;
+		return storeDao.search(query,size,index
+		);
 	}
 
 }

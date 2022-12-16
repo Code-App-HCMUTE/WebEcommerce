@@ -11,4 +11,7 @@ public interface OrderService {
     void edit(OrderModel order);
     void insert(OrderModel order);
     void delete(int id);
+    List<OrderModel> userOrder(int userId);
+    int LastInserted ();
+
 }

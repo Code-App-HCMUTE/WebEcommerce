@@ -15,4 +15,6 @@ public interface OrderDao {
     void insert(OrderModel product);
 
     void delete(int id);
+    List<OrderModel> userOrder(int userId);
+    int LastInserted ();
 }

@@ -112,16 +112,20 @@ public class StoreDaoImpl extends DBConnection implements StoreDao {
 
     }
 
+
     @Override
     public List<StoreModel> search(String query, int size, int index) {
         List<StoreModel> stores = new ArrayList<StoreModel>();
         String sql = "with x as(select *,row_number() over(order by createdAt desc)as r from economies.store where name like '%" + query + "%')\n" +
-                "select * from x where r between ?*3-2 and ?*3";
+                "select * from x where r between ?*?-? and ?*?";
         try {
             Connection conn = super.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1,index);
-            ps.setInt(2,index);
+            ps.setInt(2,size);
+            ps.setInt(3,size-1);
+            ps.setInt(4,index);
+            ps.setInt(5,size);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 StoreModel store = new StoreModel();
@@ -144,7 +148,9 @@ public class StoreDaoImpl extends DBConnection implements StoreDao {
                 store.setUpdatedAt(rs.getDate("updatedAt"));
                 stores.add(store);
             }
+            System.out.println(stores.size());
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             e.printStackTrace();
         }
         return stores;
