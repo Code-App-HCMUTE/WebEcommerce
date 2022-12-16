@@ -12,8 +12,8 @@ public class WaitingController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        if (session != null && session.getAttribute("account") != null) {
-            UserModel u = (UserModel) session.getAttribute("account");
+        if (session != null && session.getAttribute("user") != null) {
+            UserModel u = (UserModel) session.getAttribute("user");
             if(u.getRole().equals("user"))
             {
                 response.sendRedirect(request.getContextPath() + "/home");

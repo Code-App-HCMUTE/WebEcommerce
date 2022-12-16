@@ -29,7 +29,7 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Fist Name<span>*</span></p>
-                                        <input type="text" name="firstName" value="${user.getFistName()}">
+                                        <input type="text" name="firstName" value="${user.getFirstName()}">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">

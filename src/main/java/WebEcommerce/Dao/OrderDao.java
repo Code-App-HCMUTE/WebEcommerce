@@ -18,7 +18,7 @@ public interface OrderDao {
     List<OrderModel> userOrder(int userId);
     int LastInserted ();
 
-    int CountOrder(int loai);
+    int CountOrder(int year);
 
     int SumMoneySell(int year);
 }

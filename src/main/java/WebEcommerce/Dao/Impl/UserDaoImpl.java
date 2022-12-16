@@ -54,8 +54,8 @@ public class UserDaoImpl extends DBConnection implements UserDao {
 
     @Override
     public void Register(UserModel user) {
-        String sql = "INSERT INTO user (firstName,email,hashed_password,phone,isEmalActive,createdAt,updatedAt)" +
-                " values (?,?,?,?,1,?,?)";
+        String sql = "INSERT INTO user (firstName,email,hashed_password,phone,isEmalActive,createdAt,updatedAt,role)" +
+                " values (?,?,?,?,1,?,?,?)";
         try {
             Connection con = super.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
@@ -65,6 +65,7 @@ public class UserDaoImpl extends DBConnection implements UserDao {
             ps.setString(4,user.getPhone());
             ps.setDate(5, (java.sql.Date) user.getCreatedAt());
             ps.setDate(6, (java.sql.Date) user.getUpdatedAt());
+            ps.setString(7,"user");
             ps.executeUpdate();
         }catch (Exception e){
             System.out.println(e.getMessage());

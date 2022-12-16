@@ -107,7 +107,7 @@
                                         </ul>
                                     </div>
                                     <div class="product__item__text">
-                                        <h6><a href="#">${item.getFistName()} ${item.getLastName()}</a></h6>
+                                        <h6><a href="#">${item.getFirstName()} ${item.getLastName()}</a></h6>
                                         <h5>${item.getEmail()}</h5>
                                     </div>
                                 </div>

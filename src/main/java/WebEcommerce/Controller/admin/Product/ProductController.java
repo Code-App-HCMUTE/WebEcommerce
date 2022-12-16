@@ -30,7 +30,7 @@ public class ProductController extends HttpServlet {
         System.out.println(query);
         request.setAttribute("listProducts", productService.search(query, 10, Integer.parseInt(index)));
         request.setAttribute("search", query);
-        int count = productService.SearchCount(query);
+        int count = productService.SearchCount(query,"select * from product ");
         int pag = count / 10;
 
         request.setAttribute("index", index);
@@ -57,7 +57,7 @@ public class ProductController extends HttpServlet {
         }
         request.setAttribute("listProducts", productService.search(query, 10, Integer.parseInt(index)));
         request.setAttribute("search", query);
-        int count = productService.SearchCount(query);
+        int count = productService.SearchCount(query,"select * from product ");
         int pag = count / 10;
 
         request.setAttribute("index", index);

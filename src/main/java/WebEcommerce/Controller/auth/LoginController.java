@@ -1,7 +1,11 @@
 package WebEcommerce.Controller.auth;
 
 import WebEcommerce.Model.UserModel;
+import WebEcommerce.Service.CartService;
+import WebEcommerce.Service.Impl.CartServiceImpl;
+import WebEcommerce.Service.Impl.OrderServiceImpl;
 import WebEcommerce.Service.Impl.UserServiceImpl;
+import WebEcommerce.Service.OrderService;
 import WebEcommerce.Service.UserService;
 import vn.iotstar.util.Constant;
 
@@ -17,6 +21,8 @@ public class LoginController extends HttpServlet {
 	 */
     private static final long serialVersionUID = 4678896083212205531L;
     UserService userService=new UserServiceImpl();
+    CartService cartService =new CartServiceImpl();
+    OrderService orderService = new OrderServiceImpl();
 
 	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -63,6 +69,10 @@ public class LoginController extends HttpServlet {
         if (user != null) {
             HttpSession session = request.getSession(true);
             session.setAttribute("account", user);
+            session.setAttribute("user", user);
+
+            session.setAttribute("cart",cartService.ListItemOfUser(user.get_id()));
+            session.setAttribute("order",orderService.userOrder(user.get_id()));
             if (isRememberMe) {
                 saveRemeberMe(response, username);
             }

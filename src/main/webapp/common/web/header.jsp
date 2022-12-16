@@ -97,7 +97,7 @@
                         </div>
                         <div class="header__top__right__language">
                             <c:if test="${user != null}">
-                                <div><i class="fa fa-user"></i> ${user.getFistName()}</div>
+                                <div><i class="fa fa-user"></i> ${user.getFirstName()}</div>
                                 <span class="arrow_carrot-down"></span>
                                 <ul>
                                     <li><a href="/WebEcommerce/UserProfile">Your Profile</a></li>

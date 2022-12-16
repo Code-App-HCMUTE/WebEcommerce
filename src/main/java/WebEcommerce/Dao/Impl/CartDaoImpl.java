@@ -47,8 +47,8 @@ public class CartDaoImpl extends DBConnection implements CartDao {
                 product.setName(rs.getString("name"));
                 product.setSlug(rs.getString("slug"));
                 product.setDescription((rs.getString("description")));
-                product.setPrice(rs.getDouble("price"));
-                product.setPromotionalPrice(rs.getDouble("promotionalPrice"));
+                product.setPrice(rs.getInt("price"));
+                product.setPromotionalPrice(rs.getInt("promotionalPrice"));
                 product.setQuantity(rs.getInt("quantity"));
                 product.setListImages(rs.getString("listImages"));
                 product.setCount(rs.getInt("count"));

@@ -245,8 +245,8 @@ public class ProductDaoImpl extends DBConnection implements ProductDao {
 				product.setName(rs.getString("name"));
 				product.setSlug(rs.getString("slug"));
 				product.setDescription((rs.getString("description")));
-				product.setPrice(rs.getDouble("price"));
-				product.setPromotionalPrice(rs.getDouble("promotionalPrice"));
+				product.setPrice(rs.getInt("price"));
+				product.setPromotionalPrice(rs.getInt("promotionalPrice"));
 				product.setQuantity(rs.getInt("quantity"));
 				product.setSold(rs.getInt("sold"));
 				product.setIsActive(rs.getBoolean("IsActive"));
