@@ -9,5 +9,7 @@ public interface StoreService {
 	void insertStore(StoreModel store);
 	StoreModel getStoreById(int id);
 	void editStore(StoreModel store);
+
+	void deleteStore(int id);
 	List<StoreModel> search(String query,int size,int index);
 }

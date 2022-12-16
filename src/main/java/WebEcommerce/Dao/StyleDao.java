@@ -8,7 +8,7 @@ import java.util.List;
 public interface StyleDao {
     List<StyleModel> findAll();
 
-    CategoryModel get(int id);
+    StyleModel get(int id);
 
     void edit(StyleModel style);
 

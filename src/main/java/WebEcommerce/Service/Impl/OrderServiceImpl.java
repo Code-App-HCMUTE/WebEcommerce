@@ -21,7 +21,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void edit(OrderModel order) {
-
+        orderDao.edit(order);
     }
 
     @Override
@@ -31,6 +31,6 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void delete(int id) {
-
+        orderDao.delete(id);
     }
 }

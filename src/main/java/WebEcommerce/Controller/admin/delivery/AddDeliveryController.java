@@ -22,7 +22,6 @@ import java.util.List;
 @WebServlet(name = "AddDeliveryController", value = "/admin/delivery/add")
 public class AddDeliveryController extends HttpServlet {
     DeliveryService deliveryService = new DeliveryServiceImpl();
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -55,7 +54,7 @@ public class AddDeliveryController extends HttpServlet {
                 } else if (item.getFieldName().equals("description")) {
                     delivery.setDescription(item.getString("UTF-8"));
                 } else if (item.getFieldName().equals("price")) {
-                    delivery.setPrice(Double.parseDouble(item.getString("UTF-8")));
+                    delivery.setPrice(Integer.parseInt(item.getString("UTF-8")));
                 } else if (item.getFieldName().equals("isDeleted")) {
                     delivery.setIsDeleted(item.getString("UTF-8").equals("on"));
                 }

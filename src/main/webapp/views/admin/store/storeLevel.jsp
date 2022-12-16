@@ -18,105 +18,7 @@
 
 <div class="container-xxl flex-grow-1 container-p-y">
     <!-- search product -->
-    <div class="row">
-        <div class="col-12 mb-4 order-0">
-            <div class="card ">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="card-body p-3">
-                            <div class="d-flex flex-column align-items-start ">
-                                <label class="form-label">Nghành Hàng</label>
-                                <div class="input-group">
-                                    <button class="btn btn-outline-secondary dropdown-toggle"
-                                            type="button" data-bs-toggle="dropdown"
-                                            aria-expanded="false">Tên sản phẩm
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                        <li><a class="dropdown-item" href="#">Another action</a>
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">Something else
-                                            here</a>
-                                        </li>
-                                        <li>
-                                            <hr class="dropdown-divider">
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">Separated link</a>
-                                        </li>
-                                    </ul>
-                                    <input type="text" class="form-control"
-                                           aria-label="Text input with dropdown button">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="card-body p-3">
-                            <div class="d-flex flex-column align-items-start ">
-                                <label class="form-label">Nghành
-                                    Hàng</label>
-                                <select class="form-select" id="search-"
-                                        aria-label="Default select example">
-                                    <option selected>chọn</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="card-body p-3">
-                            <div
-                                    class="d-flex flex-column align-items-start justify-content-center ">
-                                <label class="form-label">kho
-                                    hàng</label>
-                                <div class="d-flex align-items-start justify-content-start ">
-                                    <input type="text" class="form-control" placeholder="tối thiểu"
-                                           aria-label="tối thiểu">
-                                    <span class="input-group-sm p-2">-</span>
-                                    <input type="text" class="form-control" placeholder="tối đa"
-                                           aria-label="tối đa">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="card-body p-3">
-                            <div
-                                    class="d-flex flex-column align-items-start justify-content-center ">
-                                <label class="form-label me-2">Doanh Số</label>
-                                <div class="d-flex align-items-start justify-content-start ">
-                                    <input type="text" class="form-control" placeholder="tối thiểu"
-                                           aria-label="tối thiểu">
-                                    <span class="input-group-sm p-2">-</span>
-                                    <input type="text" class="form-control" placeholder="tối đa"
-                                           aria-label="tối đa">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-body">
-                                <button type="button" class="btn btn-primary me-2">Tìm</button>
-                                <button type="button" class="btn btn-outline-secondary">Nhập
-                                    Lại
-                                </button>
-                            </div>
-                        </div>
 
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-    </div>
     <!-- list Product -->
     <div class="row">
         <div class="col-12">
@@ -195,7 +97,7 @@
                                             <div class="row">
                                                 <div
                                                         class="col-6 d-flex flex-column align-items-start justify-content-start">
-                                                    <h5 class="card-title">Cửa Hàng</h5>
+                                                    <h5 class="card-title">Cấp Độ cửa hàng</h5>
                                                     <div class="progress mb-1"
                                                          style="height: 3px; width: 50%;">
                                                         <div class="progress-bar bg-success"
@@ -207,11 +109,11 @@
                                                 </div>
                                                 <div
                                                         class="col-6 d-flex align-items-center justify-content-end">
-                                                    <a href="product/add">
+                                                    <a href="storeLevel/add">
                                                         <button type="button"
                                                                 class="btn btn-success me-3 d-flex align-items-center text-nowrap">
                                                             <i
-                                                                    class="bx bx-plus me-1"></i> Thêm Cửa Hàng
+                                                                    class="bx bx-plus me-1"></i> Thêm Cấp Độ cửa hàng
                                                         </button>
                                                     </a>
                                                     <div class="btn-group btn-group-sm" role="group"
@@ -297,11 +199,11 @@
                                                                 </button>
                                                                 <div class="dropdown-menu">
                                                                     <a class="dropdown-item"
-                                                                       href="javascript:void(0);"><i
+                                                                       href="/WebEcommerce/admin/storeLevel/edit?id=${kq.id}"><i
                                                                             class="bx bx-edit-alt me-1"></i>
                                                                         Edit</a>
                                                                     <a class="dropdown-item"
-                                                                       href="javascript:void(0);"><i
+                                                                       href="/WebEcommerce/admin/storeLevel/delete?id=${kq.id}"><i
                                                                             class="bx bx-trash me-1"></i>
                                                                         Delete</a>
                                                                 </div>

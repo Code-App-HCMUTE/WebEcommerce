@@ -14,97 +14,40 @@
     <div class="row">
         <div class="col-12 mb-4 order-0">
             <div class="card ">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="card-body p-3">
-                            <div class="d-flex flex-column align-items-start ">
-                                <label class="form-label">Nghành Hàng</label>
-                                <div class="input-group">
-                                    <button class="btn btn-outline-secondary dropdown-toggle"
-                                            type="button" data-bs-toggle="dropdown"
-                                            aria-expanded="false">Tên sản phẩm
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                        <li><a class="dropdown-item" href="#">Another action</a>
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">Something else
-                                            here</a>
-                                        </li>
-                                        <li>
-                                            <hr class="dropdown-divider">
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">Separated link</a>
-                                        </li>
-                                    </ul>
-                                    <input type="text" class="form-control"
-                                           aria-label="Text input with dropdown button">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="card-body p-3">
-                            <div class="d-flex flex-column align-items-start ">
-                                <label class="form-label">Nghành
-                                    Hàng</label>
-                                <select class="form-select" id="search-"
-                                        aria-label="Default select example">
-                                    <option selected>chọn</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="card-body p-3">
-                            <div
-                                    class="d-flex flex-column align-items-start justify-content-center ">
-                                <label class="form-label">kho
-                                    hàng</label>
-                                <div class="d-flex align-items-start justify-content-start ">
-                                    <input type="text" class="form-control" placeholder="tối thiểu"
-                                           aria-label="tối thiểu">
-                                    <span class="input-group-sm p-2">-</span>
-                                    <input type="text" class="form-control" placeholder="tối đa"
-                                           aria-label="tối đa">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="card-body p-3">
-                            <div
-                                    class="d-flex flex-column align-items-start justify-content-center ">
-                                <label class="form-label me-2">Doanh Số</label>
-                                <div class="d-flex align-items-start justify-content-start ">
-                                    <input type="text" class="form-control" placeholder="tối thiểu"
-                                           aria-label="tối thiểu">
-                                    <span class="input-group-sm p-2">-</span>
-                                    <input type="text" class="form-control" placeholder="tối đa"
-                                           aria-label="tối đa">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-body">
-                                <button type="button" class="btn btn-primary me-2">Tìm</button>
-                                <button type="button" class="btn btn-outline-secondary">Nhập
-                                    Lại
-                                </button>
-                            </div>
-                        </div>
+                <form action="product?index=1" method="POST" >
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="card-body p-3">
 
+                                <div class="d-flex flex-column align-items-start ">
+                                    <label class="form-label">Nghành Hàng</label>
+                                    <div class="input-group">
+                                        <button class="btn btn-outline-secondary dropdown-toggle"
+                                                type="button" data-bs-toggle="dropdown"
+                                                aria-expanded="false">Tên sản phẩm
+                                        </button>
+
+                                        <input type="text" class="form-control"
+                                               aria-label="Text input with dropdown button" name="search" value="${search}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <button type="submit" class="btn btn-primary me-2">Tìm</button>
+                                    <button type="reset" class="btn btn-outline-secondary">Nhập
+                                        Lại
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
             </div>
 
 
@@ -263,7 +206,7 @@
                                                     <th>Số Lượng Bán</th>
                                                     <th>Cấp Phép</th>
                                                     <th>Trạng Thái</th>
-                                                    <th>Cửa Hàng</th>
+                                                    <th>Danh Mục</th>
                                                     <th>Chỉnh Sữa</th>
 
                                                 </tr>
@@ -279,7 +222,8 @@
                                                         </td>
 
                                                         <td>
-                                                        <core:url value="/image?fname=product/${kq.listImages}" var="imgUrl"></core:url>
+                                                            <core:url value="/image?fname=product/${kq.listImages}"
+                                                                      var="imgUrl"></core:url>
                                                             <img src="${imgUrl}"
                                                                  class="rounded float-start" height="40" width="40"
                                                                  alt="...">
@@ -317,7 +261,7 @@
                                                                             class="bx bx-edit-alt me-1"></i>
                                                                         Edit</a>
                                                                     <a class="dropdown-item"
-                                                                       href="/WebEcommerce/admin/product/edit?id=${kq.id}"><i
+                                                                       href="/WebEcommerce/admin/product/delete?id=${kq.id}"><i
                                                                             class="bx bx-trash me-1"></i>
                                                                         Delete</a>
                                                                 </div>
@@ -332,6 +276,29 @@
                                         </div>
                                     </div>
                                     <!--/ Basic Bootstrap Table -->
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="demo-inline-spacing">
+                                                <!-- Basic Pagination -->
+                                                <nav aria-label="Page navigation">
+                                                    <ul class="pagination">
+                                                        <core:forEach begin="1" end="${pageCount}" var="i">
+                                                            <core:if test="${index == i}">
+                                                                <li class="page-item active"><a class="page-link"
+                                                                                                href="product?index=${i}&search=${search}">${i}</a>
+                                                                </li>
+                                                            </core:if>
+                                                            <core:if test="${index != i}">
+                                                                <li class="page-item"><a class="page-link"
+                                                                                         href="product?index=${i}&search=${search}">${i}</a>
+                                                                </li>
+                                                            </core:if>
+                                                        </core:forEach>
+                                                    </ul>
+                                                </nav>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <!-- working -->

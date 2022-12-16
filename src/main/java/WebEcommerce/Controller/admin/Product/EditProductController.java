@@ -30,6 +30,7 @@ public class EditProductController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         id = Integer.parseInt(request.getParameter("id"));
         ProductModel product = productService.get(id);
+        CategoryModel categoryModel =  categoryService.get(product.getCategoryId());
         List<CategoryModel> categoryList = categoryService.findAll();
         request.setAttribute("categorys",categoryList );
         request.setAttribute("product", product);
@@ -54,13 +55,20 @@ public class EditProductController extends HttpServlet {
                 } else if (item.getFieldName().equals("description")) {
                     product.setDescription(item.getString("UTF-8"));
                 } else if (item.getFieldName().equals("image")) {
-                    String originalFileName = item.getName();
-                    int index = originalFileName.lastIndexOf(".");
-                    String ext = originalFileName.substring(index + 1);
-                    String fileName = System.currentTimeMillis() + "." + ext;
-                    File file = new File(Constant.DIR + "/product/" + fileName);
-                    item.write(file);
-                    product.setListImages(fileName);
+                    if (item.getSize() > 0) {
+                        String originalFileName = item.getName();
+                        int index = originalFileName.lastIndexOf(".");
+                        String ext = originalFileName.substring(index + 1);
+                        String fileName = System.currentTimeMillis() + "." + ext;
+                        File file = new File(Constant.DIR + "/product/" + fileName);
+                        item.write(file);
+                        product.setListImages(fileName);
+                    } else {
+                        System.out.println(id);
+                        ProductModel oldproduct = productService.get(id);
+                        product.setListImages(oldproduct.getListImages());
+                    }
+//
                 } else if (item.getFieldName().equals("price")) {
                     product.setPrice(Integer.parseInt(item.getString("UTF-8")));
                 } else if (item.getFieldName().equals("promotionalprice")) {

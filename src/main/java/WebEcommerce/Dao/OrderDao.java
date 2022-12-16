@@ -15,4 +15,8 @@ public interface OrderDao {
     void insert(OrderModel order);
 
     void delete(int id);
+
+    int CountOrder(int loai);
+
+    int SumMoneySell(int year);
 }

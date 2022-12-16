@@ -19,7 +19,7 @@
                     <form action="add" method="post" enctype="multipart/form-data" role="form">
                         <div class="mb-3">
                             <label for="exampleFormControlSelect1" class="form-label">Người dùng</label>
-                            <select class="form-select" id="exampleFormControlSelect1" name="categoryId"
+                            <select class="form-select" id="exampleFormControlSelect1" name="userId"
                                     aria-label="Thể Loại">
                                 <option selected value="0">Chọn Người dùng</option>
                                 <core:forEach items="${users}" var="kq">
@@ -29,7 +29,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlSelect1" class="form-label">Cửa Hàng</label>
-                            <select class="form-select" id="exampleFormControlSelect1" name="categoryId"
+                            <select class="form-select" id="exampleFormControlSelect1" name="storeId"
                                     aria-label="Thể Loại">
                                 <option selected value="0">Chọn Cửa Hàng</option>
                                 <core:forEach items="${stores}" var="kq">

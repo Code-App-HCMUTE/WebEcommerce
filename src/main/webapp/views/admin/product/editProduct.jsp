@@ -14,7 +14,7 @@
     <div class="row">
         <div class="col-12 mb-4 order-0">
             <div class="card mb-4">
-                <h5 class="card-header">Tạo Sản Phẩm</h5>
+                <h5 class="card-header">Sửa Sản Phẩm</h5>
                 <div class="card-body">
                     <form action="edit" method="post" enctype="multipart/form-data" role="form">
                         <div class="mb-3">
@@ -25,11 +25,16 @@
                         <div class="mb-3">
                             <label class="form-label">Mô Tả</label>
                             <textarea class="form-control" name="description" rows="3"
-                                      value="${product.description}"></textarea>
+                                      >${product.description}</textarea>
                         </div>
                         <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Hình Ảnh</label>
-                            <input class="form-control" type="file" name="image" id="formFile"/>
+
+                            <label class="form-label">Hình Ảnh</label>
+                            <core:url value="/image?fname=product/${product.listImages}"
+                                      var="imgUrl"></core:url>
+                            <img class="rounded-circle" height="200" width="200" id="image"
+                                 width="100px" src="${imgUrl}" alt="">
+                            <input class="form-control" name="image" type="file" id="formFile"/>
                         </div>
 
                         <div class="mb-3">
@@ -49,15 +54,18 @@
                                    placeholder="Số Lượng ..."/>
                         </div>
                         <div class="mb-3">
-                            <label for="exampleFormControlSelect1" class="form-label">Thể Loại</label>
-                            <select class="form-select" id="exampleFormControlSelect1" name="categoryId"
-                                    value="${kq.id}"
-                                    aria-label="Thể Loại">
-                                <option >Chọn Thể Loại</option>
-                                <core:forEach items="${categorys}" var="kq">
+                            <label for="exampleFormControlSelect1" class="form-label">Thể
+                                Loại</label> <select class="form-select" id="exampleFormControlSelect1"
+                                                     name="categoryId" aria-label="Thể Loại">
+                            <core:forEach items="${categorys}" var="kq">
+                                <core:if test="${kq.id == category.id}">
+                                    <option selected value="${kq.id}">${kq.name}</option>
+                                </core:if>
+                                <core:if test="${kq.id != category.id}">
                                     <option value="${kq.id}">${kq.name}</option>
-                                </core:forEach>
-                            </select>
+                                </core:if>
+                            </core:forEach>
+                        </select>
                         </div>
                         <div class="mb-3">
                             <div class="form-check form-switch mb-2">
@@ -95,7 +103,7 @@
                         </div>
                         <div class="mb-3">
 
-                            <button type="submit" class="btn btn-primary">Tạo Sản Phẩm</button>
+                            <button type="submit" class="btn btn-primary">Sửa Sản Phẩm</button>
                         </div>
                     </form>
                 </div>

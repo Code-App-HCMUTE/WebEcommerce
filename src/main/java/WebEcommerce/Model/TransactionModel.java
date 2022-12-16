@@ -7,14 +7,14 @@ public class TransactionModel {
     private int userId;
     private int storeId;
     private boolean isUp;
-    private double amount;
+    private int amount;
     private Date createdAt;
     private Date updatedAt;
 
     public TransactionModel() {
     }
 
-    public TransactionModel(int _id, int userId, int storeId, boolean isUp, double amount, Date createdAt, Date updatedAt) {
+    public TransactionModel(int _id, int userId, int storeId, boolean isUp, int amount, Date createdAt, Date updatedAt) {
         this._id = _id;
         this.userId = userId;
         this.storeId = storeId;
@@ -56,11 +56,11 @@ public class TransactionModel {
         isUp = up;
     }
 
-    public double getAmount() {
+    public int getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
     }
 

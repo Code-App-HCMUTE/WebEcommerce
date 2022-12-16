@@ -13,5 +13,6 @@ public interface UserService {
     List<UserModel> Search (String query,int size,int index);
     int SearchEmailCount(String query);
     int SearchCount(String query);
+    List<UserModel> getUserNew();
 
 }

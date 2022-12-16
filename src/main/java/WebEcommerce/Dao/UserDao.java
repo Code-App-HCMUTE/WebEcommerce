@@ -13,4 +13,6 @@ public interface UserDao {
     int SearchEmailCount (String query);
     int SearchCount(String query);
     void ResetPassword (int id,String newPass);
+
+    List<UserModel> getUserNew();
 }

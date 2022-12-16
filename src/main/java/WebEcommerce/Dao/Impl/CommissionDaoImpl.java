@@ -26,7 +26,7 @@ public class CommissionDaoImpl extends DBConnection implements CommissionDao {
                 CommissionModel Commission = new CommissionModel();
                 Commission.setId(rs.getInt("_id"));
                 Commission.setName(rs.getString("name"));
-                Commission.setCost(rs.getFloat("cost"));
+                Commission.setCost(rs.getInt("cost"));
                 Commission.setDescription(rs.getString("description"));
                 Commission.setIsDelete(rs.getBoolean("isDeleted"));
                 Commission.setCreatedAt(rs.getDate("createdAt"));
@@ -41,12 +41,46 @@ public class CommissionDaoImpl extends DBConnection implements CommissionDao {
 
     @Override
     public CommissionModel get(int id) {
+
+        String sql = "SELECT * FROM commission WHERE _id=?";
+        try {
+            Connection conn = super.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                CommissionModel Commission = new CommissionModel();
+                Commission.setId(rs.getInt("_id"));
+                Commission.setName(rs.getString("name"));
+                Commission.setCost(rs.getInt("cost"));
+                Commission.setDescription(rs.getString("description"));
+                Commission.setIsDelete(rs.getBoolean("isDeleted"));
+                Commission.setCreatedAt(rs.getDate("createdAt"));
+                Commission.setUpdatedAt(rs.getDate("updatedAt"));
+                return Commission;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
     @Override
     public void edit(CommissionModel commission) {
-
+        String sql = "UPDATE  commission SET name=?,cost=?, description=?, isDeleted=?, updatedAt=? WHERE _id=?";
+        try {
+            Connection con = super.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, commission.getName());
+            ps.setInt(2, commission.getCost());
+            ps.setString(3, commission.getDescription());
+            ps.setBoolean(4, commission.getIsDelete());
+            ps.setDate(5, (Date) commission.getUpdatedAt());
+            ps.setInt(6, commission.getId());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -56,7 +90,7 @@ public class CommissionDaoImpl extends DBConnection implements CommissionDao {
             Connection con = super.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, commission.getName());
-            ps.setDouble(2, commission.getCost());
+            ps.setInt(2, commission.getCost());
             ps.setString(3, commission.getDescription());
             ps.setBoolean(4, commission.getIsDelete());
             ps.setDate(5, (Date) commission.getCreatedAt());
@@ -69,6 +103,14 @@ public class CommissionDaoImpl extends DBConnection implements CommissionDao {
 
     @Override
     public void delete(int id) {
-
+        String sql = "DELETE FROM commission WHERE _id=?";
+        try {
+            Connection con = super.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

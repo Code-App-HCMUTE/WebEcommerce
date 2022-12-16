@@ -253,21 +253,23 @@
                                                                 class="form-check-input" type="checkbox" value=""
                                                                 id="flexCheckDefault1">
                                                     </th>
-                                                    <th>Ảnh</th>
                                                     <th>Tên Cửa Hàng</th>
-                                                    <th>Giá</th>
-                                                    <th>Giá Giảm</th>
-                                                    <th>Số Lượng</th>
-                                                    <th>Số Lượng Bán</th>
-                                                    <th>Cấp Phép</th>
-                                                    <th>Trạng Thái</th>
-                                                    <th>Cửa Hàng</th>
-                                                    <th>Chỉnh Sữa</th>
+                                                    <th>Mô Tả</th>
+                                                    <th>Mã Chủ Shop</th>
+                                                    <th>Cho Phép</th>
+                                                    <th>Trạng Thái Hoạt Động</th>
+                                                    <th>Ảnh</th>
+                                                    <th>Trang Bìa</th>
+                                                    <th>Trang Bìa</th>
+                                                    <th>Mã Chính Sách</th>
+                                                    <th>Điểm</th>
+                                                    <th>Đánh Giá</th>
+                                                    <th>Ví Điện Tử</th>
 
                                                 </tr>
                                                 </thead>
                                                 <tbody class="table-border-bottom-0">
-                                                <core:forEach items="${listProducts}" var="kq">
+                                                <core:forEach items="${storeList}" var="kq">
                                                     <tr>
                                                         <td>
                                                             <label for="flexCheckDefault"></label>
@@ -275,19 +277,9 @@
                                                                     class="form-check-input" type="checkbox" value=""
                                                                     id="flexCheckDefault">
                                                         </td>
-
-                                                        <td>
-                                                            <core:url value="/image?fname=product/${kq.listImages}" var="imgUrl"></core:url>
-                                                            <img src="${imgUrl}"
-                                                                 class="rounded float-start" height="40" width="40"
-                                                                 alt="...">
-
-                                                        </td>
                                                         <td><strong>${kq.name}</strong></td>
-                                                        <td>${kq.price}đ</td>
-                                                        <td>${kq.promotionalPrice}đ</td>
-                                                        <td>${kq.quantity}</td>
-                                                        <td>${kq.sold}</td>
+                                                        <td>${kq.bio}</td>
+                                                        <td>${kq.ownerId}</td>
                                                         <td>
                                                             <core:if test="${kq.isActive}"><span
                                                                     class="badge bg-label-primary me-1">Active</span></core:if>
@@ -295,12 +287,32 @@
                                                                     class="badge bg-label-danger me-1">Block</span></core:if>
                                                         </td>
                                                         <td>
-                                                            <core:if test="${kq.isSelling}"><span
-                                                                    class="badge bg-label-primary me-1">Active</span></core:if>
-                                                            <core:if test="${!kq.isSelling}"><span
-                                                                    class="badge bg-label-danger me-1">Block</span></core:if>
+                                                            <core:if test="${kq.isOpen}"><span
+                                                                    class="badge bg-label-primary me-1">Mở</span></core:if>
+                                                            <core:if test="${!kq.isOpen}"><span
+                                                                    class="badge bg-label-danger me-1">Đóng</span></core:if>
                                                         </td>
-                                                        <td>${kq.categoryId}</td>
+                                                        <td>
+                                                            <core:url value="/image?fname=store/${kq.avatar}" var="imgUrl"></core:url>
+                                                            <img src="${imgUrl}"
+                                                                 class="rounded float-start" height="40" width="40"
+                                                                 alt="...">
+                                                        </td><td>
+                                                            <core:url value="/image?fname=store/${kq.cover}" var="imgUrl"></core:url>
+                                                            <img src="${imgUrl}"
+                                                                 class="rounded float-start" height="40" width="40"
+                                                                 alt="...">
+                                                        </td><td>
+                                                            <core:url value="/image?fname=store/${kq.featured_images}" var="imgUrl"></core:url>
+                                                            <img src="${imgUrl}"
+                                                                 class="rounded float-start" height="40" width="40"
+                                                                 alt="...">
+                                                        </td>
+                                                        <td>${kq.commissionId}</td>
+                                                        <td>${kq.point}</td>
+                                                        <td>${kq.rating}</td>
+                                                        <td>${kq.e_wallet}</td>
+
                                                         <td>
                                                             <div class="dropdown">
                                                                 <button type="button"

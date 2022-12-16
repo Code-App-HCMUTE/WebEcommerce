@@ -17,12 +17,12 @@ public class StyleServiceImpl implements StyleService {
 
     @Override
     public StyleModel get(int id) {
-        return null;
+        return styleDao.get(id);
     }
 
     @Override
     public void edit(StyleModel style) {
-
+        styleDao.edit(style);
     }
 
     @Override
@@ -32,6 +32,6 @@ public class StyleServiceImpl implements StyleService {
 
     @Override
     public void delete(int id) {
-
+        styleDao.delete(id);
     }
 }

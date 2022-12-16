@@ -25,7 +25,6 @@ public class StyleController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<StyleModel> styleList = styleService.findAll();
-        System.out.println(styleList);
         request.setAttribute("listStyles", styleList);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/views/admin/style/style.jsp");
         try {

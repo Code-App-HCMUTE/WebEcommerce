@@ -38,13 +38,45 @@ public class StyleDaoImpl extends DBConnection implements StyleDao {
     }
 
     @Override
-    public CategoryModel get(int id) {
+    public StyleModel get(int id) {
+
+        String sql = "SELECT * FROM style where _id=?";
+        try {
+            Connection conn = super.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                StyleModel style = new StyleModel();
+                style.setId(rs.getInt("_id"));
+                style.setName(rs.getString("name"));
+                style.setCaId(rs.getInt("categoryIds"));
+                style.setIsDelete(rs.getBoolean("isDeleted"));
+                style.setCreatedAt(rs.getDate("createdAt"));
+                style.setUpdatedAt(rs.getDate("updateAt"));
+                return style;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
     @Override
     public void edit(StyleModel style) {
-
+        String sql = "UPDATE style SET name=?, categoryIds=?, isDeleted=?, updateAt=?  where _id =?";
+        try {
+            Connection con = super.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, style.getName());
+            ps.setInt(2, style.getCaId());
+            ps.setBoolean(3, style.getIsDelete());
+            ps.setDate(4, (Date) style.getUpdatedAt());
+            ps.setInt(5, style.getId());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -55,7 +87,7 @@ public class StyleDaoImpl extends DBConnection implements StyleDao {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, style.getName());
             ps.setInt(2, style.getCaId());
-            ps.setBoolean(3,style.getIsDelete());
+            ps.setBoolean(3, style.getIsDelete());
             ps.setDate(4, (Date) style.getCreatedAt());
             ps.setDate(5, (Date) style.getUpdatedAt());
             ps.executeUpdate();
@@ -66,6 +98,15 @@ public class StyleDaoImpl extends DBConnection implements StyleDao {
 
     @Override
     public void delete(int id) {
+        String sql = "DELETE FROM style where _id=?";
+        try {
+            Connection con = super.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
 
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

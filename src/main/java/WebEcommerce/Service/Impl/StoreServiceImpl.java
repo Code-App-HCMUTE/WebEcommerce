@@ -29,7 +29,12 @@ public class StoreServiceImpl implements StoreService {
 	@Override
 	public void editStore(StoreModel store) {
 		// TODO Auto-generated method stub
-		
+		storeDao.editStore(store);
+	}
+
+	@Override
+	public void deleteStore(int id) {
+		storeDao.deleteStore(id);
 	}
 
 	@Override

@@ -2,7 +2,6 @@ package WebEcommerce.Dao.Impl;
 
 import WebEcommerce.Connection.DBConnection;
 import WebEcommerce.Dao.UserDao;
-import WebEcommerce.Model.ProductModel;
 import WebEcommerce.Model.UserModel;
 
 import java.sql.Connection;
@@ -267,6 +266,42 @@ public class UserDaoImpl extends DBConnection implements UserDao {
             e.printStackTrace();
 
         }
+    }
+    @Override
+    public List<UserModel> getUserNew(){
+        List<UserModel> users = new ArrayList<UserModel>();
+        String query = "select * from user ORDER BY createdAt DESC LIMIT 0, 5";
+        try{
+            Connection conn = super.getConnection();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                UserModel user=new UserModel();
+                user.set_id(rs.getInt("_id"));
+                user.setAddress(rs.getString("address"));
+                user.setAvatar(rs.getString("avatar"));
+                user.setCover(rs.getString("cover"));
+                user.setFirstName(rs.getString("firstName"));
+                user.setLastName(rs.getString("lastName"));
+                user.setSlug(rs.getString("slug"));
+                user.setId_card(rs.getInt("id_card"));
+                user.setPhone(rs.getString("phone"));
+                user.setSalt(rs.getString("salt"));
+                user.setHashed_password(rs.getString("hashed_password"));
+                user.setRole(rs.getString("role"));
+                user.setEmail(rs.getString("email"));
+                user.setE_wallet(rs.getInt("e_wallet"));
+                user.setIsEmailActive(rs.getBoolean("isEmalActive"));
+                user.setPhoneActive(rs.getBoolean("isPhoneActive"));
+                user.setCreatedAt(rs.getDate("createdAt"));
+                user.setUpdatedAt(rs.getDate("updatedAt"));
+                user.setPoint(rs.getInt("point"));
+                users.add(user);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return users;
     }
 
 }

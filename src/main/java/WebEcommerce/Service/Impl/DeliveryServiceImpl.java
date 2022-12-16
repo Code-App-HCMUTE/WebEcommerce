@@ -17,12 +17,12 @@ public class DeliveryServiceImpl implements DeliveryService {
 
     @Override
     public DeliveryModel get(int id) {
-        return null;
+        return deliveryDao.get(id);
     }
 
     @Override
     public void edit(DeliveryModel delivery) {
-
+        deliveryDao.edit(delivery);
     }
 
     @Override
@@ -32,6 +32,6 @@ public class DeliveryServiceImpl implements DeliveryService {
 
     @Override
     public void delete(int id) {
-
+        deliveryDao.delete(id);
     }
 }

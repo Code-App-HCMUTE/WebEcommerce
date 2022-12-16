@@ -5,13 +5,13 @@ import java.util.Date;
 public class CommissionModel {
     private int _id;
     private String name;
-    private double cost;
+    private int cost;
     private String description;
     private boolean isDelete;
     private Date createdAt;
     private Date updatedAt;
 
-    public CommissionModel(int _id, String name, double cost, String description, boolean isDelete, Date createdAt, Date updatedAt) {
+    public CommissionModel(int _id, String name, int cost, String description, boolean isDelete, Date createdAt, Date updatedAt) {
         this._id = _id;
         this.name = name;
         this.cost = cost;
@@ -40,11 +40,11 @@ public class CommissionModel {
         this.name = name;
     }
 
-    public double getCost() {
+    public int getCost() {
         return cost;
     }
 
-    public void setCost(double cost) {
+    public void setCost(int cost) {
         this.cost = cost;
     }
 

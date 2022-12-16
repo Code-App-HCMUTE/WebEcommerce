@@ -48,4 +48,9 @@ public class UserServiceImpl implements UserService {
     public int SearchCount(String query) {
         return dao.SearchCount(query);
     }
+
+    @Override
+    public List<UserModel> getUserNew() {
+        return dao.getUserNew();
+    }
 }

@@ -137,7 +137,15 @@ public class ProductDaoImpl extends DBConnection implements ProductDao {
 
 	@Override
 	public void delete(int id) {
-
+		String sql = "DELETE FROM product WHERE _id = ?";
+		try{
+			Connection conn = super.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1,id);
+			ps.executeUpdate();
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 	}
 	@Override
 	public List<ProductModel> search(String query,int size,int index) {

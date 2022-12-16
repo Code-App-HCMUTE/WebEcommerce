@@ -9,6 +9,7 @@ import java.util.List;
 
 public class TransactionServiceImpl implements TransactionService {
     TransactionDao transactionDao = new TransactionDaoImpl();
+
     @Override
     public List<TransactionModel> findAll() {
         return transactionDao.findAll();
@@ -16,12 +17,12 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public TransactionModel get(int id) {
-        return null;
+        return transactionDao.get(id);
     }
 
     @Override
     public void edit(TransactionModel transaction) {
-
+        transactionDao.edit(transaction);
     }
 
     @Override
@@ -31,6 +32,11 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public void delete(int id) {
+        transactionDao.delete(id);
+    }
 
+    @Override
+    public int sumMoneyTransaction(int year) {
+        return transactionDao.sumMoneyTransaction(year);
     }
 }

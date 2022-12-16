@@ -17,7 +17,6 @@ public class DeliveryController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<DeliveryModel> deliverys = deliveryService.findAll();
-            System.out.println(deliverys);
         request.setAttribute("listDelivery", deliverys);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/views/admin/delivery/delivery.jsp");
         try {

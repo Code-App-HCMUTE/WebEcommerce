@@ -60,14 +60,14 @@ public class TransactionAddController extends HttpServlet {
             request.setCharacterEncoding("UTF-8");
             List<FileItem> items = servletFileUpload.parseRequest(request);
             for (FileItem item : items) {
-                if (item.getFieldName().equals("name")) {
+                if (item.getFieldName().equals("userId")) {
                     transaction.setUserId(Integer.parseInt(item.getString("UTF-8")));
-                } else if (item.getFieldName().equals("cost")) {
+                } else if (item.getFieldName().equals("storeId")) {
                     transaction.setStoreId(Integer.parseInt(item.getString("UTF-8")));
-                } else if (item.getFieldName().equals("description")) {
-                    transaction.setIsUp(Boolean.parseBoolean(item.getString("UTF-8")));
+                } else if (item.getFieldName().equals("isUp")) {
+                    transaction.setIsUp(item.getString("UTF-8").equals("on"));
                 } else if (item.getFieldName().equals("amount")) {
-                    transaction.setAmount(Double.parseDouble(item.getString("UTF-8")));
+                    transaction.setAmount(Integer.parseInt(item.getString("UTF-8")));
                 }
                 Date date = java.sql.Date.valueOf(LocalDate.now());
                 transaction.setCreatedAt(date);

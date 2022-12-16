@@ -15,4 +15,5 @@ public interface TransactionDao {
     void insert(TransactionModel transaction);
 
     void delete(int id);
+    int sumMoneyTransaction(int year);
 }

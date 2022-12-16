@@ -17,12 +17,12 @@ public class StoreLevelServiceImpl implements StoreLevelService {
 
     @Override
     public StoreLevelModel get(int id) {
-        return null;
+        return storeLevelDao.get(id);
     }
 
     @Override
     public void edit(StoreLevelModel storeLevel) {
-
+        storeLevelDao.edit(storeLevel);
     }
 
     @Override
@@ -32,6 +32,6 @@ public class StoreLevelServiceImpl implements StoreLevelService {
 
     @Override
     public void delete(int id) {
-
+        storeLevelDao.delete(id);
     }
 }

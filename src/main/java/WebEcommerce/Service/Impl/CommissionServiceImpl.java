@@ -16,12 +16,12 @@ public class CommissionServiceImpl implements CommissionService {
 
     @Override
     public CommissionModel get(int id) {
-        return null;
+        return commissionDao.get(id);
     }
 
     @Override
     public void edit(CommissionModel commission) {
-
+        commissionDao.edit(commission);
     }
 
     @Override
@@ -31,6 +31,6 @@ public class CommissionServiceImpl implements CommissionService {
 
     @Override
     public void delete(int id) {
-
+        commissionDao.delete(id);
     }
 }

@@ -12,4 +12,5 @@ public interface TransactionService {
     void edit(TransactionModel transaction);
     void insert(TransactionModel transaction);
     void delete(int id);
+    int sumMoneyTransaction(int year);
 }
