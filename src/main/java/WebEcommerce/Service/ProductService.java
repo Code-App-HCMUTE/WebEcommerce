@@ -11,5 +11,6 @@ public interface ProductService {
     void insert(ProductModel product);
     void delete(int id);
     List<ProductModel> search (String query,int size,int index);
-    int SearchCount (String query);
+    int SearchCount (String query,String sql);
+    List<ProductModel> productByCat(int catId,int size,int index);
 }

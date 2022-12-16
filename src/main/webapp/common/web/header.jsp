@@ -144,10 +144,10 @@
             <div class="col-lg-3">
                 <div class="header__cart">
                     <ul>
-                        <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                        <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                        <li><a href="/WebEcommerce/order"><i class="fa-solid fa-truck-fast"></i> <span>${order.size()}</span></a></li>
+                        <li><a href="/WebEcommerce/cart"><i class="fa fa-shopping-bag"></i> <span>${cart.size()}</span></a></li>
                     </ul>
-                    <div class="header__cart__price">item: <span>$150.00</span></div>
+                    <div class="header__cart__price">item: <span>${total}</span></div>
                 </div>
             </div>
         </div>
@@ -165,17 +165,9 @@
                                     <span>All departments</span>
                                 </div>
                                 <ul style="display:none">
-                                    <li><a href="#">Fresh Meat</a></li>
-                                    <li><a href="#">Vegetables</a></li>
-                                    <li><a href="#">Fruit & Nut Gifts</a></li>
-                                    <li><a href="#">Fresh Berries</a></li>
-                                    <li><a href="#">Ocean Foods</a></li>
-                                    <li><a href="#">Butter & Eggs</a></li>
-                                    <li><a href="#">Fastfood</a></li>
-                                    <li><a href="#">Fresh Onion</a></li>
-                                    <li><a href="#">Papayaya & Crisps</a></li>
-                                    <li><a href="#">Oatmeal</a></li>
-                                    <li><a href="#">Fresh Bananas</a></li>
+                                <c:forEach var="item" items="${category}">
+                                    <li><a href="/WebEcommerce/category?id=${item.getId()}">${item.getName()}</a></li>
+                                </c:forEach>
                                 </ul>
                             </div>
                         </div>
@@ -183,11 +175,11 @@
                             <div class="hero__search">
                                 <div class="hero__search__form" style="height:50px">
                                     <form action='/WebEcommerce/search?index=1' method="POST">
-                                                     <select class="form-select" name="search" aria-label="Default select example">
-                                                       <option value="product">Sản Phẩm</option>
-                                                       <option value="store">Cửa Hàng</option>
-                                                       <option value="user">Người dùng</option>
-                                                     </select>
+                                         <select class="form-select" name="search" aria-label="Default select example">
+                                           <option value="product">Sản Phẩm</option>
+                                           <option value="store">Cửa Hàng</option>
+                                           <option value="user">Người dùng</option>
+                                         </select>
                                         <input type="text" name="searchValue" placeholder="What do yo u need?">
                                         <button type="submit" class="site-btn">SEARCH</button>
                                     </form>

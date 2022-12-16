@@ -3,8 +3,10 @@ package WebEcommerce.Controller.web;
 import WebEcommerce.Model.ProductModel;
 import WebEcommerce.Model.UserModel;
 import WebEcommerce.Service.Impl.ProductServiceImpl;
+import WebEcommerce.Service.Impl.StoreServiceImpl;
 import WebEcommerce.Service.Impl.UserServiceImpl;
 import WebEcommerce.Service.ProductService;
+import WebEcommerce.Service.StoreService;
 import WebEcommerce.Service.UserService;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -22,7 +24,7 @@ import java.util.List;
 public class SearchController extends HttpServlet {
     ProductService productService = new ProductServiceImpl();
     UserService userService = new UserServiceImpl();
-
+    StoreService storeService =new StoreServiceImpl();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request,response);
@@ -42,12 +44,15 @@ public class SearchController extends HttpServlet {
         String query = request.getParameter("searchValue");
         String index = request.getParameter("index");
         String type = request.getParameter("search");
+        System.out.println(type);
         if(type.equals("product")) {
             request.setAttribute("searchValue",query);
             request.setAttribute("search",type);
             request.setAttribute("listName","product");
+            request.setAttribute("search",type);
             request.setAttribute("list", productService.search(query, 6, Integer.parseInt(index)));
-            int count = productService.SearchCount(query)/6;
+            int count = productService.SearchCount(query,"select * from product where name like '%"+query+"%'")/6;
+
             request.setAttribute("pageCount",count+1);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/views/web/shopGrid.jsp");
             try {
@@ -63,6 +68,7 @@ public class SearchController extends HttpServlet {
             request.setAttribute("searchValue",query);
             request.setAttribute("search",type);
             request.setAttribute("listName","user");
+            request.setAttribute("search",type);
             request.setAttribute("list", userService.Search(query, 6, Integer.parseInt(index)));
             System.out.println(userService.Search(query, 6, Integer.parseInt(index)).size());
             int count = userService.SearchCount(query)/6;
@@ -81,8 +87,9 @@ public class SearchController extends HttpServlet {
             request.setAttribute("searchValue",query);
             request.setAttribute("search",type);
             request.setAttribute("listName","store");
-            request.setAttribute("list", productService.search(query, 6, Integer.parseInt(index)));
-            int count = productService.SearchCount(query)/6;
+            request.setAttribute("list", storeService.search(query, 6, Integer.parseInt(index)));
+            int count = 1/6;
+
             request.setAttribute("pageCount",count+1);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/views/web/shopGrid.jsp");
             try {

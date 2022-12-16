@@ -45,8 +45,13 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public int SearchCount(String query) {
-		return productDao.SearchCount(query);
+	public int SearchCount(String query,String sql) {
+		return productDao.SearchCount(query,sql);
+	}
+
+	@Override
+	public List<ProductModel> productByCat(int catId,int size,int index) {
+		return productDao.productByCat(catId,size,index);
 	}
 
 }

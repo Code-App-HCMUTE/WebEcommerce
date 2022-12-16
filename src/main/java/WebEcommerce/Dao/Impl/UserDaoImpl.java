@@ -54,7 +54,8 @@ public class UserDaoImpl extends DBConnection implements UserDao {
 
     @Override
     public void Register(UserModel user) {
-        String sql = "INSERT INTO user (firstName,email,hashed_password,phone,isEmalActive,createdAt,updatedAt) values (?,?,?,?,1,?,?)";
+        String sql = "INSERT INTO user (firstName,email,hashed_password,phone,isEmalActive,createdAt,updatedAt)" +
+                " values (?,?,?,?,1,?,?)";
         try {
             Connection con = super.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
@@ -136,7 +137,8 @@ public class UserDaoImpl extends DBConnection implements UserDao {
 
     @Override
     public List<UserModel> Search(String query, int size, int index) {
-        String sql = "with x as(select *,row_number() over(order by createdAt desc)as r from user where concat(firstName,lastName) like '%"+query+"%')\n" +
+        String sql = "with x as(select *,row_number() over(order by createdAt desc)as r" +
+                " from user where concat(firstName,lastName) like '%"+query+"%')\n" +
                 "select * from x where r between ?*?-? and ?*?";
         List<UserModel> users = new ArrayList<UserModel>();
         try {

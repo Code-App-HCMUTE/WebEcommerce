@@ -10,11 +10,13 @@ public interface OrderDao {
 
     OrderModel get(int id);
 
-    void edit(OrderModel order);
+    void edit(OrderModel product);
 
-    void insert(OrderModel order);
+    void insert(OrderModel product);
 
     void delete(int id);
+    List<OrderModel> userOrder(int userId);
+    int LastInserted ();
 
     int CountOrder(int loai);
 

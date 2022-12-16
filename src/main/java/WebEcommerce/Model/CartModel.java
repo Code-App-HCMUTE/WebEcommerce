@@ -1,32 +1,25 @@
 package WebEcommerce.Model;
 
-import java.util.Arrays;
 import java.util.Date;
 
-public class OrderItemModel {
+public class CartModel {
     private int _id;
-    private int orderId;
-    private  int productId;
-    private Arrays styleValueIds;
+
+    private int userId;
+    private int storeId;
+    private int productId;
+    private int styleValueIds;
     private int count;
     private Date createdAt;
     private Date updatedAt;
-    private ProductModel product;
 
-    public ProductModel getProduct() {
-        return product;
+    public CartModel() {
     }
 
-    public void setProduct(ProductModel product) {
-        this.product = product;
-    }
-
-    public OrderItemModel() {
-    }
-
-    public OrderItemModel(int _id, int orderId, int productId, Arrays styleValueIds, int count, Date createdAt, Date updatedAt) {
+    public CartModel(int _id, int userId, int storeId, int productId, int styleValueIds, int count, Date createdAt, Date updatedAt) {
         this._id = _id;
-        this.orderId = orderId;
+        this.userId = userId;
+        this.storeId = storeId;
         this.productId = productId;
         this.styleValueIds = styleValueIds;
         this.count = count;
@@ -34,20 +27,28 @@ public class OrderItemModel {
         this.updatedAt = updatedAt;
     }
 
-    public int getId() {
+    public int get_id() {
         return _id;
     }
 
-    public void setId(int _id) {
+    public void set_id(int _id) {
         this._id = _id;
     }
 
-    public int getOrderId() {
-        return orderId;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(int storeId) {
+        this.storeId = storeId;
     }
 
     public int getProductId() {
@@ -58,11 +59,11 @@ public class OrderItemModel {
         this.productId = productId;
     }
 
-    public Arrays getStyleValueIds() {
+    public int getStyleValueIds() {
         return styleValueIds;
     }
 
-    public void setStyleValueIds(Arrays styleValueIds) {
+    public void setStyleValueIds(int styleValueIds) {
         this.styleValueIds = styleValueIds;
     }
 

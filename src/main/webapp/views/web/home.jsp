@@ -11,31 +11,13 @@
             <div class="container">
                 <div class="row">
                     <div class="categories__slider owl-carousel">
+                    <c:forEach var="item" items="${category}">
                         <div class="col-lg-3">
-                            <div class="categories__item set-bg" data-setbg="${URL}/img/categories/cat-1.jpg">
-                                <h5><a href="#">Fresh Fruit</a></h5>
+                            <div class="categories__item set-bg" data-setbg="${imageUrl}/category/${item.getImage()}">
+                                <h5><a href="/WebEcommerce/category?id=${item.getId()}">${item.getName()}</a></h5>
                             </div>
                         </div>
-                        <div class="col-lg-3">
-                            <div class="categories__item set-bg" data-setbg="${URL}/img/categories/cat-2.jpg">
-                                <h5><a href="#">Dried Fruit</a></h5>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="categories__item set-bg" data-setbg="${URL}/img/categories/cat-3.jpg">
-                                <h5><a href="#">Vegetables</a></h5>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="categories__item set-bg" data-setbg="${URL}/img/categories/cat-4.jpg">
-                                <h5><a href="#">drink fruits</a></h5>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="categories__item set-bg" data-setbg="${URL}/img/categories/cat-5.jpg">
-                                <h5><a href="#">drink fruits</a></h5>
-                            </div>
-                        </div>
+                    </c:forEach>
                     </div>
                 </div>
             </div>
@@ -66,11 +48,6 @@
                     <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat ${item.categoryId}">
                         <div class="featured__item">
                             <div class="featured__item__pic set-bg" data-setbg="${imageUrl}/product/${item.listImages}">
-                                <ul class="featured__item__pic__hover">
-                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
                             </div>
                             <div class="featured__item__text">
                                 <h6><a href="product/detail?id=${item.id}">${item.name}</a></h6>
