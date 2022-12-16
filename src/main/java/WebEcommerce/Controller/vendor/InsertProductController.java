@@ -89,7 +89,7 @@ public class InsertProductController extends HttpServlet {
 				product.setCreatedAt(date);
 				product.setUpdatedAt(date);
 			}
-			productService.insert(product);
+			productService.insertByStore(product);
 			response.sendRedirect(request.getContextPath() + "/vendor/products");
 		} catch (FileUploadException e) {
 			e.printStackTrace();

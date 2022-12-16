@@ -10,4 +10,14 @@ public interface TransactionDao {
 	void insertTransaction(int sotien);
 	int countTransaction();
 	int doanhthu(Date date);
+    List<TransactionModel> findAll();
+
+    TransactionModel get(int id);
+
+    void edit(TransactionModel transaction);
+
+    void insert(TransactionModel transaction);
+
+    void delete(int id);
+    int sumMoneyTransaction(int year);
 }

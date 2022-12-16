@@ -93,20 +93,20 @@ public class StoreModel {
         this.staffIds = staffIds;
     }
 
-    public boolean isActive() {
+    public boolean getIsActive() {
         return isActive;
     }
 
-    public void setActive(boolean active) {
-        isActive = active;
+    public void setIsActive(boolean active) {
+        this.isActive = active;
     }
 
-    public boolean isOpen() {
+    public boolean getIsOpen() {
         return isOpen;
     }
 
-    public void setOpen(boolean open) {
-        isOpen = open;
+    public void setIsOpen(boolean open) {
+        this.isOpen = open;
     }
 
     public String getAvatar() {

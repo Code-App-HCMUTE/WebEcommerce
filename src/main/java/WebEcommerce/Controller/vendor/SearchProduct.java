@@ -34,7 +34,7 @@ public class SearchProduct extends HttpServlet {
         {
         	index="1";
         }
-        request.setAttribute("products", productService.search(query, 10, Integer.parseInt(index)));
+        request.setAttribute("products", productService.searchByStore(query, 10, Integer.parseInt(index)));
         request.setAttribute("txt",query);
         int count=productService.CountProduct(query);
         request.setAttribute("index",index);

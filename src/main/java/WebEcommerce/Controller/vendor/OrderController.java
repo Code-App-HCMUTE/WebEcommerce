@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import WebEcommerce.Model.OrderModel;
+import WebEcommerce.Service.Impl.OrderServiceImpl;
 import WebEcommerce.Service.OrderService;
-import WebEcommerce.Service.Impl.OrderServiveImpl;
 
 @WebServlet("/vendor/orders")
 public class OrderController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	OrderService orderService=new OrderServiveImpl();
+	OrderService orderService=new OrderServiceImpl();
     public OrderController() {
         super();
     }

@@ -14,11 +14,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import WebEcommerce.Service.Impl.OrderServiceImpl;
 import WebEcommerce.Service.TransactionService;
 
 import WebEcommerce.Service.OrderService;
 import WebEcommerce.Service.ProductService;
-import WebEcommerce.Service.Impl.OrderServiveImpl;
 import WebEcommerce.Service.Impl.ProductServiceImpl;
 import WebEcommerce.Service.Impl.TransactionServiceImpl;
 
@@ -26,7 +26,7 @@ import WebEcommerce.Service.Impl.TransactionServiceImpl;
 public class StatisticController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ProductService productService = new ProductServiceImpl();
-	OrderService orderService=new OrderServiveImpl();
+	OrderService orderService=new OrderServiceImpl();
 	TransactionService transactionService=new TransactionServiceImpl();
 	public StatisticController() {
 		super();

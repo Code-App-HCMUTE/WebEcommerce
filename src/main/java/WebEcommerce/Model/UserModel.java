@@ -3,202 +3,201 @@ package WebEcommerce.Model;
 import java.util.Date;
 
 public class UserModel {
-	private int _id;
-	private String fistName;
-	private String lastName;
-	private String slug;
-	private int id_card;
-	private String email;
-	private String phone;
-	private boolean isEmailActive;
-	private boolean isPhoneActive;
-	private String salt;
-	private String hashed_password;
-	private String role;
-	private String address;
-	private String avatar;
-	private String cover;
-	private int point;
-	private int e_wallet;
-	private Date createdAt;
-	private Date updatedAt;
 
-	public UserModel(int _id, String fistName, String lastName, String slug, int id_card, String email, String phone,
-			boolean isEmailActive, boolean isPhoneActive, String salt, String hashed_password, String role,
-			String address, String avatar, String cover, int point, int e_wallet, Date createdAt, Date updatedAt) {
-		this._id = _id;
-		this.fistName = fistName;
-		this.lastName = lastName;
-		this.slug = slug;
-		this.id_card = id_card;
-		this.email = email;
-		this.phone = phone;
-		this.isEmailActive = isEmailActive;
-		this.isPhoneActive = isPhoneActive;
-		this.salt = salt;
-		this.hashed_password = hashed_password;
-		this.role = role;
-		this.address = address;
-		this.avatar = avatar;
-		this.cover = cover;
-		this.point = point;
-		this.e_wallet = e_wallet;
-		this.createdAt = createdAt;
-		this.updatedAt = updatedAt;
-	}
+    private int _id;
+    private String firstName;
+    private String lastName;
+    private String slug;
+    private int id_card;
+    private String email;
+    private String phone;
+    private boolean isEmailActive;
+    private boolean isPhoneActive;
+    private String salt;
+    private String hashed_password;
+    private String role;
+    private String address;
+    private String avatar;
+    private String cover;
+    private int point;
+    private int e_wallet;
+    private Date createdAt;
+    private Date updatedAt;
 
-	public UserModel() {
-	}
+    public UserModel(int _id, String firstName, String lastName, String slug, int id_card, String email, String phone, boolean isEmailActive, boolean isPhoneActive, String salt, String hashed_password, String role, String address, String avatar, String cover, int point, int e_wallet, Date createdAt, Date updatedAt) {
+        this._id = _id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.slug = slug;
+        this.id_card = id_card;
+        this.email = email;
+        this.phone = phone;
+        this.isEmailActive = isEmailActive;
+        this.isPhoneActive = isPhoneActive;
+        this.salt = salt;
+        this.hashed_password = hashed_password;
+        this.role = role;
+        this.address = address;
+        this.avatar = avatar;
+        this.cover = cover;
+        this.point = point;
+        this.e_wallet = e_wallet;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 
-	public int get_id() {
-		return _id;
-	}
+    public UserModel() {
+    }
 
-	public void set_id(int _id) {
-		this._id = _id;
-	}
+    public int get_id() {
+        return _id;
+    }
 
-	public String getFistName() {
-		return fistName;
-	}
+    public void set_id(int _id) {
+        this._id = _id;
+    }
 
-	public void setFistName(String fistName) {
-		this.fistName = fistName;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	public String getSlug() {
-		return slug;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public void setSlug(String slug) {
-		this.slug = slug;
-	}
+    public String getSlug() {
+        return slug;
+    }
 
-	public int getId_card() {
-		return id_card;
-	}
+    public void setSlug(String slug) {
+        this.slug = slug;
+    }
 
-	public void setId_card(int id_card) {
-		this.id_card = id_card;
-	}
+    public int getId_card() {
+        return id_card;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setId_card(int id_card) {
+        this.id_card = id_card;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public String getPhone() {
-		return phone;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+    public String getPhone() {
+        return phone;
+    }
 
-	public boolean isEmailActive() {
-		return isEmailActive;
-	}
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
-	public void setEmailActive(boolean emailActive) {
-		isEmailActive = emailActive;
-	}
+    public boolean getIsEmailActive() {
+        return isEmailActive;
+    }
 
-	public boolean isPhoneActive() {
-		return isPhoneActive;
-	}
+    public void setIsEmailActive(boolean isEmailActive) {
+        this.isEmailActive = isEmailActive;
+    }
 
-	public void setPhoneActive(boolean phoneActive) {
-		isPhoneActive = phoneActive;
-	}
+    public boolean getIsPhoneActive() {
+        return isPhoneActive;
+    }
 
-	public String getSalt() {
-		return salt;
-	}
+    public void setPhoneActive(boolean phoneActive) {
+        isPhoneActive = phoneActive;
+    }
 
-	public void setSalt(String salt) {
-		this.salt = salt;
-	}
+    public String getSalt() {
+        return salt;
+    }
 
-	public String getHashed_password() {
-		return hashed_password;
-	}
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
 
-	public void setHashed_password(String hashed_password) {
-		this.hashed_password = hashed_password;
-	}
+    public String getHashed_password() {
+        return hashed_password;
+    }
 
-	public String getRole() {
-		return role;
-	}
+    public void setHashed_password(String hashed_password) {
+        this.hashed_password = hashed_password;
+    }
 
-	public void setRole(String role) {
-		this.role = role;
-	}
+    public String getRole() {
+        return role;
+    }
 
-	public String getAddress() {
-		return address;
-	}
+    public void setRole(String role) {
+        this.role = role;
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public String getAddress() {
+        return address;
+    }
 
-	public String getAvatar() {
-		return avatar;
-	}
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-	public void setAvatar(String avatar) {
-		this.avatar = avatar;
-	}
+    public String getAvatar() {
+        return avatar;
+    }
 
-	public String getCover() {
-		return cover;
-	}
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
 
-	public void setCover(String cover) {
-		this.cover = cover;
-	}
+    public String getCover() {
+        return cover;
+    }
 
-	public int getPoint() {
-		return point;
-	}
+    public void setCover(String cover) {
+        this.cover = cover;
+    }
 
-	public void setPoint(int point) {
-		this.point = point;
-	}
+    public int getPoint() {
+        return point;
+    }
 
-	public int getE_wallet() {
-		return e_wallet;
-	}
+    public void setPoint(int point) {
+        this.point = point;
+    }
 
-	public void setE_wallet(int e_wallet) {
-		this.e_wallet = e_wallet;
-	}
+    public int getE_wallet() {
+        return e_wallet;
+    }
 
-	public Date getCreatedAt() {
-		return createdAt;
-	}
+    public void setE_wallet(int e_wallet) {
+        this.e_wallet = e_wallet;
+    }
 
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
+    public Date getCreatedAt() {
+        return createdAt;
+    }
 
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
 
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
-	}
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 }

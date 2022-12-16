@@ -32,7 +32,7 @@
 									<label for="exampleFormControlInput1" class="form-label">Họ
 										và tên</label> <input class="form-control"
 										id="exampleFormControlInput1" placeholder="Họ và tên"
-										name="name" value="${owner.fistName} ${owner.lastName}"
+										name="name" value="${owner.firstName} ${owner.lastName}"
 										disabled />
 								</div>
 								<div class="mb-3">
@@ -84,7 +84,7 @@
 						<label for="exampleFormControlInput1" class="form-label">Họ
 							và tên</label> <input class="form-control" id="exampleFormControlInput1"
 							placeholder="Họ và tên" name="name"
-							value="${nv.fistName} ${nv.lastName}" disabled />
+							value="${nv.firstName} ${nv.lastName}" disabled />
 					</div>
 					<div class="mb-3">
 						<label for="exampleFormControlInput1" class="form-label">Địa

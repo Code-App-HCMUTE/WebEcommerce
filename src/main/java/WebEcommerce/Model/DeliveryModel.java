@@ -7,7 +7,7 @@ public class DeliveryModel {
     private int _id;
     private String name;
     private String description;
-    private double price;
+    private int price;
     private boolean isDeleted;
     private Date createdAt;
     private Date updatedAt;
@@ -15,7 +15,7 @@ public class DeliveryModel {
     public DeliveryModel() {
     }
 
-    public DeliveryModel(int _id, String name, String description, double price, boolean isDeleted, Date createdAt, Date updatedAt) {
+    public DeliveryModel(int _id, String name, String description, int price, boolean isDeleted, Date createdAt, Date updatedAt) {
         this._id = _id;
         this.name = name;
         this.description = description;
@@ -49,19 +49,19 @@ public class DeliveryModel {
         this.description = description;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
-    public boolean isDeleted() {
+    public boolean getIsDeleted() {
         return isDeleted;
     }
 
-    public void setDeleted(boolean deleted) {
+    public void setIsDeleted(boolean deleted) {
         isDeleted = deleted;
     }
 

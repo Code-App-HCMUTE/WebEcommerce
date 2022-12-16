@@ -1,6 +1,7 @@
 package WebEcommerce.Service;
 
 import java.util.Date;
+import java.util.Date;
 import java.util.List;
 
 import WebEcommerce.Model.ProductModel;
@@ -17,8 +18,18 @@ public interface ProductService {
     List<ProductModel> getAllProductQuantity();
     List<ProductModel> searchProduct(String txtSearch);
     List<ProductModel> search(String query,int size,int index);
+    List<ProductModel> searchByStore(String query, int size, int index);
     int CountProduct(String txt);
     int countProductByDate(Date date);
     int countAll();
     ProductModel getTop1Sold();
+    int SearchCount (String query,String sql);
+    List<ProductModel> productByCat(int catId,int size,int index);
+
+
+    List<ProductModel> findAllByStore();
+    ProductModel getByStore(int id);
+    void editByStore(ProductModel product);
+    void insertByStore(ProductModel product);
+    void deleteByStore(int id);
 }

@@ -33,6 +33,7 @@ public class HomeVendorController extends HttpServlet {
 			{
 				request.setAttribute("stores", stores);
 				Constant.idStore = stores.get(0).get_id();
+				System.out.println(Constant.idStore);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/views/vendor/home.jsp");
 				try {
 					dispatcher.forward(request, response);

@@ -26,7 +26,7 @@
 						<div class="col-sm-6">
 							<label for="firstName" class="form-label">First name</label> <input
 								type="text" class="form-control" id="firstName" placeholder=""
-								value="${user.fistName}" disabled>
+								value="${user.firstName}" disabled>
 						</div>
 
 						<div class="col-sm-6">

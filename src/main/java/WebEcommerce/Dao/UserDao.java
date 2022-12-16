@@ -11,4 +11,12 @@ public interface UserDao {
     void addStaffInStore(UserModel user);
     UserModel getStaffbyPhone(String phone);
     UserModel getUserbyId(int id);
+    void Register(UserModel user);
+    void update (int id,UserModel user);
+    List<UserModel> Search (String query,int size,int index);
+    int SearchEmailCount (String query);
+    int SearchCount(String query);
+    void ResetPassword (int id,String newPass);
+
+    List<UserModel> getUserNew();
 }

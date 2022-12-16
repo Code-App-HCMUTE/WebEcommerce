@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import WebEcommerce.Service.Impl.OrderServiceImpl;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -27,7 +28,6 @@ import WebEcommerce.Service.OrderService;
 import WebEcommerce.Service.ProductService;
 import WebEcommerce.Service.UserService;
 import WebEcommerce.Service.Impl.OrderDetailServiceImpl;
-import WebEcommerce.Service.Impl.OrderServiveImpl;
 import WebEcommerce.Service.Impl.ProductServiceImpl;
 import WebEcommerce.Service.Impl.UserServiceImpl;
 
@@ -35,7 +35,7 @@ import WebEcommerce.Service.Impl.UserServiceImpl;
 public class OrderDetailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	OrderDetailService orderDetailService=new OrderDetailServiceImpl();
-	OrderService orderService=new OrderServiveImpl();
+	OrderService orderService=new OrderServiceImpl();
 	UserService userService=new UserServiceImpl();
 	ProductService productService=new ProductServiceImpl();
     public OrderDetailController() {
@@ -51,11 +51,11 @@ public class OrderDetailController extends HttpServlet {
 		List<ProductModel> products=new ArrayList<ProductModel>();
 		for(int i=0;i<orderDetail.size();i++)
 		{
-			products.add(productService.get(orderDetail.get(i).getProductId()));
+			products.add(productService.getByStore(orderDetail.get(i).getProductId()));
 		}
 		System.out.println(products.get(0).getId());
 		UserModel user=userService.getUserbyId(order.getUserId());
-		System.out.println(user.getFistName());
+		System.out.println(user.getFirstName());
 		request.setAttribute("user", user);
 		request.setAttribute("products", products);
 		request.setAttribute("order", order);

@@ -12,4 +12,19 @@ public interface OrderDao {
 	int countOrderByDate(Date date);
 	OrderModel getOrderById(int id);
 	void UpdateStatus(String status,int orderId);
+    List<OrderModel> findAll();
+
+    OrderModel get(int id);
+
+    void edit(OrderModel product);
+
+    void insert(OrderModel product);
+
+    void delete(int id);
+    List<OrderModel> userOrder(int userId);
+    int LastInserted ();
+
+    int CountOrder(int year);
+
+    int SumMoneySell(int year);
 }

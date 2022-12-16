@@ -10,6 +10,9 @@ import WebEcommerce.Service.StoreService;
 
 public class StoreServiceImpl implements StoreService {
 	StoreDao storeDao=new StoreDaoImpl();
+	public List<StoreModel> getAllStore(){
+		return storeDao.getAllStore();
+	}
 	@Override
 	public List<StoreModel> getStore(int id) {
 		// TODO Auto-generated method stub
@@ -62,6 +65,17 @@ public class StoreServiceImpl implements StoreService {
 	public StoreModel getStoreByName(String name) {
 		// TODO Auto-generated method stub
 		return storeDao.getStoreByName(name);
+	}
+
+	@Override
+	public void deleteStore(int id) {
+		storeDao.deleteStore(id);
+	}
+
+	@Override
+	public List<StoreModel> search(String query, int size, int index) {
+		return storeDao.search(query,size,index
+		);
 	}
 
 }

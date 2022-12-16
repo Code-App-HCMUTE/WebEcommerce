@@ -8,7 +8,8 @@ import WebEcommerce.Service.CategoryService;
 import java.util.List;
 
 public class CategoryServiceImpl implements CategoryService {
-    CategoryDao categoryDao =  new CategoryDaoImpl();
+    CategoryDao categoryDao = new CategoryDaoImpl();
+
     @Override
     public List<CategoryModel> findAll() {
         return categoryDao.findAll();
@@ -21,7 +22,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public void edit(CategoryModel category) {
-
+        categoryDao.edit(category);
     }
 
     @Override
@@ -31,6 +32,6 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public void delete(int id) {
-
+        categoryDao.delete(id);
     }
 }

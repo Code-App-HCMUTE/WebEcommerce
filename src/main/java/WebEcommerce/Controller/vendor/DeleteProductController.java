@@ -19,7 +19,7 @@ public class DeleteProductController extends HttpServlet {
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
-		productService.delete(Integer.parseInt(id));
+		productService.deleteByStore(Integer.parseInt(id));
 		response.sendRedirect(request.getContextPath() + "/vendor/products");
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

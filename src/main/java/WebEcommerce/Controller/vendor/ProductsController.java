@@ -13,14 +13,14 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet(urlPatterns = {"/vendor/products"})
-public class ProductController extends HttpServlet {
+public class ProductsController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	ProductService productService=new ProductServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<ProductModel> products = productService.findAll();
+        List<ProductModel> products = productService.findAllByStore();
         request.setAttribute("products", products);
         List<ProductModel> productsActive = productService.getAllProductIsActive();
         request.setAttribute("productactive", productsActive);
@@ -37,7 +37,7 @@ public class ProductController extends HttpServlet {
         	index="1";
         	query="";
         }
-        request.setAttribute("products", productService.search(query, 10, Integer.parseInt(index)));
+        request.setAttribute("products", productService.searchByStore(query, 10, Integer.parseInt(index)));
         request.setAttribute("txt",query);
         int count=productService.CountProduct(query);
         request.setAttribute("index",index);

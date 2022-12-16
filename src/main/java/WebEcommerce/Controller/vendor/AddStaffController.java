@@ -59,7 +59,7 @@ public class AddStaffController extends HttpServlet {
 			List<FileItem> items = servletFileUpload.parseRequest(request);
 			for (FileItem item : items) {
 				if (item.getFieldName().equals("firstname")) {
-					user.setFistName(item.getString("UTF-8"));
+					user.setFirstName(item.getString("UTF-8"));
 				} else if (item.getFieldName().equals("lastname")) {
 					user.setLastName(item.getString("UTF-8"));
 				}

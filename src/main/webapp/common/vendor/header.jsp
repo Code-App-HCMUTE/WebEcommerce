@@ -40,7 +40,7 @@
 									</div>
 								</div>
 								<div class="flex-grow-1">
-									<span class="fw-semibold d-block">${account.getFistName()}
+									<span class="fw-semibold d-block">${account.getFirstName()}
 										${account.getLastName()}</span> <small class="text-muted">Vendor</small>
 								</div>
 							</div>

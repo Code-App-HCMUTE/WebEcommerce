@@ -38,7 +38,7 @@ public class EditProductController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		id = Integer.parseInt(request.getParameter("id"));
-		ProductModel product = productService.get(id);
+		ProductModel product = productService.getByStore(id);
 		request.setAttribute("product", product);
 		List<CategoryModel> categoryList = categoryService.findAll();
         request.setAttribute("categorys",categoryList );
@@ -76,7 +76,7 @@ public class EditProductController extends HttpServlet {
 						product.setListImages(fileName);
 					} else {
 						System.out.println(id);
-						ProductModel oldproduct = productService.get(id);
+						ProductModel oldproduct = productService.getByStore(id);
 						product.setListImages(oldproduct.getListImages());
 					}
 				} else if (item.getFieldName().equals("price")) {
@@ -95,7 +95,7 @@ public class EditProductController extends HttpServlet {
 				product.setUpdatedAt(date);
 				product.setId(id);
 			}
-			productService.edit(product);
+			productService.editByStore(product);
 			response.sendRedirect(request.getContextPath() + "/vendor/products");
 		} catch (FileUploadException e) {
 			e.printStackTrace();

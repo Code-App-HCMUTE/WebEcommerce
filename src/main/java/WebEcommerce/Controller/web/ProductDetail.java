@@ -1,5 +1,8 @@
 package WebEcommerce.Controller.web;
 
+import WebEcommerce.Service.Impl.ProductServiceImpl;
+import WebEcommerce.Service.ProductService;
+
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -17,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/product/detail")
 public class ProductDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+	ProductService service = new ProductServiceImpl();
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -30,6 +33,10 @@ public class ProductDetail extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		int id = Integer.parseInt(req.getParameter("id"));
+		System.out.println(service.get(id));
+		req.setAttribute("product",service.get(id));
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/views/web/shopDetails.jsp");
 		try {
 			dispatcher.forward(req, resp);

@@ -79,7 +79,7 @@
                     <!-- /Logo -->
                     <h4 class="mb-2">Forgot Password? 🔒</h4>
                     <p class="mb-4">Enter your email and we'll send you instructions to reset your password</p>
-                    <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+                    <form id="formAuthentication" class="mb-3" action="/WebEcommerce/auth/forgotPassword" method="POST">
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input
@@ -91,7 +91,45 @@
                                     autofocus
                             />
                         </div>
-                        <button class="btn btn-primary d-grid w-100">Send Reset Link</button>
+                        <c:if test="${emailed == null}">
+                            <button class="btn btn-primary d-grid w-100">Send Reset Link</button>
+                        </c:if>
+                        <c:if test="${emailed != null}">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Mã xác nhận</label>
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="verificationCode"
+                                        name="verificationCode"
+                                        placeholder="Nhập mã xác nhận"
+                                        autofocus
+                                />
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">New Password</label>
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="password"
+                                        name="password"
+                                        placeholder="Enter your password"
+                                        autofocus
+                                />
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Re-Password</label>
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        id="rePassword"
+                                        name="rePassword"
+                                        placeholder="Enter your password"
+                                        autofocus
+                                />
+                            </div>
+                            <button class="btn btn-primary d-grid w-100">Send Reset Link</button>
+                        </c:if>
                     </form>
                     <div class="text-center">
                         <a href="auth-login-basic.html" class="d-flex align-items-center justify-content-center">

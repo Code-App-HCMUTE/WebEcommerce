@@ -19,4 +19,18 @@ public class CommissionServiceImpl implements CommissionService {
         return commissionDao.get(id);
     }
 
+    @Override
+    public void edit(CommissionModel commission) {
+        commissionDao.edit(commission);
+    }
+
+    @Override
+    public void insert(CommissionModel commission) {
+        commissionDao.insert(commission);
+    }
+
+    @Override
+    public void delete(int id) {
+        commissionDao.delete(id);
+    }
 }

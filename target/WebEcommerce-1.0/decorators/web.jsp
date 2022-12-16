@@ -23,6 +23,19 @@
 				<link rel="stylesheet" href="${URL}/css/owl.carousel.min.css" type="text/css">
 				<link rel="stylesheet" href="${URL}/css/slicknav.min.css" type="text/css">
 				<link rel="stylesheet" href="${URL}/css/style.css" type="text/css">
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+                    <script>
+                        function chooseFile(fileinput, id)
+                        {
+                            if(fileinput.files && fileinput.files[0]){
+                                var reader = new FileReader();
+                                reader.onload=function (e){
+                                    $('#'+id).attr('src',e.target.result);
+                                }
+                                reader.readAsDataURL(fileinput.files[0])
+                            }
+                        }
+                    </script>
 			</head>
 
 			<body>

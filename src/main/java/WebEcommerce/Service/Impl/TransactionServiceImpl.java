@@ -29,5 +29,33 @@ public class TransactionServiceImpl implements TransactionService {
 		// TODO Auto-generated method stub
 		return transactionDao.doanhthu(date);
 	}
+    @Override
+    public List<TransactionModel> findAll() {
+        return transactionDao.findAll();
+    }
 
+    @Override
+    public TransactionModel get(int id) {
+        return transactionDao.get(id);
+    }
+
+    @Override
+    public void edit(TransactionModel transaction) {
+        transactionDao.edit(transaction);
+    }
+
+    @Override
+    public void insert(TransactionModel transaction) {
+        transactionDao.insert(transaction);
+    }
+
+    @Override
+    public void delete(int id) {
+        transactionDao.delete(id);
+    }
+
+    @Override
+    public int sumMoneyTransaction(int year) {
+        return transactionDao.sumMoneyTransaction(year);
+    }
 }

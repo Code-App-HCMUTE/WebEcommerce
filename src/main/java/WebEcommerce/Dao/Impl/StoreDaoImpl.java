@@ -15,6 +15,40 @@ import vn.iotstar.util.Constant;
 
 public class StoreDaoImpl extends DBConnection implements StoreDao {
 
+    @Override
+    public List<StoreModel> getAllStore() {
+        List<StoreModel> stores = new ArrayList<StoreModel>();
+        String sql = "SELECT * FROM store";
+        try {
+            Connection conn = super.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                StoreModel store = new StoreModel();
+                store.set_id(rs.getInt("_id"));
+                store.setName(rs.getString("name"));
+                store.setBio(rs.getString("bio"));
+                store.setSlug(rs.getString("slug"));
+                store.setOwnerId(rs.getInt("ownerId"));
+                store.setStaffIds(rs.getInt("staffIds"));
+                store.setIsActive(rs.getBoolean("isActive"));
+                store.setIsOpen(rs.getBoolean("isOpen"));
+                store.setAvatar(rs.getString("avatar"));
+                store.setCover(rs.getString("cover"));
+                store.setFeatured_images(rs.getString("featured_images"));
+                store.setCommissionId(rs.getInt("commissionId"));
+                store.setPoint(rs.getInt("point"));
+                store.setRating(rs.getInt("rating"));
+                store.setE_wallet(rs.getInt("e_wallet"));
+                store.setCreatedAt(rs.getDate("createdAt"));
+                store.setUpdatedAt(rs.getDate("updatedAt"));
+                stores.add(store);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return stores;
+    }
 	@Override
 	public List<StoreModel> getStore(int id) {
 		List<StoreModel> stores = new ArrayList<StoreModel>();
@@ -24,7 +58,7 @@ public class StoreDaoImpl extends DBConnection implements StoreDao {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, id);
 			ps.setInt(2, id);
-			ResultSet rs = ps.executeQuery(); 
+			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				StoreModel store = new StoreModel();
 				store.set_id(rs.getInt("_id"));
@@ -33,8 +67,8 @@ public class StoreDaoImpl extends DBConnection implements StoreDao {
 				store.setSlug(rs.getString("slug"));
 				store.setOwnerId(rs.getInt("ownerId"));
 				store.setStaffIds(rs.getInt("staffIds"));
-				store.setActive(rs.getBoolean("isActive"));
-				store.setOpen(rs.getBoolean("isOpen"));
+				store.setIsActive(rs.getBoolean("isActive"));
+				store.setIsOpen(rs.getBoolean("isOpen"));
 				store.setAvatar(rs.getString("avatar"));
 				store.setCover(rs.getString("cover"));
 				store.setFeatured_images(rs.getString("featured_images"));
@@ -93,8 +127,8 @@ public class StoreDaoImpl extends DBConnection implements StoreDao {
 				store.setSlug(rs.getString("slug"));
 				store.setOwnerId(rs.getInt("ownerId"));
 				store.setStaffIds(rs.getInt("staffIds"));
-				store.setActive(rs.getBoolean("isActive"));
-				store.setOpen(rs.getBoolean("isOpen"));
+				store.setIsActive(rs.getBoolean("isActive"));
+				store.setIsOpen(rs.getBoolean("isOpen"));
 				store.setAvatar(rs.getString("avatar"));
 				store.setCover(rs.getString("cover"));
 				store.setFeatured_images(rs.getString("featured_images"));
@@ -134,15 +168,15 @@ public class StoreDaoImpl extends DBConnection implements StoreDao {
 	@Override
 	public UserModel getOwnerStore() {
 		UserModel owner=new UserModel();
-		String sql = "SELECT user._id, user.fistName, user.lastName, user.address, user.avatar, user.phone, user.email, user.hashed_password FROM store inner join user on store.ownerId = user._id where store._id = ?";
+		String sql = "SELECT user._id, user.firstName, user.lastName, user.address, user.avatar, user.phone, user.email, user.hashed_password FROM store inner join user on store.ownerId = user._id where store._id = ?";
 		try {
 			Connection conn = super.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, Constant.idStore);
-			ResultSet rs = ps.executeQuery(); 
+			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				owner.set_id(rs.getInt("_id"));
-				owner.setFistName(rs.getString("fistName"));
+				owner.setFirstName(rs.getString("firstName"));
 				owner.setLastName(rs.getString("lastName"));
 				owner.setAddress(rs.getString("address"));
 				owner.setAvatar(rs.getString("avatar"));
@@ -165,7 +199,7 @@ public class StoreDaoImpl extends DBConnection implements StoreDao {
             ps.setInt(1, Constant.idStore);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-            	return rs.getInt(1); 
+            	return rs.getInt(1);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -192,15 +226,15 @@ public class StoreDaoImpl extends DBConnection implements StoreDao {
 	@Override
 	public UserModel getStaff() {
 		UserModel staff=new UserModel();
-		String sql = "SELECT user._id, user.fistName, user.lastName, user.address, user.phone, user.email FROM store inner join user on store.staffIds = user._id where store._id = ?";
+		String sql = "SELECT user._id, user.firstName, user.lastName, user.address, user.phone, user.email FROM store inner join user on store.staffIds = user._id where store._id = ?";
 		try {
 			Connection conn = super.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, Constant.idStore);
-			ResultSet rs = ps.executeQuery(); 
+			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				staff.set_id(rs.getInt("_id"));
-				staff.setFistName(rs.getString("fistName"));
+				staff.setFirstName(rs.getString("firstName"));
 				staff.setLastName(rs.getString("lastName"));
 				staff.setAddress(rs.getString("address"));
 				staff.setPhone(rs.getString("phone"));
@@ -235,7 +269,7 @@ public class StoreDaoImpl extends DBConnection implements StoreDao {
 			Connection conn = super.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, name);
-			ResultSet rs = ps.executeQuery(); 
+			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				StoreModel store = new StoreModel();
 				store.set_id(rs.getInt("_id"));
@@ -244,8 +278,8 @@ public class StoreDaoImpl extends DBConnection implements StoreDao {
 				store.setSlug(rs.getString("slug"));
 				store.setOwnerId(rs.getInt("ownerId"));
 				store.setStaffIds(rs.getInt("staffIds"));
-				store.setActive(rs.getBoolean("isActive"));
-				store.setOpen(rs.getBoolean("isOpen"));
+				store.setIsActive(rs.getBoolean("isActive"));
+				store.setIsOpen(rs.getBoolean("isOpen"));
 				store.setAvatar(rs.getString("avatar"));
 				store.setCover(rs.getString("cover"));
 				store.setFeatured_images(rs.getString("featured_images"));
@@ -260,6 +294,16 @@ public class StoreDaoImpl extends DBConnection implements StoreDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return null;
+	}
+
+	@Override
+	public void deleteStore(int id) {
+
+	}
+
+	@Override
+	public List<StoreModel> search(String query, int size, int index) {
 		return null;
 	}
 }
