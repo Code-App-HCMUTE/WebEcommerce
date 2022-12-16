@@ -23,7 +23,15 @@ public class TransactionController extends HttpServlet {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<TransactionModel> transactions=transactionService.getAll();
+		String index = request.getParameter("index");
+		if(index==null)
+		{
+			index="1";
+		}
+		List<TransactionModel> transactions=transactionService.getAll(Integer.parseInt(index),10);
+		int count=transactionService.countTransaction();
+        request.setAttribute("index",index);
+        request.setAttribute("pageCount",count+1);
 		request.setAttribute("transactions", transactions);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/vendor/transaction.jsp");
 		try {

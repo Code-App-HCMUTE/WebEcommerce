@@ -3,6 +3,7 @@ package WebEcommerce.Dao;
 
 import WebEcommerce.Model.ProductModel;
 
+import java.util.Date;
 import java.util.List;
 
 public interface ProductDao {
@@ -18,4 +19,7 @@ public interface ProductDao {
     List<ProductModel> searchProduct(String txtSearch);
     List<ProductModel> search(String query,int size,int index);
     int CountProduct(String txt);
+    int countProductByDate(Date date);
+    int countAll();
+    ProductModel getTop1Sold();
 }

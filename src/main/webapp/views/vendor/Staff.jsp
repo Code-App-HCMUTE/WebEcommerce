@@ -13,14 +13,17 @@
 							<div class="card testimonial-card flex-grow-1">
 								<div class="card-up"
 									style="background-color: #ccc; height: 200px; overflow: hidden; border-top-left-radius: 0.25rem; border-top-right-radius: 0.25rem;">
+									<core:url value="/image?fname=user/${owner.cover}"
+										var="imgUrl"></core:url>
 									<img
-										src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp"
+										src="${imgUrl}" alt="Cover"
 										width="100%" height="100%" style="object-fit: cover;" />
 								</div>
 								<div class="avatar mx-auto bg-white"
 									style="width: 200px; height: 200px; margin-top: -60px; overflow: hidden; border: 3px solid #fff; border-radius: 50%;">
-									<img
-										src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp"
+									<core:url value="/image?fname=user/${owner.avatar}"
+										var="imgUrl"></core:url>
+									<img src="${imgUrl}" alt="Avatar"
 										class="rounded-circle img-fluid" />
 								</div>
 							</div>

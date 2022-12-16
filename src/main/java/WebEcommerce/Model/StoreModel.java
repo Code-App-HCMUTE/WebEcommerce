@@ -9,7 +9,7 @@ public class StoreModel {
     private String bio;
     private String slug;
     private int ownerId;
-    private String staffIds;
+    private int staffIds;
     private boolean isActive;
     private boolean isOpen;
     private String avatar;
@@ -25,7 +25,7 @@ public class StoreModel {
     public StoreModel() {
     }
 
-    public StoreModel(int _id, String name, String bio, String slug, int ownerId, String staffIds, boolean isActive, boolean isOpen, String avatar, String cover, String featured_images, int commissionId, int point, int rating, int e_wallet, Date createdAt, Date updatedAt) {
+    public StoreModel(int _id, String name, String bio, String slug, int ownerId, int staffIds, boolean isActive, boolean isOpen, String avatar, String cover, String featured_images, int commissionId, int point, int rating, int e_wallet, Date createdAt, Date updatedAt) {
         this._id = _id;
         this.name = name;
         this.bio = bio;
@@ -85,11 +85,11 @@ public class StoreModel {
         this.ownerId = ownerId;
     }
 
-    public String getStaffIds() {
+    public int getStaffIds() {
         return staffIds;
     }
 
-    public void setStaffIds(String staffIds) {
+    public void setStaffIds(int staffIds) {
         this.staffIds = staffIds;
     }
 

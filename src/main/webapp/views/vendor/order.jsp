@@ -31,9 +31,7 @@
 											<table class="table">
 												<thead>
 													<tr>
-														<th scope="col">ID</th>
 														<th scope="col">UserID</th>
-														<th scope="col">StoreID</th>
 														<th scope="col">DeliveryID</th>
 														<th scope="col">CommissionID</th>
 														<th scope="col">Address</th>
@@ -41,14 +39,13 @@
 														<th scope="col">Status</th>
 														<th scope="col">isPaidBefore</th>
 														<th scope="col">amountFromUser</th>
+														<th scope="col">Detail</th>
 													</tr>
 												</thead>
 												<tbody class="table-border-bottom-0">
 													<core:forEach items="${orders}" var="kq">
 														<tr>
-															<th scope="row">${kq.id}</th>
 															<td>${kq.userId}</td>
-															<td>${kq.storeId}</td>
 															<td>${kq.deliveryId}</td>
 															<td>${kq.commissionId}</td>
 															<td>${kq.address}</td>
@@ -61,6 +58,7 @@
 																<td>Đã thanh toán</td>
 															</core:if>
 															<td>${kq.amountFromUser}</td>
+															<td><a href="/WebEcommerce/vendor/order/detail?id=${kq.id}">Detail</a></td>
 														</tr>
 													</core:forEach>
 												</tbody>

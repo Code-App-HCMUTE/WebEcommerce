@@ -167,4 +167,44 @@ public class UserDaoImpl extends DBConnection implements UserDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public UserModel getUserbyId(int id) {
+		String sql = "select * from economies.user where _id = ? ";
+		try {
+			Connection connection = super.getConnection();
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				UserModel user = new UserModel();
+				user.set_id(rs.getInt("_id"));
+				user.setAddress(rs.getString("address"));
+				user.setAvatar(rs.getString("avatar"));
+				user.setCover(rs.getString("cover"));
+				user.setFistName(rs.getString("fistName"));
+				user.setLastName(rs.getString("lastName"));
+				user.setSlug(rs.getString("slug"));
+				user.setId_card(rs.getInt("id_card"));
+				user.setPhone(rs.getString("phone"));
+				user.setSalt(rs.getString("salt"));
+				user.setHashed_password(rs.getString("hashed_password"));
+				user.setRole(rs.getString("role"));
+				user.setEmail(rs.getString("email"));
+				user.setE_wallet(rs.getInt("e_wallet"));
+				user.setEmailActive(rs.getBoolean("isEmalActive"));
+				user.setPhoneActive(rs.getBoolean("isPhoneActive"));
+				user.setCreatedAt(rs.getDate("createdAt"));
+				user.setUpdatedAt(rs.getDate("updatedAt"));
+				user.setPoint(rs.getInt("point"));
+				return user;
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

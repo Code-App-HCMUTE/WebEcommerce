@@ -30,18 +30,13 @@ public class ProductController extends HttpServlet {
         request.setAttribute("productquantity", productsQuantity);
         List<ProductModel> productsNoQuantity = productService.getAllProductNoQuantity();
         request.setAttribute("productnoquantity", productsNoQuantity);
-        
-        
         String query = request.getParameter("txt");
         String index = request.getParameter("index");
-        
-        System.out.println(index);
         if(index==null)
         {
         	index="1";
         	query="";
         }
-        System.out.println(index);
         request.setAttribute("products", productService.search(query, 10, Integer.parseInt(index)));
         request.setAttribute("txt",query);
         int count=productService.CountProduct(query);

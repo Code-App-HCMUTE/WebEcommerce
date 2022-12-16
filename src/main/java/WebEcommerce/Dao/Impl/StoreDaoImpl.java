@@ -11,16 +11,19 @@ import WebEcommerce.Connection.DBConnection;
 import WebEcommerce.Dao.StoreDao;
 import WebEcommerce.Model.StoreModel;
 import WebEcommerce.Model.UserModel;
+import vn.iotstar.util.Constant;
 
 public class StoreDaoImpl extends DBConnection implements StoreDao {
 
 	@Override
-	public List<StoreModel> getAllStore() {
+	public List<StoreModel> getStore(int id) {
 		List<StoreModel> stores = new ArrayList<StoreModel>();
-		String sql = "SELECT * FROM store";
+		String sql = "SELECT * FROM economies.store where ownerId = ? or staffIds = ?";
 		try {
 			Connection conn = super.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.setInt(2, id);
 			ResultSet rs = ps.executeQuery(); 
 			while (rs.next()) {
 				StoreModel store = new StoreModel();
@@ -29,7 +32,7 @@ public class StoreDaoImpl extends DBConnection implements StoreDao {
 				store.setBio(rs.getString("bio"));
 				store.setSlug(rs.getString("slug"));
 				store.setOwnerId(rs.getInt("ownerId"));
-				store.setStaffIds(rs.getString("staffIds"));
+				store.setStaffIds(rs.getInt("staffIds"));
 				store.setActive(rs.getBoolean("isActive"));
 				store.setOpen(rs.getBoolean("isOpen"));
 				store.setAvatar(rs.getString("avatar"));
@@ -59,12 +62,12 @@ public class StoreDaoImpl extends DBConnection implements StoreDao {
 			ps.setString(1, store.getName());
 			ps.setString(2, store.getBio());
 			ps.setString(3, store.getName());
-			ps.setString(4, "1");
+			ps.setInt(4, store.getOwnerId());
 			ps.setString(5, null);
 			ps.setString(6, store.getAvatar());
 			ps.setString(7, store.getCover());
 			ps.setString(8, store.getFeatured_images());
-			ps.setString(9, null);
+			ps.setInt(9, store.getCommissionId());
 			ps.setDate(10, (java.sql.Date) store.getCreatedAt());
 			ps.setDate(11, (java.sql.Date) store.getUpdatedAt());
 			ps.executeUpdate();
@@ -89,7 +92,7 @@ public class StoreDaoImpl extends DBConnection implements StoreDao {
 				store.setBio(rs.getString("bio"));
 				store.setSlug(rs.getString("slug"));
 				store.setOwnerId(rs.getInt("ownerId"));
-				store.setStaffIds(rs.getString("staffIds"));
+				store.setStaffIds(rs.getInt("staffIds"));
 				store.setActive(rs.getBoolean("isActive"));
 				store.setOpen(rs.getBoolean("isOpen"));
 				store.setAvatar(rs.getString("avatar"));
@@ -110,7 +113,7 @@ public class StoreDaoImpl extends DBConnection implements StoreDao {
 
 	@Override
 	public void editStore(StoreModel store) {
-		String sql = "UPDATE store SET name = ?,slug = ?, bio = ?, avatar = ?, cover = ?, featured_images = ?, updatedAt = ? WHERE _id = 6";
+		String sql = "UPDATE store SET name = ?,slug = ?, bio = ?, avatar = ?, cover = ?, featured_images = ?, updatedAt = ? WHERE _id = ?";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -121,6 +124,7 @@ public class StoreDaoImpl extends DBConnection implements StoreDao {
 			ps.setString(5, store.getCover());
 			ps.setString(6, store.getFeatured_images());
 			ps.setDate(7, java.sql.Date.valueOf(LocalDate.now()));
+			ps.setInt(8, Constant.idStore);
 			ps.executeUpdate();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -130,10 +134,11 @@ public class StoreDaoImpl extends DBConnection implements StoreDao {
 	@Override
 	public UserModel getOwnerStore() {
 		UserModel owner=new UserModel();
-		String sql = "SELECT user._id, user.fistName, user.lastName, user.address, user.avatar, user.phone, user.email FROM store inner join user on store.ownerId = user._id where store._id = 6";
+		String sql = "SELECT user._id, user.fistName, user.lastName, user.address, user.avatar, user.phone, user.email, user.hashed_password FROM store inner join user on store.ownerId = user._id where store._id = ?";
 		try {
 			Connection conn = super.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, Constant.idStore);
 			ResultSet rs = ps.executeQuery(); 
 			while (rs.next()) {
 				owner.set_id(rs.getInt("_id"));
@@ -143,6 +148,7 @@ public class StoreDaoImpl extends DBConnection implements StoreDao {
 				owner.setAvatar(rs.getString("avatar"));
 				owner.setPhone(rs.getString("phone"));
 				owner.setEmail(rs.getString("email"));
+				owner.setHashed_password(rs.getString("hashed_password"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -152,10 +158,11 @@ public class StoreDaoImpl extends DBConnection implements StoreDao {
 
 	@Override
 	public int countStaffInStore() {
-		String sql = "SELECT count(staffIds) FROM store where _id=6";
+		String sql = "SELECT count(staffIds) FROM store where _id = ?";
 		try {
             Connection conn = super.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, Constant.idStore);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
             	return rs.getInt(1); 
@@ -168,12 +175,13 @@ public class StoreDaoImpl extends DBConnection implements StoreDao {
 
 	@Override
 	public void updateStaffStore(int id) {
-		String sql = "UPDATE store SET staffIds = ?, updatedAt = ? WHERE _id = 6";
+		String sql = "UPDATE store SET staffIds = ?, updatedAt = ? WHERE _id = ?";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, id);
 			ps.setDate(2, java.sql.Date.valueOf(LocalDate.now()));
+			ps.setInt(3, Constant.idStore);
 			ps.executeUpdate();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -184,10 +192,11 @@ public class StoreDaoImpl extends DBConnection implements StoreDao {
 	@Override
 	public UserModel getStaff() {
 		UserModel staff=new UserModel();
-		String sql = "SELECT user._id, user.fistName, user.lastName, user.address, user.phone, user.email FROM store inner join user on store.staffIds = user._id where store._id = 6";
+		String sql = "SELECT user._id, user.fistName, user.lastName, user.address, user.phone, user.email FROM store inner join user on store.staffIds = user._id where store._id = ?";
 		try {
 			Connection conn = super.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, Constant.idStore);
 			ResultSet rs = ps.executeQuery(); 
 			while (rs.next()) {
 				staff.set_id(rs.getInt("_id"));
@@ -205,16 +214,52 @@ public class StoreDaoImpl extends DBConnection implements StoreDao {
 
 	@Override
 	public void Ruttien(int sotien) {
-		String sql = "UPDATE economies.store SET economies.store.e_wallet = economies.store.e_wallet - ?, updatedAt = ?  WHERE economies.store._id=6";
+		String sql = "UPDATE economies.store SET economies.store.e_wallet = economies.store.e_wallet - ?, updatedAt = ?  WHERE economies.store._id=?";
 		try {
 			Connection con = super.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, sotien);
 			ps.setDate(2, java.sql.Date.valueOf(LocalDate.now()));
+			ps.setInt(3, Constant.idStore);
 			ps.executeUpdate();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public StoreModel getStoreByName(String name) {
+		String sql = "SELECT * FROM economies.store where name like ?";
+		try {
+			Connection conn = super.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, name);
+			ResultSet rs = ps.executeQuery(); 
+			while (rs.next()) {
+				StoreModel store = new StoreModel();
+				store.set_id(rs.getInt("_id"));
+				store.setName(rs.getString("name"));
+				store.setBio(rs.getString("bio"));
+				store.setSlug(rs.getString("slug"));
+				store.setOwnerId(rs.getInt("ownerId"));
+				store.setStaffIds(rs.getInt("staffIds"));
+				store.setActive(rs.getBoolean("isActive"));
+				store.setOpen(rs.getBoolean("isOpen"));
+				store.setAvatar(rs.getString("avatar"));
+				store.setCover(rs.getString("cover"));
+				store.setFeatured_images(rs.getString("featured_images"));
+				store.setCommissionId(rs.getInt("commissionId"));
+				store.setPoint(rs.getInt("point"));
+				store.setRating(rs.getInt("rating"));
+				store.setE_wallet(rs.getInt("e_wallet"));
+				store.setCreatedAt(rs.getDate("createdAt"));
+				store.setUpdatedAt(rs.getDate("updatedAt"));
+				return store;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

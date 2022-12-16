@@ -30,13 +30,10 @@ public class SearchProduct extends HttpServlet {
 			throws ServletException, IOException {
 		String query = request.getParameter("txt");
         String index = request.getParameter("index");
-        
-        System.out.println(index);
         if(index==null)
         {
         	index="1";
         }
-        System.out.println(index);
         request.setAttribute("products", productService.search(query, 10, Integer.parseInt(index)));
         request.setAttribute("txt",query);
         int count=productService.CountProduct(query);

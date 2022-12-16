@@ -34,4 +34,10 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return dao.getStaffbyPhone(phone);
 	}
+
+	@Override
+	public UserModel getUserbyId(int id) {
+		// TODO Auto-generated method stub
+		return dao.getUserbyId(id);
+	}
 }

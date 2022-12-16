@@ -62,7 +62,7 @@
                 <ul class="menu-inner py-1">
                     <!-- home -->
                     <li class="menu-item active">
-                        <a href="index.html" class="menu-link">
+                        <a href="/WebEcommerce/vendor/home" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div data-i18n="Analytics">trang chủ</div>
                         </a>
@@ -114,7 +114,7 @@
                     </li>
                     <!-- Dữ Liệu -->
                     <li class="menu-item">
-                        <a href="index.html" class="menu-link">
+                        <a href="/WebEcommerce/vendor/statistic" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-line-chart"></i>
                             <div data-i18n="Analytics">Dữ Liệu</div>
                         </a>

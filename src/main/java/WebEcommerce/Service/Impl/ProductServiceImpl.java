@@ -1,5 +1,6 @@
 package WebEcommerce.Service.Impl;
 
+import java.util.Date;
 import java.util.List;
 
 import WebEcommerce.Dao.ProductDao;
@@ -76,6 +77,24 @@ public class ProductServiceImpl implements ProductService{
 	public int CountProduct(String txt) {
 		// TODO Auto-generated method stub
 		return productDao.CountProduct(txt);
+	}
+
+	@Override
+	public int countProductByDate(Date date) {
+		// TODO Auto-generated method stub
+		return productDao.countProductByDate(date);
+	}
+
+	@Override
+	public int countAll() {
+		// TODO Auto-generated method stub
+		return productDao.countAll();
+	}
+
+	@Override
+	public ProductModel getTop1Sold() {
+		// TODO Auto-generated method stub
+		return productDao.getTop1Sold();
 	}
 
 }

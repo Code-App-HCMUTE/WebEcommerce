@@ -6,7 +6,7 @@ import WebEcommerce.Model.StoreModel;
 import WebEcommerce.Model.UserModel;
 
 public interface StoreService {
-	List<StoreModel> getAllStore();
+	List<StoreModel> getStore(int id);
 	void insertStore(StoreModel store);
 	StoreModel getStoreById(int id);
 	void editStore(StoreModel store);
@@ -15,4 +15,5 @@ public interface StoreService {
 	void updateStaffStore(int id);
 	UserModel getStaff();
 	void Ruttien(int sotien);
+	StoreModel getStoreByName(String name);
 }

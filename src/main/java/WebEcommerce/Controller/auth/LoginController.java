@@ -18,7 +18,6 @@ public class LoginController extends HttpServlet {
 	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
-		System.out.println(session + " sectionget");
 		if (session != null && session.getAttribute("account") != null) {
 			response.sendRedirect(request.getContextPath() + "/waiting");
 			return;
@@ -59,7 +58,6 @@ public class LoginController extends HttpServlet {
 		}
 		if (user != null) {
 			HttpSession session = request.getSession(true);
-			System.out.println(session + " sectionpost");
 			session.setAttribute("account", user);
 			if (isRememberMe) {
 				saveRemeberMe(response, username);

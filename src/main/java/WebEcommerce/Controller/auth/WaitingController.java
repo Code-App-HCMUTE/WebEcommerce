@@ -1,6 +1,7 @@
 package WebEcommerce.Controller.auth;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,10 +23,8 @@ public class WaitingController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		System.out.println((UserModel)session.getAttribute("account"));
 		if (session != null && session.getAttribute("account") != null) {
 			UserModel u = (UserModel) session.getAttribute("account");
-			System.out.println(u.getRole());
 			if(u.getRole().equals("user"))
 			{
 				response.sendRedirect(request.getContextPath() + "/home");

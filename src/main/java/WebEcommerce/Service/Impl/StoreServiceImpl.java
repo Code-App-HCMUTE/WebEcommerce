@@ -11,9 +11,9 @@ import WebEcommerce.Service.StoreService;
 public class StoreServiceImpl implements StoreService {
 	StoreDao storeDao=new StoreDaoImpl();
 	@Override
-	public List<StoreModel> getAllStore() {
+	public List<StoreModel> getStore(int id) {
 		// TODO Auto-generated method stub
-		return storeDao.getAllStore();
+		return storeDao.getStore(id);
 	}
 
 	@Override
@@ -56,6 +56,12 @@ public class StoreServiceImpl implements StoreService {
 	@Override
 	public void Ruttien(int sotien) {
 		storeDao.Ruttien(sotien);
+	}
+
+	@Override
+	public StoreModel getStoreByName(String name) {
+		// TODO Auto-generated method stub
+		return storeDao.getStoreByName(name);
 	}
 
 }

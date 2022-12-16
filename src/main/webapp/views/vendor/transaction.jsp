@@ -22,6 +22,11 @@
 							<input class="form-control"
 								placeholder="Hãy nhập số tiền cần rút..." name="money" />
 						</div>
+						<div class="modal-body">
+							<h3>Nhập Mật Khẩu</h3>
+							<input class="form-control" type="password"
+								placeholder="Hãy nhập Mật khẩu ..." name="password" />
+						</div>
 						<div class="modal-footer">
 							<button type="reset" class="btn btn-default"
 								data-bs-dismiss="modal">Đóng</button>
@@ -81,6 +86,27 @@
 													</core:forEach>
 												</tbody>
 											</table>
+										</div>
+										<div class="row">
+											<div class="col">
+												<div class="demo-inline-spacing">
+													<!-- Basic Pagination -->
+													<nav aria-label="Page navigation">
+														<ul class="pagination">
+															<core:forEach begin="1" end="${pageCount}" var="i">
+																<core:if test="${index == i}">
+																	<li class="page-item active"><a class="page-link"
+																		href="transactions?index=${i}">${i}</a></li>
+																</core:if>
+																<core:if test="${index != i}">
+																	<li class="page-item"><a class="page-link"
+																		href="transactions?index=${i}">${i}</a></li>
+																</core:if>
+															</core:forEach>
+														</ul>
+													</nav>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>

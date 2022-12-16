@@ -10,4 +10,5 @@ public interface UserDao {
     List<UserModel> GetAllUser ();
     void addStaffInStore(UserModel user);
     UserModel getStaffbyPhone(String phone);
+    UserModel getUserbyId(int id);
 }

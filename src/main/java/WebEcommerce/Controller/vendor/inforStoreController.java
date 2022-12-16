@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
@@ -17,6 +18,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import WebEcommerce.Model.StoreModel;
+import WebEcommerce.Model.UserModel;
 import WebEcommerce.Service.StoreService;
 import WebEcommerce.Service.Impl.StoreServiceImpl;
 import vn.iotstar.util.Constant;
@@ -30,7 +32,7 @@ public class inforStoreController extends HttpServlet {
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//int id = Integer.parseInt(request.getParameter("id"));
-		StoreModel store=storeService.getStoreById(6);
+		StoreModel store=storeService.getStoreById(Constant.idStore);
         request.setAttribute("store", store);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/vendor/infoStore.jsp");
         try {
@@ -69,7 +71,7 @@ public class inforStoreController extends HttpServlet {
 						store.setAvatar(fileName);
 					}
 					else {
-						StoreModel oldStore = storeService.getStoreById(6);
+						StoreModel oldStore = storeService.getStoreById(Constant.idStore);
 						store.setAvatar(oldStore.getAvatar());
 					}
 				} 
@@ -84,7 +86,7 @@ public class inforStoreController extends HttpServlet {
 						store.setCover(fileName);
 					}
 					else {
-						StoreModel oldStore = storeService.getStoreById(6);
+						StoreModel oldStore = storeService.getStoreById(Constant.idStore);
 						store.setCover(oldStore.getCover());
 					}
 				}
@@ -99,13 +101,21 @@ public class inforStoreController extends HttpServlet {
 						store.setFeatured_images(fileName);
 					}
 					else {
-						StoreModel oldStore = storeService.getStoreById(6);
+						StoreModel oldStore = storeService.getStoreById(Constant.idStore);
 						store.setFeatured_images(oldStore.getFeatured_images());
 					}
 				}
 			}
-			storeService.editStore(store);
-			response.sendRedirect(request.getContextPath() + "/vendor/home");
+			HttpSession session = request.getSession();
+			UserModel u = (UserModel) session.getAttribute("account");
+			StoreModel storeModel = storeService.getStoreById(Constant.idStore);
+			if (u.get_id() == storeModel.getOwnerId()) {
+				storeService.editStore(store);
+				response.sendRedirect(request.getContextPath() + "/vendor/home");
+			}
+			else {
+				response.sendRedirect(request.getContextPath() + "/vendor/infor");
+			}
 		} catch (FileUploadException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
